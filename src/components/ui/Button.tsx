@@ -1,6 +1,7 @@
 import React from 'react';
+import { motion, type HTMLMotionProps } from 'framer-motion';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends HTMLMotionProps<"button"> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
 }
@@ -12,10 +13,10 @@ export const Button: React.FC<ButtonProps> = ({
   className = '',
   ...props
 }) => {
-  const baseStyles = "inline-flex items-center justify-center font-medium rounded-full transition-all duration-200 focus:outline-none";
+  const baseStyles = "inline-flex items-center justify-center font-medium rounded-full transition-colors focus:outline-none";
   
   const variants = {
-    primary: "bg-brand-500 text-white hover:bg-brand-600 shadow-sm hover:shadow",
+    primary: "bg-brand-500 text-white hover:bg-brand-600 shadow-sm",
     secondary: "bg-brand-50 text-brand-600 hover:bg-brand-100",
     outline: "border border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-50",
     ghost: "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
@@ -28,11 +29,14 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   return (
-    <button 
+    <motion.button 
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ type: "spring", stiffness: 400, damping: 17 }}
       className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
       {...props}
     >
       {children}
-    </button>
+    </motion.button>
   );
 };
