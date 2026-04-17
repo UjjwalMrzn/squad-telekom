@@ -32,14 +32,11 @@ const fadeLeft: Variants = {
 };
 
 export const WhyChooseUs = () => {
-  // Setup hardware-accelerated mouse tracking
   const containerRef = useRef<HTMLDivElement>(null);
   
-  // Initialize to rough center of the container
   const mouseX = useMotionValue(700); 
   const mouseY = useMotionValue(150);
 
-  // Apply fluid spring physics so the effect elegantly chases the mouse
   const springConfig = { damping: 25, stiffness: 200 };
   const hoverX = useSpring(mouseX, springConfig);
   const hoverY = useSpring(mouseY, springConfig);
@@ -54,10 +51,8 @@ export const WhyChooseUs = () => {
   return (
     <section className="py-24 lg:py-32 bg-slate-50 relative overflow-hidden border-b border-slate-200">
       
-      {/* LOCKED GRID: 1400px invisible master line */}
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
-        {/* HEADER SECTION */}
         <motion.div 
           initial="hidden"
           whileInView="visible"
@@ -65,10 +60,8 @@ export const WhyChooseUs = () => {
           variants={fadeUp}
           className="max-w-4xl mb-20 md:mb-32 text-center mx-auto"
         >
-          {/* DRY: Swapped Hardcoded HTML for SectionBadge. Used class overrides to match the original White background */}
           <SectionBadge text="The Squad Advantage" className="!bg-white !border-brand-100 !mb-8" />
           
-          {/* DRY: Swapped Hardcoded HTML for SectionHeader. Mapped exact extrabold typography from your locked UI */}
           <SectionHeader 
             align="center"
             title="Why Choose Squad"
@@ -78,10 +71,8 @@ export const WhyChooseUs = () => {
           />
         </motion.div>
 
-        {/* EDITORIAL Z-PATTERN LAYOUT */}
         <div className="flex flex-col gap-24 lg:gap-32 mb-24 lg:mb-32">
           
-          {/* FEATURE 1: Powerful APIs (Text Left, Image Right) */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <motion.div 
               initial="hidden"
@@ -132,6 +123,7 @@ export const WhyChooseUs = () => {
                 <img 
                   src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop" 
                   alt="API Code Integration" 
+                  loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[0.22,1,0.36,1]"
                 />
                 <div className="absolute inset-0 ring-1 ring-inset ring-black/5 rounded-[3rem] pointer-events-none" />
@@ -139,7 +131,6 @@ export const WhyChooseUs = () => {
             </motion.div>
           </div>
 
-          {/* FEATURE 2: Carrier-Grade (Image Left, Text Right) */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <motion.div 
               initial="hidden"
@@ -170,6 +161,7 @@ export const WhyChooseUs = () => {
                 <img 
                   src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1000&auto=format&fit=crop" 
                   alt="Server Infrastructure" 
+                  loading="lazy"
                   className="w-full h-full object-cover opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 ease-[0.22,1,0.36,1]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#020617]/50 via-transparent to-transparent opacity-80" />
@@ -199,7 +191,6 @@ export const WhyChooseUs = () => {
 
         </div>
 
-        {/* METRICS STRIP: High-Impact Perfect Circle Sonar Tracking */}
         <motion.div 
           ref={containerRef}
           onMouseMove={handleMouseMove}
@@ -211,12 +202,8 @@ export const WhyChooseUs = () => {
           style={{ WebkitTransform: 'translateZ(0)', backfaceVisibility: 'hidden' }}
           className="w-full bg-[#020617] rounded-[3rem] p-10 lg:p-16 relative overflow-hidden shadow-2xl flex flex-col md:flex-row gap-16 md:gap-0 cursor-default"
         >
-          {/* BASE GLOW: Subtle constant illumination anchored to the center */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-[radial-gradient(circle,rgba(59,186,177,0.05)_0%,transparent_60%)] pointer-events-none" />
 
-          {/* DYNAMIC EFFECTS */}
-          
-          {/* 1. The Core Glow (Fades in softly, does NOT scale explode) */}
           <motion.div 
             variants={{
               hidden: { opacity: 0 },
@@ -228,7 +215,6 @@ export const WhyChooseUs = () => {
             className="absolute w-[800px] lg:w-[1000px] h-[800px] lg:h-[1000px] bg-[radial-gradient(circle,rgba(59,186,177,0.25)_0%,rgba(59,186,177,0.05)_30%,transparent_60%)] pointer-events-none mix-blend-screen" 
           />
 
-          {/* 2. Micro-Origin Dot (Proves the center starts small) */}
           <motion.div 
             variants={{
               hidden: { opacity: 0, scale: 0 },
@@ -240,7 +226,6 @@ export const WhyChooseUs = () => {
             className="absolute w-2 h-2 bg-brand-300 rounded-full shadow-[0_0_15px_3px_rgba(59,186,177,0.8)] pointer-events-none z-0" 
           />
 
-          {/* 3. Perfect Circle Sonar Wave 1 (Strictly Linear Math) */}
           <motion.div 
             variants={{
               hidden: { opacity: 0, scale: 0 },
@@ -252,7 +237,6 @@ export const WhyChooseUs = () => {
             className="absolute w-[600px] h-[600px] rounded-full border-[1.5px] border-brand-400 shadow-[0_0_30px_rgba(59,186,177,0.6)] pointer-events-none" 
           />
           
-          {/* 4. Perfect Circle Sonar Wave 2 (Strictly Linear Math) */}
           <motion.div 
             variants={{
               hidden: { opacity: 0, scale: 0 },
@@ -264,8 +248,6 @@ export const WhyChooseUs = () => {
             className="absolute w-[600px] h-[600px] rounded-full border border-brand-300 shadow-[0_0_20px_rgba(59,186,177,0.4)] pointer-events-none" 
           />
 
-          {/* CONTENT SECTION */}
-          {/* Metric 1: < 10 Sec */}
           <div className="flex-1 flex flex-col items-center justify-center text-center relative z-10 md:border-r border-slate-800/80 px-4 md:px-8 group/metric pointer-events-none">
             <h3 className="text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold text-white tracking-tighter mb-4 drop-shadow-sm group-hover/metric:scale-105 transition-transform duration-500 ease-[0.22,1,0.36,1]">
               &lt; 10 <span className="text-4xl lg:text-5xl">Sec</span>
@@ -274,7 +256,6 @@ export const WhyChooseUs = () => {
             <p className="text-white font-bold text-lg lg:text-xl">Message Delivery Time</p>
           </div>
 
-          {/* Metric 2: 70%+ Conversion */}
           <div className="flex-1 flex flex-col items-center justify-center text-center relative z-10 px-4 md:px-8 group/metric pointer-events-auto">
             <div className="w-14 h-14 bg-brand-500 text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-brand-500/40 group-hover/metric:rotate-12 group-hover/metric:scale-110 transition-transform duration-500 pointer-events-none">
               <TrendingUp className="w-6 h-6" />
@@ -283,7 +264,6 @@ export const WhyChooseUs = () => {
               70%+ Campaign <br className="hidden lg:block" /> Conversion Rates
             </h3>
             
-            {/* Brightened Learn More link */}
             <div className="group/btn inline-flex items-center text-sm font-bold tracking-widest uppercase transition-colors cursor-pointer w-fit text-brand-600 hover:text-brand-700 drop-shadow-[0_0_8px_rgba(59,186,177,0.4)]">
               <span>Learn More</span>
               <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover/btn:translate-x-2" />
