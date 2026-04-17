@@ -1,6 +1,8 @@
 import { useRef } from 'react';
 import { motion, useMotionValue, useSpring, type Variants } from 'framer-motion';
 import { ArrowRight, TrendingUp, Server, Code2 } from 'lucide-react';
+import { SectionBadge } from '../ui/SectionBadge';
+import { SectionHeader } from '../ui/SectionHeader';
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -55,7 +57,7 @@ export const WhyChooseUs = () => {
       {/* LOCKED GRID: 1400px invisible master line */}
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
-        {/* HEADER SECTION (EXACT LMS CONTENT) */}
+        {/* HEADER SECTION */}
         <motion.div 
           initial="hidden"
           whileInView="visible"
@@ -63,20 +65,17 @@ export const WhyChooseUs = () => {
           variants={fadeUp}
           className="max-w-4xl mb-20 md:mb-32 text-center mx-auto"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white text-brand-700 rounded-full text-xs font-bold tracking-widest uppercase mb-8 border border-brand-100 shadow-sm">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
-            </span>
-            The Squad Advantage
-          </div>
+          {/* DRY: Swapped Hardcoded HTML for SectionBadge. Used class overrides to match the original White background */}
+          <SectionBadge text="The Squad Advantage" className="!bg-white !border-brand-100 !mb-8" />
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-[1.1] tracking-tight mb-8">
-            Why Choose Squad
-          </h2>
-          <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-medium">
-            At Squad, we do more than deliver messages—we enable enterprise-grade communication with measurable business impact. Our platform is trusted by <strong className="text-slate-900">12,000+ brands</strong> for its unmatched speed, security, and reliability. With over <strong className="text-slate-900">17 years</strong> of telecom expertise and <strong className="text-slate-900">900+</strong> operator connections, Squad offers the infrastructure and intelligence needed to scale your communication globally.
-          </p>
+          {/* DRY: Swapped Hardcoded HTML for SectionHeader. Mapped exact extrabold typography from your locked UI */}
+          <SectionHeader 
+            align="center"
+            title="Why Choose Squad"
+            titleClassName="!text-4xl md:!text-5xl lg:!text-6xl !font-extrabold !leading-[1.1] !mb-8"
+            subtitle={<>At Squad, we do more than deliver messages—we enable enterprise-grade communication with measurable business impact. Our platform is trusted by <strong className="text-slate-900">12,000+ brands</strong> for its unmatched speed, security, and reliability. With over <strong className="text-slate-900">17 years</strong> of telecom expertise and <strong className="text-slate-900">900+</strong> operator connections, Squad offers the infrastructure and intelligence needed to scale your communication globally.</>}
+            subtitleClassName="!text-lg md:!text-xl !text-slate-600 !leading-relaxed !font-medium !max-w-none"
+          />
         </motion.div>
 
         {/* EDITORIAL Z-PATTERN LAYOUT */}

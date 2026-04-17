@@ -1,5 +1,7 @@
 import { motion, type Variants } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { SectionBadge } from '../ui/SectionBadge';
+import { SectionHeader } from '../ui/SectionHeader';
 
 const staggerContainer: Variants = {
   hidden: { opacity: 0 },
@@ -44,7 +46,6 @@ export const SuccessStories = () => {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
         {/* SPLIT HEADER SECTION - FIXED ALIGNMENT */}
-        {/* Changed lg:items-start to lg:items-end to pull the right text down visually */}
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-24 justify-between items-start lg:items-end mb-16 md:mb-24">
           
           <motion.div 
@@ -54,19 +55,14 @@ export const SuccessStories = () => {
             variants={fadeUp}
             className="flex-1 lg:max-w-3xl"
           >
-            {/* Consistent Pulse Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 text-brand-700 rounded-full text-xs font-bold tracking-widest uppercase mb-8 border border-slate-200 shadow-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
-              </span>
-              Success Stories
-            </div>
+            {/* DRY: Swapped Hardcoded HTML for SectionBadge */}
+            <SectionBadge text="Success Stories" className="!mb-8" />
             
-            {/* Injected Theme Color to break up the monochromatic black */}
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-[1.1] tracking-tight">
-              Trusted globally. <span className="text-brand-500">Smarter connections.</span> Confident, scalable growth.
-            </h2>
+            {/* DRY: Swapped Hardcoded HTML for SectionHeader. Used CSS overrides to perfectly match your extrabold locked UI */}
+            <SectionHeader 
+              title={<>Trusted globally. <span className="text-brand-500">Smarter connections.</span> Confident, scalable growth.</>}
+              titleClassName="!text-4xl md:!text-5xl lg:!text-6xl !font-extrabold !leading-[1.1] !mb-0"
+            />
           </motion.div>
 
           <motion.div 
@@ -74,14 +70,12 @@ export const SuccessStories = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeUp}
-            // Added pb-2 to perfectly baseline align with the heading
             className="flex-1 lg:max-w-lg flex flex-col items-start lg:pb-2"
           >
             <p className="text-lg text-slate-500 leading-relaxed font-medium mb-8">
               Our platform has empowered enterprises across industries to boost customer engagement, reduce delivery delays, and scale messaging with confidence. Here's how some of our clients transformed their communication with Squad.
             </p>
             
-            {/* THEME COLOR BUTTON: Swapped from black to vibrant Brand color with glow */}
             <div className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-brand-500 text-white font-bold text-sm tracking-wide hover:bg-brand-600 transition-colors duration-300 cursor-pointer shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50">
               Read More
             </div>

@@ -1,3 +1,6 @@
+import { useState, useEffect } from 'react';
+import { AnimatePresence } from 'framer-motion';
+
 import { Navbar } from './components/layout/Navbar';
 import { Hero } from './components/sections/Hero';
 import { Overview } from './components/sections/Overview';
@@ -7,39 +10,45 @@ import { SuccessStories } from './components/sections/SuccessStories';
 import { GlobalImpact } from './components/sections/GlobalImpact';
 import { FaqAndNewsletter } from './components/sections/FaqAndNewsletter';
 import { Footer } from './components/layout/Footer';
+import { PageLoader } from './components/ui/PageLoader';
 
 function App() {
+  const [isInitializing, setIsInitializing] = useState(true);
+
+  // Simulate initial app load / asset fetching
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsInitializing(false);
+    }, 1800); // Gives time for the brand animation to play and heavy assets to load
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      {/* 1. Header / Navbar */}
-      <Navbar />
       
-      {/* Adding flex-grow ensures the footer is always pushed to the bottom */}
-      <main className="flex-grow">
-        {/* 2. Hero Section */}
-        <Hero />
-        
-        {/* 3. Company Overview */}
-        <Overview />
-        
-        {/* 4. Products & Services */}
-        <Products />
-        
-        {/* 5. Features / "Why Choose Us" */}
-        <WhyChooseUs />
-        
-        {/* 6. Success Stories */}
-        <SuccessStories />
-        
-        {/* 7. Global Stats / Milestone Banner */}
-        <GlobalImpact />
+      <AnimatePresence mode="wait">
+        {isInitializing && <PageLoader key="loader" />}
+      </AnimatePresence>
 
-        {/* 8. FAQs & Newsletter */}
-        <FaqAndNewsletter />
-      </main>
+      {/* Only render the heavy DOM elements once the initialization is complete to avoid jank */}
+      {!isInitializing && (
+        <>
+          <Navbar />
+          
+          <main className="flex-grow">
+            <Hero />
+            <Overview />
+            <Products />
+            <WhyChooseUs />
+            <SuccessStories />
+            <GlobalImpact />
+            <FaqAndNewsletter />
+          </main>
 
-      {/* 9. Global Footer (Sits outside main, inside the layout wrapper) */}
-      <Footer />
+          <Footer />
+        </>
+      )}
     </div>
   );
 }

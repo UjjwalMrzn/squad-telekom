@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { Plus, Minus, ArrowRight } from 'lucide-react';
+import { SectionBadge } from '../ui/SectionBadge';
+import { SectionHeader } from '../ui/SectionHeader';
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -38,7 +40,6 @@ export const FaqAndNewsletter = () => {
   };
 
   return (
-    // FIXED: Changed py to pt and pb to dramatically reduce the bottom gap, removed clashing border-b
     <section className="pt-24 pb-12 lg:pt-32 lg:pb-16 bg-slate-50 relative overflow-hidden">
       
       {/* LOCKED GRID: 1400px invisible master line */}
@@ -56,22 +57,15 @@ export const FaqAndNewsletter = () => {
           {/* LEFT COLUMN: Header & Actions */}
           <div className="flex-1 lg:max-w-sm flex flex-col items-start">
             
-            {/* Consistent Pulse Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 text-brand-700 rounded-full text-xs font-bold tracking-widest uppercase mb-6 border border-slate-200 shadow-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
-              </span>
-              Support & Help
-            </div>
+            {/* DRY: Swapped Hardcoded HTML for SectionBadge */}
+            <SectionBadge text="Support & Help" />
 
-            <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 tracking-tight mb-6">
-              FAQs
-            </h2>
-            
-            <p className="text-base text-slate-500 font-medium leading-relaxed mb-10">
-              Find quick answers to the most common queries about our telecom solutions, platform capabilities, onboarding process, and support services.
-            </p>
+            {/* DRY: Swapped Hardcoded HTML for SectionHeader */}
+            <SectionHeader 
+              title="FAQs"
+              subtitle="Find quick answers to the most common queries about our telecom solutions, platform capabilities, onboarding process, and support services."
+              subtitleClassName="!mb-10"
+            />
 
             <div className="flex flex-wrap items-center gap-6">
               <button className="px-6 py-3 rounded-full border border-brand-500 text-brand-600 font-semibold text-sm tracking-wide hover:bg-brand-500 hover:text-white transition-all duration-300 shadow-sm hover:shadow-md hover:shadow-brand-500/30">
