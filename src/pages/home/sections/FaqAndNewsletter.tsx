@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { Plus, Minus, ArrowRight } from 'lucide-react';
-import { SectionBadge } from '../ui/SectionBadge';
-import { SectionHeader } from '../ui/SectionHeader';
+import { SectionBadge } from '../../../components/ui/SectionBadge';
+import { SectionHeader } from '../../../components/ui/SectionHeader';
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -43,7 +43,7 @@ export const FaqAndNewsletter = () => {
     <section className="pt-24 pb-12 lg:pt-32 lg:pb-16 bg-slate-50 relative overflow-hidden">
       
       {/* LOCKED GRID: 1400px invisible master line */}
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10 flex flex-col gap-10">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10 flex flex-col gap-10">
         
         {/* FAQ MAIN CARD */}
         <motion.div 

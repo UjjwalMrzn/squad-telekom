@@ -18,27 +18,21 @@ export const Hero = () => {
       
       {/* PREMIUM SYMMETRICAL GRADIENT BACKGROUND (Hardware Accelerated) */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-white">
-        
-        {/* Left Side Brand Theme Glow */}
         <motion.div 
           animate={{ y: [0, 30, 0] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
           style={{ willChange: "transform", transform: "translate3d(0,0,0)" }}
           className="absolute -top-[10%] -left-[10%] w-[50vw] max-w-[700px] h-[80vh] bg-brand-500/30 rounded-full blur-[100px] md:blur-[140px]" 
         />
-        
-        {/* Right Side Brand Theme Glow */}
         <motion.div 
           animate={{ y: [0, -30, 0] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
           style={{ willChange: "transform", transform: "translate3d(0,0,0)" }}
           className="absolute top-[10%] -right-[10%] w-[50vw] max-w-[700px] h-[80vh] bg-brand-500/30 rounded-full blur-[100px] md:blur-[140px]" 
         />
-        
       </div>
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 w-full relative z-10">
-        
         <div className="grid grid-cols-1 lg:grid-cols-[1.25fr_0.75fr] gap-10 lg:gap-16 items-center">
           
           {/* LEFT SIDE: TEXT & BUTTONS */}
@@ -49,9 +43,9 @@ export const Hero = () => {
             style={{ willChange: "transform, opacity" }}
             className="relative z-10 w-full text-center md:text-left pt-10 lg:pt-0"
           >
-            <h1 className="text-[2.75rem] leading-[1.1] sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-extrabold tracking-tight text-slate-900 mb-6">
+            {/* FIXED: Changed to font-bold */}
+            <h1 className="text-[2.75rem] leading-[1.1] sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold tracking-tight text-slate-900 mb-6">
               <span className="block mb-2">Simplifying</span>
-              
               <span className="text-brand-500 block h-[1.2em] relative mb-2 flex justify-center md:justify-start overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -67,7 +61,6 @@ export const Hero = () => {
                   </motion.span>
                 </AnimatePresence>
               </span>
-              
               <span className="block">Empowering Growth</span>
             </h1>
             
@@ -84,7 +77,6 @@ export const Hero = () => {
                 Get In Touch 
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </motion.button>
-              
               <motion.button 
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -98,7 +90,6 @@ export const Hero = () => {
           {/* RIGHT SIDE: FLOATING BENTO CARDS */}
           <div className="relative h-[400px] md:h-[500px] lg:h-[600px] w-full mt-6 lg:mt-0 block perspective-1000">
             
-            {/* Card 1: Global Infrastructure */}
             <motion.div 
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
@@ -115,14 +106,12 @@ export const Hero = () => {
                 <div className="w-full h-full bg-gradient-to-br from-slate-100 to-slate-200 relative overflow-hidden group p-4 md:p-6 flex flex-col items-center justify-center">
                   <div className="absolute inset-0 bg-white/40 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out skew-x-12 z-20" />
                   <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#94a3b8_2px,transparent_2px)] [background-size:20px_20px]" />
-                  
                   <Globe className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 mb-3 text-slate-400 relative z-10" />
                   <span className="font-bold text-sm lg:text-lg text-slate-700 text-center relative z-10 px-2 leading-tight">Global Infrastructure</span>
                 </div>
               </motion.div>
             </motion.div>
 
-            {/* Card 2: AI Powered Engagement */}
             <motion.div 
               initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
@@ -140,16 +129,15 @@ export const Hero = () => {
                   <div className="w-8 md:w-12 h-2 md:h-3 bg-white rounded-full rounded-tr-none self-end" />
                   <div className="w-12 md:w-16 h-2 md:h-3 bg-white rounded-full rounded-tl-none self-start" />
                 </div>
-
                 <div className="w-10 h-10 md:w-12 md:h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-3 lg:mb-5 group-hover:rotate-12 transition-transform relative z-10">
                   <Sparkles className="w-5 h-5 md:w-6 md:h-6 text-white" />
                 </div>
                 <p className="text-brand-100 font-bold mb-1 text-[10px] md:text-xs tracking-wider uppercase relative z-10">Unified Platform</p>
-                <h3 className="text-sm md:text-base lg:text-lg font-extrabold leading-tight relative z-10">AI Powered Engagement</h3>
+                {/* FIXED: Changed to font-bold */}
+                <h3 className="text-sm md:text-base lg:text-lg font-bold leading-tight relative z-10">AI Powered Engagement</h3>
               </motion.div>
             </motion.div>
 
-            {/* Card 3: Drive Growth (Dark Theme) */}
             <motion.div 
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, x: 0 }}
@@ -163,10 +151,7 @@ export const Hero = () => {
                 style={{ willChange: "transform", transform: "translate3d(0,0,0)" }}
                 className="w-full h-full bg-slate-900 rounded-[1.5rem] md:rounded-[2rem] lg:rounded-[2.5rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] border-[3px] border-slate-800 p-5 lg:p-8 flex flex-col justify-between text-white overflow-hidden cursor-pointer group"
               >
-                {/* Removed blur from internal gradient to save GPU rendering on child elements */}
                 <div className="absolute top-0 right-0 w-48 h-48 md:w-64 md:h-64 bg-gradient-to-br from-brand-500/20 to-transparent rounded-full opacity-50 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                
-                {/* Animated Bars */}
                 <div className="absolute bottom-5 right-5 lg:bottom-8 lg:right-8 flex items-end gap-1.5 opacity-40 group-hover:opacity-80 transition-opacity duration-300">
                   <div className="w-2.5 lg:w-3 bg-brand-400 rounded-t-sm h-4 lg:h-5" />
                   <div className="w-2.5 lg:w-3 bg-brand-400 rounded-t-sm h-6 lg:h-8" />

@@ -1,7 +1,7 @@
 import { motion, type Variants } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { SectionBadge } from '../ui/SectionBadge';
-import { SectionHeader } from '../ui/SectionHeader';
+import { SectionBadge } from '../../../components/ui/SectionBadge';
+import { SectionHeader } from '../../../components/ui/SectionHeader';
 
 const staggerContainer: Variants = {
   hidden: { opacity: 0 },
@@ -43,7 +43,7 @@ export const SuccessStories = () => {
     <section className="py-24 lg:py-32 bg-white relative overflow-hidden border-b border-slate-200">
       
       {/* LOCKED GRID: 1400px invisible master line */}
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
         {/* SPLIT HEADER SECTION - FIXED ALIGNMENT */}
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-24 justify-between items-start lg:items-end mb-16 md:mb-24">
@@ -61,7 +61,7 @@ export const SuccessStories = () => {
             {/* DRY: Swapped Hardcoded HTML for SectionHeader. Used CSS overrides to perfectly match your extrabold locked UI */}
             <SectionHeader 
               title={<>Trusted globally. <span className="text-brand-500">Smarter connections.</span> Confident, scalable growth.</>}
-              titleClassName="!text-4xl md:!text-5xl lg:!text-6xl !font-extrabold !leading-[1.1] !mb-0"
+              titleClassName="!text-4xl md:!text-5xl lg:!text-6xl !font-bold !leading-[1.1] !mb-0"
             />
           </motion.div>
 

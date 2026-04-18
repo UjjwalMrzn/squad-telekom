@@ -26,7 +26,8 @@ export const SectionHeader = ({
 
   return (
     <div className={`flex flex-col ${alignClass} ${className}`}>
-      <h2 className={`text-4xl lg:text-5xl font-bold tracking-tight mb-6 ${titleColor} ${titleClassName}`}>
+      {/* DECREASED BOLDNESS: Changed base font weight to font-semibold */}
+      <h2 className={`text-4xl lg:text-5xl font-semibold tracking-tight mb-6 ${titleColor} ${titleClassName}`}>
         {title}
       </h2>
       

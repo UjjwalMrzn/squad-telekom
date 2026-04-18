@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { Network, Globe } from 'lucide-react';
-import { SectionBadge } from '../ui/SectionBadge';
-import { SectionHeader } from '../ui/SectionHeader';
+import { SectionBadge } from '../../../components/ui/SectionBadge';
+import { SectionHeader } from '../../../components/ui/SectionHeader';
 
 export const Overview = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -22,18 +22,15 @@ export const Overview = () => {
 
   return (
     <section className="py-24 lg:py-32 bg-slate-100 relative border-b border-slate-200 overflow-hidden">
-      
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           
-          {/* LEFT SIDE: NARRATIVE (DRY SWAPPED) */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
-            {/* DRY: Reusable Badge */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -43,16 +40,15 @@ export const Overview = () => {
               <SectionBadge text="Company Overview" className="!bg-white !border-brand-100 !mb-8" />
             </motion.div>
             
-            {/* DRY: Reusable Header */}
+            {/* FIXED: Changed !font-extrabold to !font-bold */}
             <SectionHeader 
               title={<>Empowering Enterprise <br /> Communication <br /> Since <motion.span initial={{ opacity: 0, color: '#0f172a' }} whileInView={{ opacity: 1, color: '#3bbab1' }} viewport={{ once: true }} transition={{ delay: 0.5, duration: 0.8 }} className="text-brand-500 inline-block">2008</motion.span></>}
-              titleClassName="!text-4xl md:!text-5xl lg:!text-6xl !font-extrabold !leading-[1.1] !mb-8"
+              titleClassName="!text-4xl md:!text-5xl lg:!text-6xl !font-bold !leading-[1.1] !mb-8"
               subtitle={<>Founded with a single system and a bold vision, Squad has evolved into a global leader in telecom and enterprise communication solutions. With over <span className="text-slate-900 font-bold">17 years</span> of consistent innovation, we've earned the trust of <span className="text-slate-900 font-bold">12,000+ global brands</span> across 30+ countries.</>}
               subtitleClassName="!text-lg md:!text-xl !text-slate-600 !leading-relaxed !font-medium !max-w-xl"
             />
           </motion.div>
 
-          {/* RIGHT SIDE: PREMIUM VISUAL COMMAND CENTER */}
           <div className="relative">
             <motion.div 
               ref={containerRef}
@@ -69,8 +65,6 @@ export const Overview = () => {
               style={{ WebkitTransform: 'translateZ(0)', backfaceVisibility: 'hidden' }}
               className="bg-[#020617] rounded-[3rem] p-8 pb-20 md:p-12 md:pb-24 shadow-2xl hover:shadow-[0_40px_80px_-20px_rgba(59,186,177,0.2)] relative overflow-hidden transition-shadow duration-500 group cursor-default border border-slate-800/50 hover:border-brand-500/30"
             >
-              
-              {/* --- SONAR BACKGROUND EFFECTS --- */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(59,186,177,0.05)_0%,transparent_60%)] pointer-events-none" />
 
               <motion.div 
@@ -120,8 +114,6 @@ export const Overview = () => {
                 style={{ left: hoverX, top: hoverY, x: "-50%", y: "-50%" }}
                 className="absolute w-[500px] h-[500px] rounded-full border border-brand-300 shadow-[0_0_20px_rgba(59,186,177,0.4)] pointer-events-none" 
               />
-
-              {/* --- END EFFECTS --- */}
 
               <div className="relative z-10">
                 <div className="flex justify-between items-start mb-16">
@@ -190,7 +182,8 @@ export const Overview = () => {
                   <Globe className="w-6 h-6" />
                 </div>
                 <div>
-                  <div className="text-2xl font-extrabold text-slate-900">30+</div>
+                  {/* FIXED: Changed to font-bold */}
+                  <div className="text-2xl font-bold text-slate-900">30+</div>
                   <div className="text-xs font-bold text-slate-500 uppercase tracking-tighter">Active Markets</div>
                 </div>
               </motion.div>

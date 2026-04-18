@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 import { motion, useMotionValue, useSpring, type Variants } from 'framer-motion';
 import { ArrowRight, TrendingUp, Server, Code2 } from 'lucide-react';
-import { SectionBadge } from '../ui/SectionBadge';
-import { SectionHeader } from '../ui/SectionHeader';
+import { SectionBadge } from '../../../components/ui/SectionBadge';
+import { SectionHeader } from '../../../components/ui/SectionHeader';
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -51,7 +51,7 @@ export const WhyChooseUs = () => {
   return (
     <section className="py-24 lg:py-32 bg-slate-50 relative overflow-hidden border-b border-slate-200">
       
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
         <motion.div 
           initial="hidden"
@@ -65,7 +65,7 @@ export const WhyChooseUs = () => {
           <SectionHeader 
             align="center"
             title="Why Choose Squad"
-            titleClassName="!text-4xl md:!text-5xl lg:!text-6xl !font-extrabold !leading-[1.1] !mb-8"
+            titleClassName="!text-4xl md:!text-5xl lg:!text-6xl !font-bold !leading-[1.1] !mb-8"
             subtitle={<>At Squad, we do more than deliver messages—we enable enterprise-grade communication with measurable business impact. Our platform is trusted by <strong className="text-slate-900">12,000+ brands</strong> for its unmatched speed, security, and reliability. With over <strong className="text-slate-900">17 years</strong> of telecom expertise and <strong className="text-slate-900">900+</strong> operator connections, Squad offers the infrastructure and intelligence needed to scale your communication globally.</>}
             subtitleClassName="!text-lg md:!text-xl !text-slate-600 !leading-relaxed !font-medium !max-w-none"
           />
@@ -81,7 +81,8 @@ export const WhyChooseUs = () => {
               variants={fadeRight}
               className="order-2 lg:order-1"
             >
-              <h3 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight tracking-tight mb-6">
+              {/* FIXED: Removed font-extrabold, replaced with font-bold */}
+              <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight tracking-tight mb-6">
                 Powerful APIs. Global Reach. Unmatched Uptime.
               </h3>
               <p className="text-lg text-slate-600 font-medium leading-relaxed mb-10 max-w-lg">
@@ -111,7 +112,8 @@ export const WhyChooseUs = () => {
                   <Code2 className="w-6 h-6" />
                 </div>
                 <div>
-                  <div className="text-2xl font-extrabold text-slate-900">100%</div>
+                  {/* FIXED: Removed font-extrabold, replaced with font-bold */}
+                  <div className="text-2xl font-bold text-slate-900">100%</div>
                   <div className="text-xs font-bold text-slate-500 uppercase tracking-tighter">API Delivery</div>
                 </div>
               </motion.div>
@@ -149,7 +151,8 @@ export const WhyChooseUs = () => {
                   <Server className="w-6 h-6" />
                 </div>
                 <div>
-                  <div className="text-2xl font-extrabold text-slate-900">900+</div>
+                  {/* FIXED: Removed font-extrabold, replaced with font-bold */}
+                  <div className="text-2xl font-bold text-slate-900">900+</div>
                   <div className="text-xs font-bold text-slate-500 uppercase tracking-tighter">Global Operators</div>
                 </div>
               </motion.div>
@@ -175,7 +178,8 @@ export const WhyChooseUs = () => {
               viewport={{ once: true, margin: "-50px" }}
               variants={fadeLeft}
             >
-              <h3 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight tracking-tight mb-6">
+              {/* FIXED: Removed font-extrabold, replaced with font-bold */}
+              <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight tracking-tight mb-6">
                 Carrier-Grade Platform Uptime & Redundancy
               </h3>
               <p className="text-lg text-slate-600 font-medium leading-relaxed mb-10 max-w-lg">
@@ -249,7 +253,8 @@ export const WhyChooseUs = () => {
           />
 
           <div className="flex-1 flex flex-col items-center justify-center text-center relative z-10 md:border-r border-slate-800/80 px-4 md:px-8 group/metric pointer-events-none">
-            <h3 className="text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold text-white tracking-tighter mb-4 drop-shadow-sm group-hover/metric:scale-105 transition-transform duration-500 ease-[0.22,1,0.36,1]">
+            {/* FIXED: Removed font-extrabold, replaced with font-bold */}
+            <h3 className="text-6xl md:text-7xl lg:text-[5.5rem] font-bold text-white tracking-tighter mb-4 drop-shadow-sm group-hover/metric:scale-105 transition-transform duration-500 ease-[0.22,1,0.36,1]">
               &lt; 10 <span className="text-4xl lg:text-5xl">Sec</span>
             </h3>
             <p className="text-slate-400 font-medium text-sm lg:text-base mb-2">Average</p>
@@ -260,7 +265,8 @@ export const WhyChooseUs = () => {
             <div className="w-14 h-14 bg-brand-500 text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-brand-500/40 group-hover/metric:rotate-12 group-hover/metric:scale-110 transition-transform duration-500 pointer-events-none">
               <TrendingUp className="w-6 h-6" />
             </div>
-            <h3 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-8 drop-shadow-md pointer-events-none">
+            {/* FIXED: Removed font-extrabold, replaced with font-bold */}
+            <h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-8 drop-shadow-md pointer-events-none">
               70%+ Campaign <br className="hidden lg:block" /> Conversion Rates
             </h3>
             

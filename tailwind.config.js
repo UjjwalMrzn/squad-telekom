@@ -6,13 +6,22 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        // SET MANROPE AS THE DEFAULT SANS FONT
+        sans: ['"Manrope"', 'sans-serif'],
+      },
       colors: {
         brand: {
-          50: '#f0fbfb', // Soft minty background
+          50: '#f0fbfb',
           100: '#ccf2f0',
-          500: '#3BBAB1', // Exact color of the 'S'
-          600: '#2F958E', // Slightly darker for button hover states
-          900: '#1d3539', // Dark text
+          200: '#99e6e0',
+          300: '#66d9d1',
+          400: '#33ccc1',
+          500: '#3BBAB1', // Exact Squad Teal
+          600: '#2F958E', 
+          700: '#23706a',
+          800: '#174a47',
+          900: '#1d3539', // Dark slate
         },
         surface: '#ffffff',
       },

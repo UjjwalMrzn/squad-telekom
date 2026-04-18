@@ -18,7 +18,6 @@ const staggerContainer: Variants = {
   },
 };
 
-// Merged all stats into a single array for the new grid layout
 const allStats = [
   { value: "17+", label: "Years of Telecom Innovation" },
   { value: "900+", label: "Operator Integration" },
@@ -29,14 +28,11 @@ const allStats = [
 ];
 
 export const GlobalImpact = () => {
-  // Setup hardware-accelerated mouse tracking for the Sonar effect
   const containerRef = useRef<HTMLElement>(null);
   
-  // Initialize to rough center of the banner
   const mouseX = useMotionValue(700); 
   const mouseY = useMotionValue(300);
 
-  // Apply fluid spring physics
   const springConfig = { damping: 25, stiffness: 200 };
   const hoverX = useSpring(mouseX, springConfig);
   const hoverY = useSpring(mouseY, springConfig);
@@ -64,9 +60,7 @@ export const GlobalImpact = () => {
       className="py-24 lg:py-32 relative overflow-hidden bg-brand-500 cursor-default"
     >
       
-      {/* BACKGROUND EFFECTS */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        {/* Subtle Tech Grid overlay */}
         <div 
           className="absolute inset-0 opacity-15"
           style={{
@@ -78,9 +72,6 @@ export const GlobalImpact = () => {
         />
       </div>
 
-      {/* --- INTERACTIVE MOUSE-TRACKING SONAR --- */}
-      
-      {/* 1. Core Glow */}
       <motion.div 
         variants={{
           hidden: { opacity: 0 },
@@ -91,7 +82,6 @@ export const GlobalImpact = () => {
         className="absolute w-[800px] lg:w-[1200px] h-[800px] lg:h-[1200px] bg-[radial-gradient(circle,rgba(255,255,255,0.15)_0%,rgba(255,255,255,0.05)_30%,transparent_60%)] pointer-events-none mix-blend-screen z-0" 
       />
 
-      {/* 2. Micro-Origin Dot */}
       <motion.div 
         variants={{
           hidden: { opacity: 0, scale: 0 },
@@ -102,7 +92,6 @@ export const GlobalImpact = () => {
         className="absolute w-2 h-2 bg-white rounded-full shadow-[0_0_15px_3px_rgba(255,255,255,0.8)] pointer-events-none z-0" 
       />
 
-      {/* 3. Perfect Circle Sonar Wave 1 */}
       <motion.div 
         variants={{
           hidden: { opacity: 0, scale: 0 },
@@ -117,7 +106,6 @@ export const GlobalImpact = () => {
         className="absolute w-[600px] h-[600px] rounded-full border-[1.5px] border-white shadow-[0_0_30px_rgba(255,255,255,0.4)] pointer-events-none z-0" 
       />
       
-      {/* 4. Perfect Circle Sonar Wave 2 */}
       <motion.div 
         variants={{
           hidden: { opacity: 0, scale: 0 },
@@ -132,18 +120,14 @@ export const GlobalImpact = () => {
         className="absolute w-[600px] h-[600px] rounded-full border border-white/60 shadow-[0_0_20px_rgba(255,255,255,0.2)] pointer-events-none z-0" 
       />
 
-      {/* --- END SONAR --- */}
-
-      {/* LOCKED GRID: 1400px invisible master line */}
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10 pointer-events-none">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10 pointer-events-none">
         
-        {/* Section Header */}
         <motion.div 
           variants={fadeUp}
           className="text-center mb-16 md:mb-20"
         >
-          {/* FIXED: Removed the faded span class, now the whole heading is pure white */}
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4 drop-shadow-sm">
+          {/* FIXED: Changed to font-bold */}
+          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4 drop-shadow-sm">
             Global Scale. Local Impact.
           </h2>
           <p className="text-brand-50/90 font-medium text-lg max-w-2xl mx-auto">
@@ -151,7 +135,6 @@ export const GlobalImpact = () => {
           </p>
         </motion.div>
 
-        {/* Frosted Glass Bento Grid Layout */}
         <motion.div 
           variants={staggerContainer}
           initial="hidden"
@@ -168,7 +151,8 @@ export const GlobalImpact = () => {
               style={{ WebkitTransform: 'translateZ(0)' }}
               className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-[2.5rem] p-8 lg:p-10 flex flex-col justify-center items-start shadow-lg shadow-brand-700/10 group"
             >
-              <h3 className="text-5xl lg:text-6xl font-extrabold text-white tracking-tighter mb-3 drop-shadow-sm group-hover:scale-105 transition-transform duration-500 origin-left">
+              {/* FIXED: Changed to font-bold */}
+              <h3 className="text-5xl lg:text-6xl font-bold text-white tracking-tighter mb-3 drop-shadow-sm group-hover:scale-105 transition-transform duration-500 origin-left">
                 {stat.value}
               </h3>
               <p className="text-brand-50 font-bold text-sm tracking-widest uppercase leading-snug">
