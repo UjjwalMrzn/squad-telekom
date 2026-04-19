@@ -150,9 +150,12 @@ export const Navbar = () => {
 
           {/* DESKTOP CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="primary" size="sm" className="shadow-md hover:shadow-lg transition-shadow">
-              Contact Us
-            </Button>
+            {/* FIXED: Wrapped Button in Link */}
+            <Link to="/contact">
+              <Button variant="primary" size="sm" className="shadow-md hover:shadow-lg transition-shadow">
+                Contact Us
+              </Button>
+            </Link>
           </div>
 
           {/* MOBILE MENU BUTTON */}
@@ -316,9 +319,12 @@ export const Navbar = () => {
                 </div>
               ))}
               <motion.div variants={mobileItemVariants} className="pt-4 px-3">
-                <Button variant="primary" className="w-full justify-center py-4 text-lg shadow-md">
-                  Contact Us
-                </Button>
+                {/* FIXED: Wrapped Button in Link and added onClick to close menu */}
+                <Link to="/contact" onClick={() => setIsOpen(false)} className="w-full block">
+                  <Button variant="primary" className="w-full justify-center py-4 text-lg shadow-md">
+                    Contact Us
+                  </Button>
+                </Link>
               </motion.div>
             </div>
           </motion.div>

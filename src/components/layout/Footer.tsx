@@ -41,7 +41,7 @@ export const Footer = () => {
 
             <div className="flex items-center gap-4">
               <a 
-                href="https://squadtelekom.com/"
+                href="https://www.linkedin.com/company/squadtelekomllc/"
                 target="_blank"
                 rel="noreferrer"
                 className="w-10 h-10 rounded-full bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-400 hover:bg-brand-500 hover:text-white hover:border-brand-500 transition-all duration-300 shadow-sm hover:shadow-brand-500/20"

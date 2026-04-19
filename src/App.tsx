@@ -10,6 +10,7 @@ import { ScrollToTop } from './components/utils/ScrollToTop'; // <-- 1. Import t
 import { Home } from './pages/home/Home';
 import { RealEstate } from './pages/real-estate/RealEstate';
 import { About } from './pages/about/About';
+import { Contact } from './pages/contact/Contact';
 
 function App() {
   const [isInitializing, setIsInitializing] = useState(true);
@@ -43,6 +44,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/solutions/real-estate" element={<RealEstate />} />
               <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
             </Routes>
 
             <Footer />
