@@ -5,6 +5,7 @@ import { AnimatePresence } from 'framer-motion';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { PageLoader } from './components/ui/PageLoader';
+import { ScrollToTop } from './components/utils/ScrollToTop'; // <-- 1. Import the utility
 
 import { Home } from './pages/home/Home';
 import { RealEstate } from './pages/real-estate/RealEstate';
@@ -24,6 +25,9 @@ function App() {
 
   return (
     <Router>
+      {/* 2. Mount it right inside the Router. It renders nothing, just handles scrolling. */}
+      <ScrollToTop /> 
+      
       <div className="min-h-screen bg-white flex flex-col">
         
         <AnimatePresence mode="wait">
