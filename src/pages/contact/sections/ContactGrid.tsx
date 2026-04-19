@@ -8,7 +8,6 @@ const countriesList = [
   "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czechia", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, North", "Korea, South", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
 ];
 
-// COMPACTED: Reduced py-3 to py-2, text-base to text-sm
 const ClearableInput = ({ 
   label, 
   type = "text", 
@@ -25,7 +24,8 @@ const ClearableInput = ({
   onClear: () => void; 
 }) => (
   <div className="space-y-1 relative">
-    <label className="text-[11px] font-bold text-brand-700 uppercase tracking-wide">{label}</label>
+    {/* FIXED: Swapped for theme color text-brand-600 */}
+    <label className="text-[11px] font-bold text-brand-600 uppercase tracking-wide">{label}</label>
     <div className="w-full border-b border-slate-300 focus-within:border-brand-500 bg-transparent px-0 py-2 transition-colors flex justify-between items-center">
       <input 
         type={type} 
@@ -43,7 +43,7 @@ const ClearableInput = ({
             transition={{ duration: 0.15 }}
             type="button"
             onClick={onClear}
-            className="shrink-0 text-slate-400 hover:text-slate-600 transition-colors focus:outline-none"
+            className="shrink-0 text-slate-400 hover:text-brand-500 transition-colors focus:outline-none"
             aria-label="Clear input"
           >
             <X className="w-4 h-4" />
@@ -54,7 +54,6 @@ const ClearableInput = ({
   </div>
 );
 
-// COMPACTED: Reduced py-3 to py-2, text-base to text-sm
 const CustomSelect = ({ 
   label, 
   options, 
@@ -88,7 +87,8 @@ const CustomSelect = ({
 
   return (
     <div className="space-y-1 relative" ref={dropdownRef}>
-      <label className="text-[11px] font-bold text-brand-700 uppercase tracking-wide">{label}</label>
+      {/* FIXED: Swapped for theme color text-brand-600 */}
+      <label className="text-[11px] font-bold text-brand-600 uppercase tracking-wide">{label}</label>
       <div
         className={`w-full border-b bg-transparent px-0 py-2 transition-colors flex justify-between items-center ${isOpen ? 'border-brand-500' : 'border-slate-300 hover:border-slate-400'} ${searchable ? 'cursor-text' : 'cursor-pointer'}`}
         onClick={() => {
@@ -123,7 +123,7 @@ const CustomSelect = ({
                 transition={{ duration: 0.15 }}
               >
                 <X 
-                  className="w-4 h-4 text-slate-400 hover:text-slate-600 transition-colors cursor-pointer focus:outline-none" 
+                  className="w-4 h-4 text-slate-400 hover:text-brand-500 transition-colors cursor-pointer focus:outline-none" 
                   onClick={(e) => {
                     e.stopPropagation();
                     setSelected("");
@@ -157,7 +157,7 @@ const CustomSelect = ({
               filteredOptions.map((opt) => (
                 <div
                   key={opt}
-                  className="px-4 py-2 hover:bg-brand-50 cursor-pointer text-sm font-medium text-slate-700 hover:text-brand-700 transition-colors"
+                  className="px-4 py-2 hover:bg-brand-50 cursor-pointer text-sm font-medium text-slate-700 hover:text-brand-500 transition-colors"
                   onClick={() => {
                     setSelected(opt);
                     setQuery(opt);
@@ -211,20 +211,17 @@ export const ContactGrid = () => {
   };
 
   return (
-    // COMPACTED: py-24 -> py-12 lg:py-16
     <section className="py-12 lg:py-16 bg-slate-50 relative overflow-hidden border-b border-slate-200">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
-        {/* COMPACTED: gap-16 -> gap-10 */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 lg:items-center">
           
-          {/* --- LEFT COLUMN: Contact Information --- */}
           <motion.div 
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            className="lg:col-span-5 flex flex-col gap-4" // COMPACTED: gap-8 -> gap-4
+            className="lg:col-span-5 flex flex-col gap-4"
           >
             <div className="mb-2">
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2 tracking-tight">
@@ -235,7 +232,6 @@ export const ContactGrid = () => {
               </p>
             </div>
 
-            {/* COMPACTED: p-8 -> p-6, w-14 -> w-12 */}
             <motion.div variants={fadeUp} className="bg-white p-6 rounded-[1.5rem] border border-slate-100 shadow-sm flex items-start gap-4 group hover:shadow-md transition-shadow">
               <div className="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center shrink-0 group-hover:bg-brand-500 group-hover:text-white text-brand-600 transition-colors">
                 <Mail className="w-5 h-5" />
@@ -243,7 +239,7 @@ export const ContactGrid = () => {
               <div>
                 <h4 className="text-lg font-bold text-slate-900 mb-1">Email Us</h4>
                 <p className="text-slate-500 text-sm font-medium mb-1">For general inquiries & sales</p>
-                <a href="mailto:info@squadtelekom.com" className="text-brand-600 text-sm font-bold hover:text-brand-700 transition-colors">
+                <a href="mailto:info@squadtelekom.com" className="text-brand-600 text-sm font-bold hover:text-brand-500 transition-colors">
                   info@squadtelekom.com
                 </a>
               </div>
@@ -276,7 +272,6 @@ export const ContactGrid = () => {
 
           </motion.div>
 
-          {/* --- RIGHT COLUMN: Premium Contact Form --- */}
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -284,16 +279,13 @@ export const ContactGrid = () => {
             variants={fadeUp}
             className="lg:col-span-7"
           >
-            {/* COMPACTED: p-12 lg:p-16 -> p-8 lg:p-10 */}
             <div className="bg-white rounded-[2rem] p-8 lg:p-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-slate-100 relative overflow-visible">
               
-              {/* Form Header - COMPACTED: mb-12 -> mb-6 */}
               <div className="mb-6 text-center">
                 <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-2">Contact Us</h3>
                 <p className="text-slate-500 text-sm font-medium">Any question or remarks? Just write us a message!</p>
               </div>
 
-              {/* Form Fields - COMPACTED: space-y-8 -> space-y-5 */}
               <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -363,9 +355,9 @@ export const ContactGrid = () => {
                 />
 
                 <div className="space-y-1 relative">
-                  <label className="text-[11px] font-bold text-brand-700 uppercase tracking-wide">Message</label>
+                  {/* FIXED: Swapped for theme color text-brand-600 */}
+                  <label className="text-[11px] font-bold text-brand-600 uppercase tracking-wide">Message</label>
                   <div className="relative border-b border-slate-300 focus-within:border-brand-500 transition-colors bg-transparent">
-                    {/* COMPACTED: rows=2, min-h-[60px] */}
                     <textarea 
                       rows={2}
                       placeholder="Tell us how we can help..." 
@@ -382,7 +374,7 @@ export const ContactGrid = () => {
                           transition={{ duration: 0.15 }}
                           type="button"
                           onClick={() => handleClear('message')}
-                          className="absolute right-0 top-1 shrink-0 text-slate-400 hover:text-slate-600 transition-colors focus:outline-none"
+                          className="absolute right-0 top-1 shrink-0 text-slate-400 hover:text-brand-500 transition-colors focus:outline-none"
                           aria-label="Clear message"
                         >
                           <X className="w-4 h-4" />
@@ -392,7 +384,6 @@ export const ContactGrid = () => {
                   </div>
                 </div>
 
-                {/* Submit Block */}
                 <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div className="flex items-center gap-2 text-slate-500 text-sm font-medium">
                     <ShieldCheck className="w-4 h-4 text-emerald-500" />
