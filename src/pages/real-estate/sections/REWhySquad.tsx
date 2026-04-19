@@ -145,7 +145,7 @@ export const REWhySquad = () => {
           >
             <div className="w-full sm:w-2/5 h-64 sm:h-auto overflow-hidden">
               <img 
-                src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=800&auto=format&fit=crop" 
+                src="https://images.unsplash.com/photo-1677155699495-bca80823ba03?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                 alt="Mobile App Interface" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
