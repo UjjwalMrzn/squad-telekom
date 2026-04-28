@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom'; // FIXED: Added Link for routing
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { Plus, Minus, ArrowRight } from 'lucide-react';
 import { SectionBadge } from '../../../components/ui/SectionBadge';
@@ -29,21 +30,38 @@ const faqs = [
   {
     question: "What are the benefits of using Squad's services for my business?",
     answer: "Squad streamlines communication, improves customer engagement, and enhances scalability with 24/7 support and analytics tools."
+  },
+  // FIXED: Added extra questions for the "More Questions" expansion
+  {
+    question: "How easy is integration with my systems?",
+    answer: "Squad combines scale, security, and innovation — delivering reliable global coverage, AI-powered tools, and enterprise-grade compliance all in one platform."
+  },
+  {
+    question: "What makes Squad different from other providers?",
+    answer: "Squad streamlines communication, improves customer engagement, and enhances scalability with 24/7 support and analytics tools."
+  },
+  {
+    question: "Who can use Squad services?",
+    answer: "Businesses of all sizes — from startups to global enterprises — across industries like banking, e-commerce, healthcare, logistics, and more."
   }
 ];
 
 export const FaqAndNewsletter = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
+  const [showAll, setShowAll] = useState(false); // FIXED: Added state for toggling questions
 
   const toggleFaq = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
+  // FIXED: Determine which FAQs to show based on state
+  const displayedFaqs = showAll ? faqs : faqs.slice(0, 4);
+
   return (
     <section className="pt-24 pb-12 lg:pt-32 lg:pb-16 bg-slate-50 relative overflow-hidden">
       
       {/* LOCKED GRID: 1400px invisible master line */}
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10 flex flex-col gap-10">
+      <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10 flex flex-col gap-10">
         
         {/* FAQ MAIN CARD */}
         <motion.div 
@@ -57,10 +75,8 @@ export const FaqAndNewsletter = () => {
           {/* LEFT COLUMN: Header & Actions */}
           <div className="flex-1 lg:max-w-sm flex flex-col items-start">
             
-            {/* DRY: Swapped Hardcoded HTML for SectionBadge */}
             <SectionBadge text="Support & Help" />
 
-            {/* DRY: Swapped Hardcoded HTML for SectionHeader */}
             <SectionHeader 
               title="FAQs"
               subtitle="Find quick answers to the most common queries about our telecom solutions, platform capabilities, onboarding process, and support services."
@@ -68,67 +84,77 @@ export const FaqAndNewsletter = () => {
             />
 
             <div className="flex flex-wrap items-center gap-6">
-              <button className="px-6 py-3 rounded-full border border-brand-500 text-brand-600 font-semibold text-sm tracking-wide hover:bg-brand-500 hover:text-white transition-all duration-300 shadow-sm hover:shadow-md hover:shadow-brand-500/30">
-                More Questions
+              {/* FIXED: Toggle button functionality and dynamic text */}
+              <button 
+                onClick={() => setShowAll(!showAll)}
+                className="px-6 py-3 rounded-full border border-brand-500 text-brand-600 font-semibold text-sm tracking-wide hover:bg-brand-500 hover:text-white transition-all duration-300 shadow-sm hover:shadow-md hover:shadow-brand-500/30"
+              >
+                {showAll ? "Less Questions" : "More Questions"}
               </button>
               
-              {/* Clean Text Link */}
-              <button className="group text-sm font-bold text-slate-500 hover:text-brand-600 transition-colors tracking-wide flex items-center gap-2">
+              {/* FIXED: Replaced button with Link for routing */}
+              <Link to="/contact" className="group text-sm font-bold text-slate-500 hover:text-brand-600 transition-colors tracking-wide flex items-center gap-2">
                 <span className="relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-brand-600 after:origin-left after:scale-x-0 group-hover:after:scale-x-100 after:transition-transform after:duration-300">
                   Contact Us
                 </span>
-              </button>
+              </Link>
             </div>
           </div>
 
           {/* RIGHT COLUMN: Accordion */}
           <div className="flex-1 w-full mt-2 lg:mt-0">
-            <div className="border-t border-slate-200">
-              {faqs.map((faq, index) => {
-                const isOpen = activeIndex === index;
+            <motion.div layout className="border-t border-slate-200">
+              <AnimatePresence initial={false}>
+                {displayedFaqs.map((faq, index) => {
+                  const isOpen = activeIndex === index;
 
-                return (
-                  <div 
-                    key={index} 
-                    className="border-b border-slate-200 overflow-hidden"
-                  >
-                    <button
-                      onClick={() => toggleFaq(index)}
-                      className="w-full flex items-center justify-between py-6 text-left group focus:outline-none"
+                  return (
+                    <motion.div 
+                      key={faq.question} // Use question as key for stable animations
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="border-b border-slate-200 overflow-hidden"
                     >
-                      <h3 className={`text-lg lg:text-[19px] font-semibold pr-8 transition-colors duration-300 ${isOpen ? 'text-brand-600' : 'text-slate-800 group-hover:text-brand-600'}`}>
-                        {faq.question}
-                      </h3>
-                      
-                      <div className={`flex-shrink-0 transition-colors duration-300 ${isOpen ? 'text-brand-600' : 'text-slate-400 group-hover:text-brand-500'}`}>
-                        <motion.div
-                          animate={{ rotate: isOpen ? 180 : 0 }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
-                        >
-                          {isOpen ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
-                        </motion.div>
-                      </div>
-                    </button>
+                      <button
+                        onClick={() => toggleFaq(index)}
+                        className="w-full flex items-center justify-between py-6 text-left group focus:outline-none"
+                      >
+                        <h3 className={`text-lg lg:text-[19px] font-semibold pr-8 transition-colors duration-300 ${isOpen ? 'text-brand-600' : 'text-slate-800 group-hover:text-brand-600'}`}>
+                          {faq.question}
+                        </h3>
+                        
+                        <div className={`flex-shrink-0 transition-colors duration-300 ${isOpen ? 'text-brand-600' : 'text-slate-400 group-hover:text-brand-500'}`}>
+                          <motion.div
+                            animate={{ rotate: isOpen ? 180 : 0 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                          >
+                            {isOpen ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
+                          </motion.div>
+                        </div>
+                      </button>
 
-                    {/* Smooth height animation for content */}
-                    <AnimatePresence initial={false}>
-                      {isOpen && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                        >
-                          <p className="pb-6 text-base text-slate-500 leading-relaxed font-medium pr-4 lg:pr-12">
-                            {faq.answer}
-                          </p>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                );
-              })}
-            </div>
+                      {/* Smooth height animation for content */}
+                      <AnimatePresence initial={false}>
+                        {isOpen && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                          >
+                            <p className="pb-6 text-base text-slate-500 leading-relaxed font-medium pr-4 lg:pr-12">
+                              {faq.answer}
+                            </p>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </motion.div>
+                  );
+                })}
+              </AnimatePresence>
+            </motion.div>
           </div>
         </motion.div>
 

@@ -11,7 +11,7 @@ const fadeUp: Variants = {
 export const AboutStory = () => {
   return (
     <section className="py-24 lg:py-32 bg-white relative">
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
+      <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12">
         
         {/* --- ADDED SECTION HEADER & BADGE --- */}
         <motion.div 

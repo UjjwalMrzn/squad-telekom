@@ -11,6 +11,7 @@ import { Home } from './pages/home/Home';
 import { RealEstate } from './pages/real-estate/RealEstate';
 import { About } from './pages/about/About';
 import { Contact } from './pages/contact/Contact';
+import { Banking } from './pages/banking/Banking';
 
 function App() {
   const [isInitializing, setIsInitializing] = useState(true);
@@ -45,6 +46,7 @@ function App() {
               <Route path="/solutions/real-estate" element={<RealEstate />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/solutions/banking" element={<Banking />} />
             </Routes>
 
             <Footer />

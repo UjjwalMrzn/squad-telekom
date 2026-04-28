@@ -43,7 +43,7 @@ export const SuccessStories = () => {
     <section className="py-24 lg:py-32 bg-white relative overflow-hidden border-b border-slate-200">
       
       {/* LOCKED GRID: 1400px invisible master line */}
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+      <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
         {/* SPLIT HEADER SECTION - FIXED ALIGNMENT */}
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-24 justify-between items-start lg:items-end mb-16 md:mb-24">

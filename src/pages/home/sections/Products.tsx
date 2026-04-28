@@ -83,7 +83,7 @@ export const Products = () => {
     <section className="py-24 lg:py-32 bg-white relative overflow-hidden border-b border-slate-100">
       
       {/* CENTERED SECTION HEADER */}
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10 mb-12 md:mb-16">
+      <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10 mb-12 md:mb-16">
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
           
           <motion.div 
@@ -116,7 +116,7 @@ export const Products = () => {
       </div>
 
       {/* HORIZONTAL CAROUSEL */}
-      <div className="relative w-full max-w-[1600px] mx-auto group/slider px-4 sm:px-6 lg:px-12">
+      <div className="relative w-full max-w-[1700px] mx-auto group/slider px-4 sm:px-6 lg:px-12">
         <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-32 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none hidden md:block" />
         <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-32 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none hidden md:block" />
 

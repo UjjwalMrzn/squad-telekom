@@ -14,35 +14,32 @@ const fadeUp: Variants = {
   },
 };
 
+// Reordered and adapted to Squad Telekom branding, with extra questions added
 const faqs = [
   {
-    question: "What industries does Squad serve?",
-    answer: "Squad works across multiple verticals including real estate, e-commerce, BFSI, healthcare, logistics, and more — providing customized communication solutions for every industry."
+    question: "Is Squad compliant with banking regulations?",
+    answer: "Yes, Squad is fully compliant with GDPR, PCI-DSS, and other global financial standards to ensure your data is always protected."
   },
   {
-    question: "How reliable are Squad services?",
-    answer: "With 900+ operator connections and enterprise-grade infrastructure, Squad ensures 99.9% uptime, <10-second message delivery, and unmatched global scalability."
+    question: "How can Squad help banks and fintechs?",
+    answer: "Squad provides secure communication for OTPs, fraud alerts, loan updates, and promotional offers across SMS, WhatsApp, voice, and email."
   },
   {
-    question: "Does Squad provide 24/7 customer support?",
-    answer: "Yes, our dedicated support team is available round-the-clock to assist you with integration, troubleshooting, and scaling your communication needs."
+    question: "Does Squad offer fraud prevention tools?",
+    answer: "Yes, with real-time testing, whitelisting, and secure routing validations, Squad ensures accurate and highly secure message delivery."
   },
   {
-    question: "Is Squad compliant with global regulations?",
-    answer: "Absolutely. Squad is fully compliant with data protection and telecom regulations across multiple countries, ensuring security and peace of mind for your business."
+    question: "Can Squad scale for large banks and global operations?",
+    answer: "Absolutely. With our carrier-grade infrastructure and 900+ global operator connections, Squad seamlessly supports BFSI operations of any size."
   },
-  // FIXED: Added extra questions for the "More Questions" expansion
+  // FIXED: Added the extra question for the "More Questions" expansion
   {
-    question: "Can Squad solutions integrate with my existing platforms?",
-    answer: "Yes, our API-driven solutions easily integrate with CRMs, ERPs, and third-party platforms to simplify workflows and enhance customer engagement."
-  },
-  {
-    question: "How does Squad ensure message delivery accuracy?",
-    answer: "With proprietary testing solutions, live handset checks, and SIM-based validation, Squad guarantees unmatched delivery accuracy for both SMS and voice."
+    question: "How quickly can Squad be integrated with banking platforms?",
+    answer: "Our API-driven solutions integrate seamlessly with CRMs, core banking systems, and payment platforms within days."
   }
 ];
 
-export const REFaq = () => {
+export const BankingFaq = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
   const [showAll, setShowAll] = useState(false); // FIXED: Added state for toggling questions
 
@@ -76,7 +73,7 @@ export const REFaq = () => {
             <SectionHeader 
               title="FAQs"
               titleClassName="!text-4xl md:!text-5xl !font-bold !text-slate-900 !mb-6"
-              subtitle="Find quick answers to the most common queries about our telecom solutions, platform capabilities, onboarding process, and support services."
+              subtitle="Find quick answers to the most common queries about our secure banking telecom solutions, compliance standards, and global scalability."
               subtitleClassName="!mb-10 !text-slate-600"
             />
 

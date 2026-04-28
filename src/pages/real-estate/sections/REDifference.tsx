@@ -37,7 +37,7 @@ export const REDifference = () => {
   return (
     <section className="py-24 lg:py-32 bg-white relative overflow-hidden border-b border-slate-100">
       
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+      <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
         {/* --- TOP SPLIT: Image & Narrative --- */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-20 lg:mb-28">
@@ -60,13 +60,13 @@ export const REDifference = () => {
             </div>
           </motion.div>
 
-          {/* Right: Narrative Text */}
+          {/* Right: Narrative Text (FIXED: Added items-start) */}
           <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeUp}
-            className="order-1 lg:order-2 flex flex-col justify-center"
+            className="order-1 lg:order-2 flex flex-col justify-center items-start"
           >
             <SectionBadge text="Business Impact" className="!mb-6" />
             <SectionHeader 
@@ -101,7 +101,6 @@ export const REDifference = () => {
               key={index}
               variants={fadeUp}
               whileHover={{ y: -5 }}
-              // FIXED: Added pure white bg, soft premium shadow, and subtle border so they pop off the plain background.
               className="bg-white rounded-[2rem] p-8 lg:p-10 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.08)] border border-slate-100 flex flex-col justify-start transition-transform duration-300"
             >
               <h3 className="text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight mb-4">

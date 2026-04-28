@@ -9,7 +9,7 @@ import logo from '../../assets/squad-logo-new.png';
 const solutionsMenu = {
   verticals: [
     { name: 'Real Estate', path: '/solutions/real-estate' },
-    { name: 'Banking', path: '#' },
+    { name: 'Banking', path: '/solutions/banking' },
     { name: 'E-Gaming', path: '#' },
     { name: 'FMCG', path: '#' },
     { name: 'Logistics', path: '#' },
@@ -104,7 +104,7 @@ export const Navbar = () => {
       }`}
     >
       {/* 1400px Master Grid Container */}
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative z-20">
+      <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-20">
         <div className="flex justify-between items-center h-20">
           
           {/* LOGO */}
@@ -192,7 +192,7 @@ export const Navbar = () => {
             onMouseEnter={() => setActiveDropdown('Solutions')}
             className="absolute left-0 right-0 top-full bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden z-10"
           >
-            <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 py-12">
+            <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 py-12">
               <div className="grid grid-cols-3 gap-12 lg:gap-24">
                 
                 {/* Column 1: Verticals */}
@@ -253,7 +253,7 @@ export const Navbar = () => {
             exit="exit"
             className="md:hidden bg-white/95 backdrop-blur-xl border-t border-slate-100 shadow-2xl overflow-hidden absolute w-full top-20 z-50"
           >
-            <div className="px-4 py-4 space-y-1 max-w-[1600px] mx-auto pb-6">
+            <div className="px-4 py-4 space-y-1 max-w-[1700px] mx-auto pb-6">
               {navLinks.map((link) => (
                 <div key={link.name}>
                   <motion.div 

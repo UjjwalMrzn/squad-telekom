@@ -13,7 +13,7 @@ const stats = [
 export const AboutDetails = () => {
   return (
     <section className="py-24 lg:py-32 bg-slate-50 relative border-t border-slate-200">
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+      <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
         {/* --- ADDED SECTION HEADER & BADGE --- */}
         <div className="max-w-3xl mb-16 lg:mb-20">

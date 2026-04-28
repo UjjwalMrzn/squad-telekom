@@ -212,7 +212,7 @@ export const ContactGrid = () => {
 
   return (
     <section className="py-12 lg:py-16 bg-slate-50 relative overflow-hidden border-b border-slate-200">
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+      <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 lg:items-center">
           

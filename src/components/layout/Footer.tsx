@@ -23,7 +23,7 @@ export const Footer = () => {
     <footer className="bg-[#020617] pt-20 pb-10 border-t border-slate-800 relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[radial-gradient(ellipse,rgba(59,186,177,0.05)_0%,transparent_70%)] pointer-events-none" />
 
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+      <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
           
           <div className="lg:col-span-4 flex flex-col items-start">

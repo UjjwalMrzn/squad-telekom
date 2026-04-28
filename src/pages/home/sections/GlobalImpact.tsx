@@ -120,7 +120,7 @@ export const GlobalImpact = () => {
         className="absolute w-[600px] h-[600px] rounded-full border border-white/60 shadow-[0_0_20px_rgba(255,255,255,0.2)] pointer-events-none z-0" 
       />
 
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10 pointer-events-none">
+      <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10 pointer-events-none">
         
         <motion.div 
           variants={fadeUp}
