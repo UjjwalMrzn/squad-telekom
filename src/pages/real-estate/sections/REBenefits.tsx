@@ -43,7 +43,8 @@ export const REBenefits = () => {
     <section 
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="py-24 lg:py-32 bg-[#020617] relative overflow-hidden group/section cursor-default"
+      // FIXED: Ultra-compact section padding
+      className="py-12 lg:py-16 bg-[#020617] relative overflow-hidden group/section cursor-default"
     >
       
       {/* ========================================= */}
@@ -81,19 +82,21 @@ export const REBenefits = () => {
 
       <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <SectionBadge text="Why Squad for Real Estate" className="!bg-slate-800/50 !border-slate-700 !text-brand-400 !mb-8 backdrop-blur-md" />
+        {/* FIXED: Compact header margins */}
+        <div className="text-center max-w-3xl mx-auto mb-10 lg:mb-12">
+          <SectionBadge text="Why Squad for Real Estate" className="!bg-slate-800/50 !border-slate-700 !text-brand-400 !mb-4 backdrop-blur-md" />
           <SectionHeader 
             align="center" 
             lightMode={true} 
             title="Benefits That Turn Leads Into Buyers." 
+            titleClassName="!text-3xl md:!text-4xl !font-bold !mb-4"
             subtitle="With automation, real-time insights, and trusted delivery, Squad transforms customer inquiries into lasting business growth." 
+            subtitleClassName="!mb-0 !text-base"
           />
         </div>
 
-        {/* Staggered Grid of Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {/* FIXED: Tightened Grid gaps */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
           {benefits.map((b, i) => (
             <motion.div 
               key={i} 
@@ -101,21 +104,24 @@ export const REBenefits = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              whileHover={{ y: -8 }} 
-              className="group relative bg-slate-900/40 backdrop-blur-xl border border-slate-800 p-8 lg:p-10 rounded-[2.5rem] hover:border-brand-500/50 transition-all duration-500 flex flex-col shadow-2xl"
+              whileHover={{ y: -6 }} 
+              // FIXED: Reduced card padding and slightly less rounding for the compact fit
+              className="group relative bg-slate-900/40 backdrop-blur-xl border border-slate-800 p-5 lg:p-6 rounded-[2rem] hover:border-brand-500/50 transition-all duration-500 flex flex-col shadow-2xl"
             >
               {/* Internal Card Glow */}
-              <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-brand-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-brand-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-              <div className="w-14 h-14 bg-slate-800 rounded-2xl flex items-center justify-center border border-slate-700 mb-8 group-hover:bg-brand-500 group-hover:border-brand-400 transition-all duration-500 relative z-10 shadow-lg shadow-black/20">
-                <b.icon className="w-7 h-7 text-brand-400 group-hover:text-white transition-colors duration-500" />
+              {/* FIXED: Smaller icons and tighter margin */}
+              <div className="w-10 h-10 bg-slate-800 rounded-xl flex items-center justify-center border border-slate-700 mb-4 group-hover:bg-brand-500 group-hover:border-brand-400 transition-all duration-500 relative z-10 shadow-md shadow-black/20">
+                <b.icon className="w-5 h-5 text-brand-400 group-hover:text-white transition-colors duration-500" />
               </div>
               
-              <h3 className="text-xl lg:text-2xl font-bold text-white mb-4 relative z-10">
+              {/* FIXED: Adjusted typography for tighter vertical fit */}
+              <h3 className="text-lg lg:text-xl font-bold text-white mb-2 relative z-10">
                 {b.title}
               </h3>
               
-              <p className="text-slate-400 font-medium leading-relaxed relative z-10">
+              <p className="text-slate-400 font-medium leading-relaxed relative z-10 text-sm">
                 {b.description}
               </p>
             </motion.div>

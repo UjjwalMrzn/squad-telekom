@@ -10,7 +10,7 @@ const solutionsMenu = {
   verticals: [
     { name: 'Real Estate', path: '/solutions/real-estate' },
     { name: 'Banking', path: '/solutions/banking' },
-    { name: 'E-Gaming', path: '#' },
+    { name: 'E-Gaming', path: '/solutions/e-gaming' },
     { name: 'FMCG', path: '#' },
     { name: 'Logistics', path: '#' },
     { name: 'E-Commerce', path: '#' },

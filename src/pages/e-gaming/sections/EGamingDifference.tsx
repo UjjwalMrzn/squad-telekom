@@ -2,26 +2,23 @@ import { motion, type Variants } from 'framer-motion';
 import { SectionBadge } from '../../../components/ui/SectionBadge';
 import { SectionHeader } from '../../../components/ui/SectionHeader';
 
-const stats = [
+const features = [
   {
-    value: "40%",
-    title: "Fewer lead drop-offs",
-    description: "with instant replies delivered across SMS, WhatsApp, RCS & Voice."
+    title: "Faster User Verification",
+    description: "Reduce onboarding friction with real-time OTP delivery and secure authentication workflows."
   },
   {
-    value: "3x",
-    title: "Faster deal closures",
-    description: "using immersive property showcases (videos, floor plans, brochures)."
+    title: "Scalable Player Communication",
+    description: "Handle high-volume messaging traffic during tournaments, live events, and promotional campaigns without delivery delays."
   },
   {
-    value: "25%",
-    title: "Higher buyer engagement",
-    description: "with automated reminders for visits, callbacks & follow-ups."
+    title: "Omnichannel Engagement",
+    description: "Reach players through SMS, WhatsApp, RCS, Voice, and API-based communication from a single platform."
   }
 ];
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 25 }, // FIXED: Matched to EGaming (25)
+  hidden: { opacity: 0, y: 25 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
 };
 
@@ -29,19 +26,18 @@ const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.12 } // FIXED: Matched to EGaming (0.12)
+    transition: { staggerChildren: 0.12 }
   }
 };
 
-export const REDifference = () => {
+export const EGamingDifference = () => {
   return (
-    // FIXED: Matched exact section padding from EGaming (py-16 lg:py-20)
+    // FIXED: Medium section padding (not too squished, not too huge)
     <section className="py-16 lg:py-20 bg-white relative overflow-hidden border-b border-slate-100">
       
       <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
         {/* --- TOP SPLIT: Image & Narrative --- */}
-        {/* FIXED: Matched exact bottom margin and gap from EGaming */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-16 lg:mb-20">
           
           {/* Left: Premium Image Container */}
@@ -52,11 +48,11 @@ export const REDifference = () => {
             variants={fadeUp}
             className="order-2 lg:order-1"
           >
-            {/* FIXED: Matched exact image aspect ratio and rounding from EGaming */}
+            {/* FIXED: Medium aspect ratio for the image */}
             <div className="relative aspect-[4/3] lg:aspect-[16/10] rounded-[2rem] overflow-hidden bg-slate-200 group w-full">
               <img 
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop" 
-                alt="Data driven business growth dashboard" 
+                src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop" 
+                alt="E-Gaming Setup and Communication" 
                 loading="lazy"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[0.22,1,0.36,1]"
               />
@@ -74,51 +70,46 @@ export const REDifference = () => {
             <SectionBadge text="Business Impact" className="!mb-6" />
             <SectionHeader 
               align="left"
-              title="What Makes Squad Different in Driving Business Growth"
-              // FIXED: Matched exact title sizing from EGaming
+              title="What Makes Squad Different for E-Gaming Platforms"
               titleClassName="!text-3xl md:!text-4xl lg:!text-[2.75rem] !font-bold !text-slate-900 !leading-[1.15] !mb-6"
               subtitle={
-                <div className="flex flex-col gap-5"> {/* Matched gap from EGaming */}
+                <div className="flex flex-col gap-5">
                   <p>
-                    Squad empowers real estate businesses to connect with buyers instantly, share immersive property showcases, and deliver secure updates across SMS, WhatsApp, RCS, and voice.
+                    From instant OTP delivery to scalable engagement campaigns, Squad helps gaming businesses improve communication performance, increase player trust, and deliver better user experiences.
                   </p>
                   <p>
-                    With real-time insights and automated reminders, we help brokers and developers reduce drop-offs, build trust, and close deals faster—all on a scalable, reliable platform.
+                    Our enterprise-grade infrastructure ensures your tournaments, live events, and daily active users are never interrupted by communication bottlenecks or delayed notifications.
                   </p>
                 </div>
               }
-              // FIXED: Matched exact subtitle sizing from EGaming
               subtitleClassName="!text-base lg:!text-lg !text-slate-600 !font-medium !leading-relaxed"
             />
           </motion.div>
         </div>
 
-        {/* --- BOTTOM: Stats Grid --- */}
+        {/* --- BOTTOM: Feature Cards Grid --- */}
         <motion.div 
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          // FIXED: Matched exact grid gaps from EGaming
+          // FIXED: Medium grid gaps
           className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
         >
-          {stats.map((stat, index) => (
+          {features.map((feature, index) => (
             <motion.div 
               key={index}
               variants={fadeUp}
-              whileHover={{ y: -6 }} // Matched EGaming hover height
-              // FIXED: Matched exact padding and shadow from EGaming
+              whileHover={{ y: -6 }}
+              // FIXED: Restored to standard p-8 padding for a premium look
               className="bg-white rounded-[2rem] p-8 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.06)] border border-slate-100 flex flex-col justify-start transition-transform duration-300"
             >
-              {/* FIXED: Scaled typography to perfectly fit the new compact padding */}
-              <h3 className="text-4xl lg:text-5xl font-bold text-slate-900 tracking-tight mb-4">
-                {stat.value}
+              <h3 className="text-xl lg:text-2xl font-bold text-slate-900 tracking-tight mb-4">
+                {feature.title}
               </h3>
-              <h4 className="text-lg lg:text-xl font-bold text-brand-600 mb-2 leading-tight">
-                {stat.title}
-              </h4>
+              <div className="w-12 h-1 bg-brand-500 rounded-full mb-5" /> 
               <p className="text-sm lg:text-base text-slate-500 font-medium leading-relaxed">
-                {stat.description}
+                {feature.description}
               </p>
             </motion.div>
           ))}

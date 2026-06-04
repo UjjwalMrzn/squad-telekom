@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom'; // FIXED: Added Link for routing
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { Plus, Minus } from 'lucide-react';
 import { SectionBadge } from '../../../components/ui/SectionBadge';
@@ -14,54 +14,49 @@ const fadeUp: Variants = {
   },
 };
 
-// Reordered and adapted to Squad Telekom branding, with extra questions added
 const faqs = [
   {
-    question: "What industries does Squad serve?",
-    answer: "Squad works across multiple verticals including real estate, e-commerce, BFSI, healthcare, logistics, and more — providing customized communication solutions for every industry."
+    question: "How does Squad improve player experience?",
+    answer: "Squad helps gaming platforms improve player engagement through secure authentication, real-time notifications, personalized campaigns, and omnichannel communication."
   },
   {
-    question: "How reliable are Squad services?",
-    answer: "With 900+ operator connections and enterprise-grade infrastructure, Squad ensures 99.9% uptime, <10-second message delivery, and unmatched global scalability."
+    question: "Can Squad handle high-volume gaming traffic?",
+    answer: "Yes. Squad infrastructure is designed to support high-volume messaging traffic during peak gaming events, tournaments, and promotional campaigns."
   },
   {
-    question: "Does Squad provide 24/7 customer support?",
-    answer: "Yes, our dedicated support team is available round-the-clock to assist you with integration, troubleshooting, and scaling your communication needs."
+    question: "Is Squad safe for gaming transactions and OTPs?",
+    answer: "Squad provides secure OTP delivery, fraud monitoring support, and enterprise-grade communication solutions to help protect player interactions."
   },
   {
-    question: "Is Squad compliant with global regulations?",
-    answer: "Absolutely. Squad is fully compliant with data protection and telecom regulations across multiple countries, ensuring security and peace of mind for your business."
-  },
-  // FIXED: Added extra questions for the "More Questions" expansion
-  {
-    question: "Can Squad solutions integrate with my existing platforms?",
-    answer: "Yes, our API-driven solutions easily integrate with CRMs, ERPs, and third-party platforms to simplify workflows and enhance customer engagement."
+    question: "Can Squad integrate with my gaming platform?",
+    answer: "Yes. Squad offers API-based integration support for gaming apps, platforms, CRM systems, onboarding workflows, and player engagement systems."
   },
   {
-    question: "How does Squad ensure message delivery accuracy?",
-    answer: "With proprietary testing solutions, live handset checks, and SIM-based validation, Squad guarantees unmatched delivery accuracy for both SMS and voice."
+    question: "Which communication channels does Squad support?",
+    answer: "Squad supports SMS, WhatsApp Business API, RCS Messaging, Voice, and omnichannel communication solutions for gaming businesses."
+  },
+  {
+    question: "Why should gaming platforms use omnichannel messaging?",
+    answer: "Omnichannel messaging helps gaming platforms improve delivery reach, increase engagement, reduce communication gaps, and create better player experiences across multiple touchpoints."
   }
 ];
 
-export const REFaq = () => {
+export const EGamingFaq = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
-  const [showAll, setShowAll] = useState(false); // FIXED: Added state for toggling questions
+  const [showAll, setShowAll] = useState(false);
 
   const toggleFaq = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
-  // FIXED: Determine which FAQs to show based on state
   const displayedFaqs = showAll ? faqs : faqs.slice(0, 4);
 
   return (
     // FIXED: Decreased vertical padding (pt-16 pb-16 lg:pt-20 lg:pb-20)
     <section className="pt-16 pb-16 lg:pt-20 lg:pb-20 bg-slate-50 relative overflow-hidden">
       
-      {/* LOCKED GRID: 1600px invisible master line */}
       <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10 flex flex-col gap-10">
         
-        {/* FAQ MAIN CARD */}
         <motion.div 
           initial="hidden"
           whileInView="visible"
@@ -83,7 +78,6 @@ export const REFaq = () => {
             />
 
             <div className="flex flex-wrap items-center gap-6">
-              {/* FIXED: Toggle button functionality and dynamic text */}
               <button 
                 onClick={() => setShowAll(!showAll)}
                 className="px-6 py-3 rounded-full border border-brand-500 text-brand-600 font-bold text-sm tracking-wide hover:bg-brand-500 hover:text-white transition-all duration-300 shadow-sm hover:shadow-md hover:shadow-brand-500/30"
@@ -91,7 +85,6 @@ export const REFaq = () => {
                 {showAll ? "Less Questions" : "More Questions"}
               </button>
               
-              {/* FIXED: Replaced button with Link for routing */}
               <Link to="/contact" className="group text-sm font-bold text-slate-500 hover:text-brand-600 transition-colors tracking-wide flex items-center gap-2">
                 <span className="relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-brand-600 after:origin-left after:scale-x-0 group-hover:after:scale-x-100 after:transition-transform after:duration-300">
                   Contact Us
@@ -109,7 +102,7 @@ export const REFaq = () => {
 
                   return (
                     <motion.div 
-                      key={faq.question} // Use question as key for stable animations
+                      key={faq.question}
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
@@ -134,7 +127,6 @@ export const REFaq = () => {
                         </div>
                       </button>
 
-                      {/* Smooth height animation for content */}
                       <AnimatePresence initial={false}>
                         {isOpen && (
                           <motion.div
@@ -156,7 +148,6 @@ export const REFaq = () => {
             </motion.div>
           </div>
         </motion.div>
-
       </div>
     </section>
   );

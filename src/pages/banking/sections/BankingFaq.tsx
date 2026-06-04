@@ -51,7 +51,8 @@ export const BankingFaq = () => {
   const displayedFaqs = showAll ? faqs : faqs.slice(0, 4);
 
   return (
-    <section className="pt-24 pb-24 lg:pt-32 lg:pb-32 bg-slate-50 relative overflow-hidden">
+    // FIXED: Decreased vertical padding (pt-16 pb-16 lg:pt-20 lg:pb-20)
+    <section className="pt-16 pb-16 lg:pt-20 lg:pb-20 bg-slate-50 relative overflow-hidden">
       
       {/* LOCKED GRID: 1600px invisible master line */}
       <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10 flex flex-col gap-10">

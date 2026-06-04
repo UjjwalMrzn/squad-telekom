@@ -80,10 +80,12 @@ export const Products = () => {
   };
 
   return (
-    <section className="py-24 lg:py-32 bg-white relative overflow-hidden border-b border-slate-100">
+    // FIXED: Decreased vertical padding (py-16 lg:py-20) to reduce section height
+    <section className="py-16 lg:py-20 bg-white relative overflow-hidden border-b border-slate-100">
       
       {/* CENTERED SECTION HEADER */}
-      <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10 mb-12 md:mb-16">
+      {/* FIXED: Reduced bottom margin (mb-10 md:mb-12) */}
+      <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10 mb-10 md:mb-12">
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
           
           <motion.div 
@@ -97,7 +99,6 @@ export const Products = () => {
             Our Ecosystem
           </motion.div>
 
-          {/* DRY: Swapped Hardcoded HTML for SectionHeader. Preserved whileInView motion by wrapping it */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -159,9 +160,11 @@ export const Products = () => {
                 transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -12, scale: 1.02, transition: { type: "spring", stiffness: 400, damping: 25 } }}
                 style={{ WebkitTransform: 'translateZ(0)', backfaceVisibility: 'hidden', willChange: 'transform' }}
-                className={`group flex-none w-[85vw] sm:w-[360px] lg:w-[420px] snap-center sm:snap-start rounded-[2.5rem] p-6 lg:p-8 flex flex-col relative overflow-hidden transition-shadow duration-500 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] border border-white/60 cursor-pointer ${service.bgColor}`}
+                // FIXED: Reduced card padding slightly to p-6
+                className={`group flex-none w-[85vw] sm:w-[360px] lg:w-[420px] snap-center sm:snap-start rounded-[2.5rem] p-6 flex flex-col relative overflow-hidden transition-shadow duration-500 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] border border-white/60 cursor-pointer ${service.bgColor}`}
               >
-                <div className="w-full aspect-[4/3] rounded-[1.5rem] overflow-hidden mb-8 relative bg-white shadow-sm z-10 border border-slate-100/50">
+                {/* FIXED: Changed aspect-[4/3] to aspect-[16/9] to shorten the image height significantly */}
+                <div className="w-full aspect-[16/9] rounded-[1.5rem] overflow-hidden mb-6 relative bg-white shadow-sm z-10 border border-slate-100/50">
                   <img 
                     src={service.image} 
                     alt={service.title} 

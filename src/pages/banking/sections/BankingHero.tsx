@@ -5,7 +5,7 @@ import { SectionBadge } from '../../../components/ui/SectionBadge';
 
 export const BankingHero = () => {
   return (
-    <section className="relative w-full flex flex-col items-center justify-center pt-32 pb-24 lg:pt-48 lg:pb-48 bg-white overflow-hidden border-b border-slate-100">
+<section className="relative w-full flex flex-col items-center justify-center min-h-screen pt-32 pb-24 lg:pt-48 lg:pb-48 bg-white overflow-hidden border-b border-slate-100">
       {/* Background Effects */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
