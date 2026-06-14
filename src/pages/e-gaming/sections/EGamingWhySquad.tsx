@@ -1,5 +1,6 @@
 import { motion, type Variants } from 'framer-motion';
-import { ArrowUpRight, ShieldCheck, Headset, Zap } from 'lucide-react';
+// FIXED: Removed the unused ShieldCheck, Headset, and Zap imports
+import { ArrowUpRight } from 'lucide-react';
 import { SectionBadge } from '../../../components/ui/SectionBadge';
 import { SectionHeader } from '../../../components/ui/SectionHeader';
 
@@ -15,10 +16,7 @@ const staggerContainer: Variants = {
 
 export const EGamingWhySquad = () => {
   return (
-    // FIXED: Added dark:bg-[#020617] and dark:border-slate-800 for the alternating section flow
     <section className="py-16 lg:py-20 bg-slate-50 dark:bg-[#020617] relative overflow-hidden border-b border-slate-200 dark:border-slate-800">
-      
-      {/* FIXED: Removed Background grid Texture completely as requested */}
 
       <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
@@ -28,10 +26,8 @@ export const EGamingWhySquad = () => {
           <SectionHeader 
             align="left"
             title="Why Gaming Platforms Choose Squad"
-            // FIXED: Added dark:text-white
             titleClassName="!text-3xl md:!text-4xl lg:!text-5xl !font-bold !text-slate-900 dark:!text-white !leading-[1.15] !mb-4"
             subtitle="Squad delivers scalable communication infrastructure designed for modern e-gaming businesses focused on engagement, performance, and security."
-            // FIXED: Added dark:text-slate-400
             subtitleClassName="!text-base lg:!text-lg !text-slate-600 dark:!text-slate-400 !font-medium"
           />
         </div>
@@ -46,7 +42,6 @@ export const EGamingWhySquad = () => {
         >
           
           {/* Row 1, Item 1: Wide Image Card */}
-          {/* FIXED: Added dark:bg-slate-800 and dark:border-slate-700 */}
           <motion.div 
             variants={fadeUp}
             whileHover={{ y: -4 }}
@@ -59,7 +54,6 @@ export const EGamingWhySquad = () => {
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
-            {/* FIXED: Added dark:text-white and dark:text-brand-400 */}
             <h3 className="text-xl lg:text-2xl font-bold text-slate-800 dark:text-white text-center flex-1 pr-4 lg:pr-8 leading-snug">
               <span className="text-brand-600 dark:text-brand-400">900+ operator</span><br className="hidden sm:block" />
               connections across 30+ <br className="hidden sm:block" />
@@ -113,7 +107,6 @@ export const EGamingWhySquad = () => {
           </motion.div>
 
           {/* Row 2, Item 2: Gradient Square */}
-          {/* FIXED: Changed to dark:bg-slate-900 so it doesn't blend into the #020617 section bg */}
           <motion.div 
             variants={fadeUp}
             whileHover={{ y: -4 }}
@@ -129,7 +122,6 @@ export const EGamingWhySquad = () => {
           </motion.div>
 
           {/* Row 2, Item 3: Wide Image Card */}
-          {/* FIXED: Added dark:bg-slate-800 and dark:border-slate-700 */}
           <motion.div 
             variants={fadeUp}
             whileHover={{ y: -4 }}
@@ -142,7 +134,6 @@ export const EGamingWhySquad = () => {
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
-            {/* FIXED: Added dark:text-white and dark:text-brand-400 */}
             <h3 className="text-xl lg:text-2xl font-bold text-slate-800 dark:text-white text-center flex-1 pr-4 lg:pr-8 leading-snug">
               Constantly evolving to meet <span className="text-brand-600 dark:text-brand-400">tomorrow's communication</span> needs.
             </h3>
