@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom'; // Added for redirection
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowRight, Globe, Sparkles, Activity } from 'lucide-react';
 
@@ -9,7 +9,6 @@ export const Hero = () => {
 
   const containerRef = useRef<HTMLDivElement>(null);
   
-  // Mouse Tracking Logic for Sonar Effect
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const springConfig = { damping: 25, stiffness: 200 };
@@ -34,11 +33,13 @@ export const Hero = () => {
     <section 
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative min-h-[100svh] flex items-center justify-center pt-24 pb-12 md:pt-28 md:pb-16 lg:pt-32 lg:pb-20 bg-slate-50 overflow-hidden group/section"
+      // FIXED: Added dark:bg-[#020617]
+      className="relative min-h-[100svh] flex items-center justify-center pt-24 pb-12 md:pt-28 md:pb-16 lg:pt-32 lg:pb-20 bg-slate-50 dark:bg-[#020617] overflow-hidden group/section"
     >
       
       {/* PREMIUM SYMMETRICAL GRADIENT BACKGROUND */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-white">
+      {/* FIXED: Added dark:bg-[#020617] */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-white dark:bg-[#020617]">
         <motion.div 
           animate={{ y: [0, 30, 0] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
@@ -83,7 +84,8 @@ export const Hero = () => {
             style={{ willChange: "transform, opacity" }}
             className="relative z-10 w-full text-center md:text-left pt-10 lg:pt-0"
           >
-            <h1 className="text-[2.75rem] leading-[1.1] sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold tracking-tight text-slate-900 mb-6">
+            {/* FIXED: Added dark:text-white */}
+            <h1 className="text-[2.75rem] leading-[1.1] sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold tracking-tight text-slate-900 dark:text-white mb-6">
               <span className="block mb-2">Simplifying</span>
               <span className="text-brand-500 block h-[1.2em] relative mb-2 flex justify-center md:justify-start overflow-hidden">
                 <AnimatePresence mode="wait">
@@ -103,12 +105,12 @@ export const Hero = () => {
               <span className="block">Empowering Growth</span>
             </h1>
             
-            <p className="text-base sm:text-lg lg:text-xl text-slate-600 mb-8 sm:mb-10 leading-relaxed font-medium max-w-lg mx-auto md:mx-0">
+            {/* FIXED: Added dark:text-slate-400 */}
+            <p className="text-base sm:text-lg lg:text-xl text-slate-600 dark:text-slate-400 mb-8 sm:mb-10 leading-relaxed font-medium max-w-lg mx-auto md:mx-0">
               Carrier-grade messaging, voice, and verification APIs for businesses across the globe.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-              {/* FIXED: Added Link redirection to /contact */}
               <Link to="/contact">
                 <motion.button 
                   whileHover={{ scale: 1.02 }}
@@ -123,7 +125,8 @@ export const Hero = () => {
               <motion.button 
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full sm:w-auto bg-white border border-slate-200 text-slate-800 hover:border-slate-300 hover:bg-slate-50 px-8 py-3.5 rounded-full font-bold text-base transition-colors flex items-center justify-center shadow-sm"
+                // FIXED: Added dark mode variants for the outline button
+                className="w-full sm:w-auto bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white hover:border-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 px-8 py-3.5 rounded-full font-bold text-base transition-colors flex items-center justify-center shadow-sm"
               >
                 Discover Platform
               </motion.button>

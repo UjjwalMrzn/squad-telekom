@@ -3,17 +3,18 @@ import { EGamingBenefits } from './sections/EGamingBenefits';
 import { EGamingDifference } from './sections/EGamingDifference';
 import { EGamingFeatures } from './sections/EGamingFeatures';
 import { EGamingWhySquad } from './sections/EGamingWhySquad';
-import { EGamingFaq } from './sections/EGamingFaq'; // Add this import
+import { EGamingFaq } from './sections/EGamingFaq'; 
 
 export const EGaming = () => {
   return (
-    <main className="w-full bg-white flex flex-col overflow-hidden">
+    // FIXED: Added dark:bg-slate-900
+    <main className="w-full bg-white dark:bg-slate-900 flex flex-col overflow-hidden">
       <EGamingHero />
       <EGamingBenefits />
       <EGamingDifference />
       <EGamingFeatures />
       <EGamingWhySquad />
-      <EGamingFaq /> {/* Add this line */}
+      <EGamingFaq /> 
     </main>
   );
 };

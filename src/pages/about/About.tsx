@@ -4,7 +4,8 @@ import { AboutDetails } from './sections/AboutDetails';
 
 export const About = () => {
   return (
-    <main className="w-full bg-white flex flex-col overflow-hidden">
+    // FIXED: Added dark:bg-slate-900
+    <main className="w-full bg-white dark:bg-slate-900 flex flex-col overflow-hidden">
       <AboutHero />
       <AboutStory />
       <AboutDetails />

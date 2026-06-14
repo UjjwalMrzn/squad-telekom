@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import { ThemeProvider } from './context/ThemeContext';
 
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
@@ -27,11 +28,12 @@ function App() {
   }, []);
 
   return (
+    <ThemeProvider>
     <Router>
       {/* 2. Mount it right inside the Router. It renders nothing, just handles scrolling. */}
       <ScrollToTop /> 
       
-      <div className="min-h-screen bg-white flex flex-col">
+      <div className="min-h-screen bg-white dark:bg-slate-900 flex flex-col">
         
         <AnimatePresence mode="wait">
           {isInitializing && <PageLoader key="loader" />}
@@ -56,6 +58,7 @@ function App() {
         )}
       </div>
     </Router>
+    </ThemeProvider>
   );
 }
 

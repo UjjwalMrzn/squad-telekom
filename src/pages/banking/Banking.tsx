@@ -7,7 +7,8 @@ import { BankingFaq } from './sections/BankingFaq';
 
 export const Banking = () => {
   return (
-    <main className="w-full bg-white flex flex-col overflow-hidden">
+    // FIXED: Added dark:bg-slate-900
+    <main className="w-full bg-white dark:bg-slate-900 flex flex-col overflow-hidden">
       <BankingHero />
       <BankingBenefits />
       <BankingDifference />

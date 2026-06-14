@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, Sun, Moon } from 'lucide-react';
 import { Button } from '../ui/Button';
+import { useTheme } from '../../context/ThemeContext';
 import logo from '../../assets/squad-logo-new.png'; 
 
 // --- DATA STRUCTURE FOR MEGA MENU ---
@@ -26,7 +27,6 @@ const solutionsMenu = {
   ]
 };
 
-// FIXED: Added About Us to root links
 const navLinks = [
   { name: 'About Us', hasDropdown: false, path: '/about' },
   { name: 'Solutions', hasDropdown: true, menuData: solutionsMenu },
@@ -42,6 +42,9 @@ export const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const location = useLocation();
+  
+  // Destructure from ThemeContext
+  const { isDark, toggleTheme } = useTheme();
 
   // Handle scroll blur effect
   useEffect(() => {
@@ -86,24 +89,28 @@ export const Navbar = () => {
     setMobileExpanded(mobileExpanded === name ? null : name);
   };
 
+  // Helper to ensure button clicks don't bubble up and cause unintended menu behaviors
+  const handleThemeToggle = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    toggleTheme();
+  };
+
   return (
     <motion.nav 
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       onMouseLeave={() => setActiveDropdown(null)}
-      // DYNAMIC NAVBAR CLASSES: Merges seamlessly when dropdown is open
       className={`fixed w-full z-50 transition-all duration-500 ${
         scrolled || activeDropdown
-          ? 'bg-white/95 backdrop-blur-xl' 
+          ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl' 
           : 'bg-transparent'
       } ${
         scrolled && !activeDropdown 
-          ? 'shadow-sm border-b border-slate-200' 
+          ? 'shadow-sm border-b border-slate-200 dark:border-slate-800' 
           : 'border-b border-transparent'
       }`}
     >
-      {/* 1400px Master Grid Container */}
       <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-20">
         <div className="flex justify-between items-center h-20">
           
@@ -129,11 +136,10 @@ export const Navbar = () => {
                 <div 
                   className={`flex items-center font-semibold text-[13px] lg:text-sm transition-all duration-300 py-2 px-4 rounded-full border ${
                     activeDropdown === link.name 
-                      ? 'text-brand-600 border-slate-200 bg-white shadow-sm' 
-                      : 'text-slate-600 hover:text-brand-600 border-transparent'
+                      ? 'text-brand-600 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm' 
+                      : 'text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 border-transparent'
                   }`}
                 >
-                  {/* FIXED: Applied routing to non-dropdown items */}
                   {link.hasDropdown ? (
                     <span>{link.name}</span>
                   ) : (
@@ -150,7 +156,41 @@ export const Navbar = () => {
 
           {/* DESKTOP CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            {/* FIXED: Wrapped Button in Link */}
+            
+            {/* THEME TOGGLE BUTTON - Desktop */}
+            <button
+              onClick={handleThemeToggle}
+              type="button" // Force button type to prevent default form submissions if any exist nearby
+              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+              className="relative w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:border-brand-300 dark:hover:border-brand-600 hover:bg-brand-50 dark:hover:bg-slate-800 transition-all duration-300 overflow-hidden cursor-pointer"
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                {isDark ? (
+                  <motion.div 
+                    key="sun" 
+                    initial={{ y: 20, opacity: 0 }} 
+                    animate={{ y: 0, opacity: 1 }} 
+                    exit={{ y: -20, opacity: 0 }} 
+                    transition={{ duration: 0.2 }}
+                    className="absolute inset-0 flex items-center justify-center"
+                  >
+                    <Sun className="w-5 h-5" />
+                  </motion.div>
+                ) : (
+                  <motion.div 
+                    key="moon" 
+                    initial={{ y: 20, opacity: 0 }} 
+                    animate={{ y: 0, opacity: 1 }} 
+                    exit={{ y: -20, opacity: 0 }} 
+                    transition={{ duration: 0.2 }}
+                    className="absolute inset-0 flex items-center justify-center"
+                  >
+                    <Moon className="w-5 h-5" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </button>
+
             <Link to="/contact">
               <Button variant="primary" size="sm" className="shadow-md hover:shadow-lg transition-shadow">
                 Contact Us
@@ -158,11 +198,46 @@ export const Navbar = () => {
             </Link>
           </div>
 
-          {/* MOBILE MENU BUTTON */}
-          <div className="md:hidden flex items-center">
+          {/* MOBILE MENU BUTTON & THEME TOGGLE */}
+          <div className="md:hidden flex items-center gap-3">
+            
+            {/* THEME TOGGLE BUTTON - Mobile */}
             <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-slate-600 hover:text-brand-600 focus:outline-none p-2 transition-colors rounded-lg hover:bg-slate-50"
+              onClick={handleThemeToggle}
+              type="button"
+              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+              className="relative w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-slate-800 transition-all duration-300 overflow-hidden cursor-pointer"
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                {isDark ? (
+                  <motion.div 
+                    key="sun-mobile" 
+                    initial={{ y: 20, opacity: 0 }} 
+                    animate={{ y: 0, opacity: 1 }} 
+                    exit={{ y: -20, opacity: 0 }} 
+                    transition={{ duration: 0.2 }}
+                    className="absolute inset-0 flex items-center justify-center"
+                  >
+                    <Sun className="w-5 h-5" />
+                  </motion.div>
+                ) : (
+                  <motion.div 
+                    key="moon-mobile" 
+                    initial={{ y: 20, opacity: 0 }} 
+                    animate={{ y: 0, opacity: 1 }} 
+                    exit={{ y: -20, opacity: 0 }} 
+                    transition={{ duration: 0.2 }}
+                    className="absolute inset-0 flex items-center justify-center"
+                  >
+                    <Moon className="w-5 h-5" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </button>
+
+            <button
+              onClick={(e) => { e.stopPropagation(); setIsOpen(!isOpen); }}
+              className="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 focus:outline-none p-2 transition-colors rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800"
               aria-label="Toggle Menu"
             >
               <AnimatePresence mode="wait">
@@ -190,18 +265,18 @@ export const Navbar = () => {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             onMouseEnter={() => setActiveDropdown('Solutions')}
-            className="absolute left-0 right-0 top-full bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden z-10"
+            className="absolute left-0 right-0 top-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden z-10"
           >
             <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 py-12">
               <div className="grid grid-cols-3 gap-12 lg:gap-24">
                 
                 {/* Column 1: Verticals */}
                 <div>
-                  <h4 className="text-slate-900 font-extrabold mb-6 text-[15px] tracking-tight">Verticals</h4>
+                  <h4 className="text-slate-900 dark:text-white font-extrabold mb-6 text-[15px] tracking-tight">Verticals</h4>
                   <ul className="space-y-4">
                     {solutionsMenu.verticals.map((item, idx) => (
                       <li key={idx}>
-                        <Link to={item.path} className="text-slate-500 hover:text-brand-500 font-medium text-sm transition-colors duration-200 block w-fit">
+                        <Link to={item.path} className="text-slate-500 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 font-medium text-sm transition-colors duration-200 block w-fit">
                           {item.name}
                         </Link>
                       </li>
@@ -211,11 +286,11 @@ export const Navbar = () => {
 
                 {/* Column 2: Performance Marketing */}
                 <div>
-                  <h4 className="text-slate-900 font-extrabold mb-6 text-[15px] tracking-tight">Performance Marketing</h4>
+                  <h4 className="text-slate-900 dark:text-white font-extrabold mb-6 text-[15px] tracking-tight">Performance Marketing</h4>
                   <ul className="space-y-4">
                     {solutionsMenu.performance.map((item, idx) => (
                       <li key={idx}>
-                        <Link to={item.path} className="text-slate-500 hover:text-brand-500 font-medium text-sm transition-colors duration-200 block w-fit">
+                        <Link to={item.path} className="text-slate-500 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 font-medium text-sm transition-colors duration-200 block w-fit">
                           {item.name}
                         </Link>
                       </li>
@@ -225,11 +300,11 @@ export const Navbar = () => {
 
                 {/* Column 3: AI Driven Solutions */}
                 <div>
-                  <h4 className="text-slate-900 font-extrabold mb-6 text-[15px] tracking-tight">AI Driven Solutions</h4>
+                  <h4 className="text-slate-900 dark:text-white font-extrabold mb-6 text-[15px] tracking-tight">AI Driven Solutions</h4>
                   <ul className="space-y-4">
                     {solutionsMenu.ai.map((item, idx) => (
                       <li key={idx}>
-                        <Link to={item.path} className="text-slate-500 hover:text-brand-500 font-medium text-sm transition-colors duration-200 block w-fit">
+                        <Link to={item.path} className="text-slate-500 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 font-medium text-sm transition-colors duration-200 block w-fit">
                           {item.name}
                         </Link>
                       </li>
@@ -251,7 +326,7 @@ export const Navbar = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="md:hidden bg-white/95 backdrop-blur-xl border-t border-slate-100 shadow-2xl overflow-hidden absolute w-full top-20 z-50"
+            className="md:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-t border-slate-100 dark:border-slate-800 shadow-2xl overflow-hidden absolute w-full top-20 z-50"
           >
             <div className="px-4 py-4 space-y-1 max-w-[1700px] mx-auto pb-6">
               {navLinks.map((link) => (
@@ -259,9 +334,8 @@ export const Navbar = () => {
                   <motion.div 
                     variants={mobileItemVariants}
                     onClick={() => link.hasDropdown ? toggleMobileExpand(link.name) : undefined}
-                    className="flex items-center justify-between px-3 py-3 text-base font-bold text-slate-700 hover:text-brand-600 hover:bg-brand-50 rounded-xl transition-colors cursor-pointer"
+                    className="flex items-center justify-between px-3 py-3 text-base font-bold text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-slate-800 rounded-xl transition-colors cursor-pointer"
                   >
-                    {/* FIXED: Applied routing to non-dropdown items */}
                     {link.hasDropdown ? (
                       <span>{link.name}</span>
                     ) : (
@@ -279,35 +353,35 @@ export const Navbar = () => {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        className="overflow-hidden bg-slate-50/50 rounded-xl mt-1 mx-2"
+                        className="overflow-hidden bg-slate-50/50 dark:bg-slate-800/50 rounded-xl mt-1 mx-2"
                       >
                         <div className="p-4 space-y-4">
                           <div>
-                            <h5 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Verticals</h5>
+                            <h5 className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2">Verticals</h5>
                             <ul className="space-y-2">
                               {solutionsMenu.verticals.map((item, idx) => (
                                 <li key={idx}>
-                                  <Link to={item.path} onClick={() => setIsOpen(false)} className="text-sm font-medium text-slate-600 hover:text-brand-600 block py-1">{item.name}</Link>
+                                  <Link to={item.path} onClick={() => setIsOpen(false)} className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 block py-1">{item.name}</Link>
                                 </li>
                               ))}
                             </ul>
                           </div>
                           <div>
-                            <h5 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Performance Marketing</h5>
+                            <h5 className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2">Performance Marketing</h5>
                             <ul className="space-y-2">
                               {solutionsMenu.performance.map((item, idx) => (
                                 <li key={idx}>
-                                  <Link to={item.path} onClick={() => setIsOpen(false)} className="text-sm font-medium text-slate-600 hover:text-brand-600 block py-1">{item.name}</Link>
+                                  <Link to={item.path} onClick={() => setIsOpen(false)} className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 block py-1">{item.name}</Link>
                                 </li>
                               ))}
                             </ul>
                           </div>
                           <div>
-                            <h5 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">AI Solutions</h5>
+                            <h5 className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2">AI Solutions</h5>
                             <ul className="space-y-2">
                               {solutionsMenu.ai.map((item, idx) => (
                                 <li key={idx}>
-                                  <Link to={item.path} onClick={() => setIsOpen(false)} className="text-sm font-medium text-slate-600 hover:text-brand-600 block py-1">{item.name}</Link>
+                                  <Link to={item.path} onClick={() => setIsOpen(false)} className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 block py-1">{item.name}</Link>
                                 </li>
                               ))}
                             </ul>
@@ -319,7 +393,6 @@ export const Navbar = () => {
                 </div>
               ))}
               <motion.div variants={mobileItemVariants} className="pt-4 px-3">
-                {/* FIXED: Wrapped Button in Link and added onClick to close menu */}
                 <Link to="/contact" onClick={() => setIsOpen(false)} className="w-full block">
                   <Button variant="primary" className="w-full justify-center py-4 text-lg shadow-md">
                     Contact Us

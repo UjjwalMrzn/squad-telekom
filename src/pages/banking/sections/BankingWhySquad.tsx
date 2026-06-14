@@ -15,10 +15,8 @@ const staggerContainer: Variants = {
 
 export const BankingWhySquad = () => {
   return (
-    <section className="py-24 lg:py-32 bg-white relative overflow-hidden border-b border-slate-100">
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-      </div>
+    <section className="py-24 lg:py-32 bg-white dark:bg-[#020617] relative overflow-hidden border-b border-slate-100 dark:border-slate-800">
+      {/* FIXED: Removed the absolute gridline background div from here */}
 
       <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp} className="mb-16 lg:mb-20">
@@ -26,21 +24,21 @@ export const BankingWhySquad = () => {
           <SectionHeader 
             align="left"
             title="Why Squad for Finance"
-            titleClassName="!text-4xl md:!text-5xl !font-bold !text-slate-900 !mb-4"
+            titleClassName="!text-4xl md:!text-5xl !font-bold !text-slate-900 dark:!text-white !mb-4"
             subtitle="Built for compliance, structured for scale. Squad provides banks and financial services with the direct-to-carrier reliability they demand."
-            subtitleClassName="!text-lg lg:!text-xl !text-slate-600 !max-w-3xl"
+            subtitleClassName="!text-lg lg:!text-xl !text-slate-600 dark:!text-slate-400 !max-w-3xl"
           />
         </motion.div>
 
         <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {/* Card 1 */}
-          <motion.div variants={fadeUp} className="col-span-1 md:col-span-2 lg:col-span-2 bg-slate-50 rounded-[2rem] overflow-hidden flex flex-col sm:flex-row border border-slate-100 shadow-lg shadow-slate-200/40 group">
+          <motion.div variants={fadeUp} className="col-span-1 md:col-span-2 lg:col-span-2 bg-slate-50 dark:bg-slate-800 rounded-[2rem] overflow-hidden flex flex-col sm:flex-row border border-slate-100 dark:border-slate-700 shadow-lg shadow-slate-200/40 dark:shadow-none group">
             <div className="w-full sm:w-2/5 h-64 sm:h-auto overflow-hidden">
               <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&auto=format&fit=crop" alt="Global Connections" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
             </div>
             <div className="w-full sm:w-3/5 p-8 lg:p-12 flex items-center justify-center text-center">
-              <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 leading-tight">
-                <span className="text-brand-600">900+ operator</span><br/>
+              <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white leading-tight">
+                <span className="text-brand-600 dark:text-brand-400">900+ operator</span><br/>
                 connections across 30+<br/>
                 Countries
               </h3>
@@ -48,7 +46,7 @@ export const BankingWhySquad = () => {
           </motion.div>
 
           {/* Card 2 */}
-          <motion.div variants={fadeUp} whileHover={{ y: -4 }} className="col-span-1 bg-[#020617] rounded-[2rem] p-8 flex flex-col justify-between shadow-xl group transition-transform">
+          <motion.div variants={fadeUp} whileHover={{ y: -4 }} className="col-span-1 bg-[#020617] dark:bg-slate-900 rounded-[2rem] p-8 flex flex-col justify-between shadow-xl group transition-transform border border-transparent dark:border-slate-800">
             <div>
               <ShieldCheck className="w-10 h-10 text-emerald-400 mb-6" />
               <h3 className="text-2xl font-bold text-white mb-4 leading-tight">Bank-Grade<br/>Security</h3>
@@ -57,7 +55,7 @@ export const BankingWhySquad = () => {
           </motion.div>
 
           {/* Card 3 */}
-          <motion.div variants={fadeUp} whileHover={{ y: -4 }} className="col-span-1 bg-gradient-to-br from-brand-500 to-brand-600 rounded-[2rem] p-8 flex flex-col justify-between shadow-xl shadow-brand-500/20 group transition-transform relative overflow-hidden">
+          <motion.div variants={fadeUp} whileHover={{ y: -4 }} className="col-span-1 bg-gradient-to-br from-brand-500 to-brand-600 rounded-[2rem] p-8 flex flex-col justify-between shadow-xl shadow-brand-500/20 group transition-transform relative overflow-hidden border border-transparent dark:border-slate-800/50">
             <div className="absolute top-6 right-6 opacity-50 group-hover:opacity-100 transition-opacity">
               <ArrowUpRight className="w-6 h-6 text-white" />
             </div>
@@ -69,7 +67,7 @@ export const BankingWhySquad = () => {
           </motion.div>
 
           {/* Card 4 */}
-          <motion.div variants={fadeUp} whileHover={{ y: -4 }} className="col-span-1 bg-gradient-to-br from-brand-500 to-brand-600 rounded-[2rem] p-8 flex flex-col justify-between shadow-xl shadow-brand-500/20 group transition-transform">
+          <motion.div variants={fadeUp} whileHover={{ y: -4 }} className="col-span-1 bg-gradient-to-br from-brand-500 to-brand-600 rounded-[2rem] p-8 flex flex-col justify-between shadow-xl shadow-brand-500/20 group transition-transform border border-transparent dark:border-slate-800/50">
             <div>
               <Zap className="w-10 h-10 text-white mb-6" />
               <h3 className="text-2xl font-bold text-white mb-4 leading-tight">Lightning-Fast<br/>Delivery</h3>
@@ -78,7 +76,7 @@ export const BankingWhySquad = () => {
           </motion.div>
 
           {/* Card 5 */}
-          <motion.div variants={fadeUp} whileHover={{ y: -4 }} className="col-span-1 bg-[#020617] rounded-[2rem] p-8 flex flex-col justify-between shadow-xl group transition-transform relative overflow-hidden">
+          <motion.div variants={fadeUp} whileHover={{ y: -4 }} className="col-span-1 bg-[#020617] dark:bg-slate-900 rounded-[2rem] p-8 flex flex-col justify-between shadow-xl group transition-transform relative overflow-hidden border border-transparent dark:border-slate-800">
             <div className="absolute top-6 right-6 opacity-50 group-hover:opacity-100 transition-opacity">
               <ArrowUpRight className="w-6 h-6 text-slate-400 group-hover:text-white" />
             </div>
@@ -90,13 +88,13 @@ export const BankingWhySquad = () => {
           </motion.div>
 
           {/* Card 6 */}
-          <motion.div variants={fadeUp} className="col-span-1 md:col-span-2 lg:col-span-2 bg-slate-50 rounded-[2rem] overflow-hidden flex flex-col sm:flex-row border border-slate-100 shadow-lg shadow-slate-200/40 group">
+          <motion.div variants={fadeUp} className="col-span-1 md:col-span-2 lg:col-span-2 bg-slate-50 dark:bg-slate-800 rounded-[2rem] overflow-hidden flex flex-col sm:flex-row border border-slate-100 dark:border-slate-700 shadow-lg shadow-slate-200/40 dark:shadow-none group">
             <div className="w-full sm:w-2/5 h-64 sm:h-auto overflow-hidden">
               <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1169&auto=format&fit=crop" alt="Mobile Banking" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
             </div>
             <div className="w-full sm:w-3/5 p-8 lg:p-12 flex items-center justify-center text-center">
-              <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 leading-tight">
-                Redefining the <span className="text-brand-600">FinTech</span> communication ecosystem.
+              <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white leading-tight">
+                Redefining the <span className="text-brand-600 dark:text-brand-400">FinTech</span> communication ecosystem.
               </h3>
             </div>
           </motion.div>

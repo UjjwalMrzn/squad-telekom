@@ -15,11 +15,12 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   const baseStyles = "inline-flex items-center justify-center font-medium rounded-full transition-colors focus:outline-none";
   
+  // FIXED: Added dark mode variants for outline and ghost buttons
   const variants = {
     primary: "bg-brand-500 text-white hover:bg-brand-600 shadow-sm",
     secondary: "bg-brand-50 text-brand-600 hover:bg-brand-100",
-    outline: "border border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-50",
-    ghost: "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+    outline: "border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800",
+    ghost: "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800"
   };
 
   const sizes = {

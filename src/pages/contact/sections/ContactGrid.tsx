@@ -24,15 +24,17 @@ const ClearableInput = ({
   onClear: () => void; 
 }) => (
   <div className="space-y-1 relative">
-    {/* FIXED: Swapped for theme color text-brand-600 */}
-    <label className="text-[11px] font-bold text-brand-600 uppercase tracking-wide">{label}</label>
-    <div className="w-full border-b border-slate-300 focus-within:border-brand-500 bg-transparent px-0 py-2 transition-colors flex justify-between items-center">
+    {/* FIXED: Added dark:text-brand-400 */}
+    <label className="text-[11px] font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wide">{label}</label>
+    {/* FIXED: Added dark:border-slate-700 */}
+    <div className="w-full border-b border-slate-300 dark:border-slate-700 focus-within:border-brand-500 bg-transparent px-0 py-2 transition-colors flex justify-between items-center">
+      {/* FIXED: Added dark:text-slate-100 and dark:placeholder:text-slate-500 */}
       <input 
         type={type} 
         placeholder={placeholder} 
         value={value}
         onChange={onChange}
-        className="w-full bg-transparent outline-none text-sm font-medium text-slate-900 placeholder:text-slate-400 pr-2"
+        className="w-full bg-transparent outline-none text-sm font-medium text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 pr-2"
       />
       <AnimatePresence>
         {value && (
@@ -87,10 +89,11 @@ const CustomSelect = ({
 
   return (
     <div className="space-y-1 relative" ref={dropdownRef}>
-      {/* FIXED: Swapped for theme color text-brand-600 */}
-      <label className="text-[11px] font-bold text-brand-600 uppercase tracking-wide">{label}</label>
+      {/* FIXED: Added dark:text-brand-400 */}
+      <label className="text-[11px] font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wide">{label}</label>
       <div
-        className={`w-full border-b bg-transparent px-0 py-2 transition-colors flex justify-between items-center ${isOpen ? 'border-brand-500' : 'border-slate-300 hover:border-slate-400'} ${searchable ? 'cursor-text' : 'cursor-pointer'}`}
+        // FIXED: Added dark:border-slate-700 and dark:hover:border-slate-500
+        className={`w-full border-b bg-transparent px-0 py-2 transition-colors flex justify-between items-center ${isOpen ? 'border-brand-500' : 'border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-500'} ${searchable ? 'cursor-text' : 'cursor-pointer'}`}
         onClick={() => {
           if (!isOpen) {
             setIsOpen(true);
@@ -100,6 +103,7 @@ const CustomSelect = ({
           }
         }}
       >
+        {/* FIXED: Added dark:text-slate-100 and dark:placeholder:text-slate-500 */}
         <input 
           type="text"
           readOnly={!searchable}
@@ -111,7 +115,7 @@ const CustomSelect = ({
             }
           }}
           placeholder={placeholder}
-          className={`w-full bg-transparent outline-none text-sm font-medium text-slate-900 placeholder:text-slate-400 ${searchable ? 'cursor-text' : 'cursor-pointer'} pr-2`}
+          className={`w-full bg-transparent outline-none text-sm font-medium text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 ${searchable ? 'cursor-text' : 'cursor-pointer'} pr-2`}
         />
         <div className="flex items-center gap-1 shrink-0">
           <AnimatePresence>
@@ -151,13 +155,15 @@ const CustomSelect = ({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 w-full mt-1 bg-white rounded-xl shadow-xl border border-slate-100 max-h-48 overflow-y-auto z-50 py-1 custom-scrollbar"
+            // FIXED: Added dark:bg-slate-800 and dark:border-slate-700
+            className="absolute top-full left-0 w-full mt-1 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-100 dark:border-slate-700 max-h-48 overflow-y-auto z-50 py-1 custom-scrollbar"
           >
             {filteredOptions.length > 0 ? (
               filteredOptions.map((opt) => (
                 <div
                   key={opt}
-                  className="px-4 py-2 hover:bg-brand-50 cursor-pointer text-sm font-medium text-slate-700 hover:text-brand-500 transition-colors"
+                  // FIXED: Added dark:hover:bg-slate-700, dark:text-slate-300, and dark:hover:text-brand-400
+                  className="px-4 py-2 hover:bg-brand-50 dark:hover:bg-slate-700 cursor-pointer text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-brand-500 dark:hover:text-brand-400 transition-colors"
                   onClick={() => {
                     setSelected(opt);
                     setQuery(opt);
@@ -168,7 +174,7 @@ const CustomSelect = ({
                 </div>
               ))
             ) : (
-              <div className="px-4 py-2 text-sm font-medium text-slate-400">
+              <div className="px-4 py-2 text-sm font-medium text-slate-400 dark:text-slate-500">
                 No results found
               </div>
             )}
@@ -211,7 +217,8 @@ export const ContactGrid = () => {
   };
 
   return (
-    <section className="py-12 lg:py-16 bg-slate-50 relative overflow-hidden border-b border-slate-200">
+    // FIXED: Added dark:bg-slate-900 and dark:border-slate-800
+    <section className="py-12 lg:py-16 bg-slate-50 dark:bg-slate-900 relative overflow-hidden border-b border-slate-200 dark:border-slate-800">
       <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 lg:items-center">
@@ -224,47 +231,55 @@ export const ContactGrid = () => {
             className="lg:col-span-5 flex flex-col gap-4"
           >
             <div className="mb-2">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2 tracking-tight">
+              {/* FIXED: Added dark:text-white */}
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-2 tracking-tight">
                 Reach out to Squad
               </h2>
-              <p className="text-slate-600 text-sm md:text-base font-medium leading-relaxed">
+              {/* FIXED: Added dark:text-slate-400 */}
+              <p className="text-slate-600 dark:text-slate-400 text-sm md:text-base font-medium leading-relaxed">
                 Our telecom experts are strategically positioned around the globe to ensure you get the reliable support you need, exactly when you need it.
               </p>
             </div>
 
-            <motion.div variants={fadeUp} className="bg-white p-6 rounded-[1.5rem] border border-slate-100 shadow-sm flex items-start gap-4 group hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center shrink-0 group-hover:bg-brand-500 group-hover:text-white text-brand-600 transition-colors">
+            {/* FIXED: Added dark:bg-slate-800 and dark:border-slate-700 */}
+            <motion.div variants={fadeUp} className="bg-white dark:bg-slate-800 p-6 rounded-[1.5rem] border border-slate-100 dark:border-slate-700 shadow-sm flex items-start gap-4 group hover:shadow-md transition-shadow">
+              {/* FIXED: Added dark:bg-slate-700 and dark:text-brand-400 */}
+              <div className="w-12 h-12 rounded-xl bg-brand-50 dark:bg-slate-700 flex items-center justify-center shrink-0 group-hover:bg-brand-500 group-hover:text-white text-brand-600 dark:text-brand-400 transition-colors">
                 <Mail className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-lg font-bold text-slate-900 mb-1">Email Us</h4>
-                <p className="text-slate-500 text-sm font-medium mb-1">For general inquiries & sales</p>
-                <a href="mailto:info@squadtelekom.com" className="text-brand-600 text-sm font-bold hover:text-brand-500 transition-colors">
+                <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-1">Email Us</h4>
+                <p className="text-slate-500 dark:text-slate-400 text-sm font-medium mb-1">For general inquiries & sales</p>
+                <a href="mailto:info@squadtelekom.com" className="text-brand-600 dark:text-brand-400 text-sm font-bold hover:text-brand-500 transition-colors">
                   info@squadtelekom.com
                 </a>
               </div>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="bg-white p-6 rounded-[1.5rem] border border-slate-100 shadow-sm flex items-start gap-4 group hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center shrink-0 group-hover:bg-brand-500 group-hover:text-white text-brand-600 transition-colors">
+            {/* FIXED: Added dark:bg-slate-800 and dark:border-slate-700 */}
+            <motion.div variants={fadeUp} className="bg-white dark:bg-slate-800 p-6 rounded-[1.5rem] border border-slate-100 dark:border-slate-700 shadow-sm flex items-start gap-4 group hover:shadow-md transition-shadow">
+              {/* FIXED: Added dark:bg-slate-700 and dark:text-brand-400 */}
+              <div className="w-12 h-12 rounded-xl bg-brand-50 dark:bg-slate-700 flex items-center justify-center shrink-0 group-hover:bg-brand-500 group-hover:text-white text-brand-600 dark:text-brand-400 transition-colors">
                 <MapPin className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-lg font-bold text-slate-900 mb-1">Global Headquarters</h4>
-                <p className="text-slate-500 text-sm font-medium leading-relaxed">
+                <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-1">Global Headquarters</h4>
+                <p className="text-slate-500 dark:text-slate-400 text-sm font-medium leading-relaxed">
                   Squad Telekom LLC<br />
                   Wilmington, Delaware, US
                 </p>
               </div>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="bg-white p-6 rounded-[1.5rem] border border-slate-100 shadow-sm flex items-start gap-4 group hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center shrink-0 group-hover:bg-emerald-500 group-hover:text-white text-emerald-600 transition-colors">
+            {/* FIXED: Added dark:bg-slate-800 and dark:border-slate-700 */}
+            <motion.div variants={fadeUp} className="bg-white dark:bg-slate-800 p-6 rounded-[1.5rem] border border-slate-100 dark:border-slate-700 shadow-sm flex items-start gap-4 group hover:shadow-md transition-shadow">
+              {/* FIXED: Added dark:bg-slate-700 and dark:text-emerald-400 */}
+              <div className="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-slate-700 flex items-center justify-center shrink-0 group-hover:bg-emerald-500 group-hover:text-white text-emerald-600 dark:text-emerald-400 transition-colors">
                 <Clock className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-lg font-bold text-slate-900 mb-1">24/7 Support</h4>
-                <p className="text-slate-500 text-sm font-medium leading-relaxed">
+                <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-1">24/7 Support</h4>
+                <p className="text-slate-500 dark:text-slate-400 text-sm font-medium leading-relaxed">
                   Our technical assistance team is available round-the-clock for enterprise partners.
                 </p>
               </div>
@@ -279,11 +294,14 @@ export const ContactGrid = () => {
             variants={fadeUp}
             className="lg:col-span-7"
           >
-            <div className="bg-white rounded-[2rem] p-8 lg:p-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-slate-100 relative overflow-visible">
+            {/* FIXED: Added dark:bg-slate-800 and dark:border-slate-700 */}
+            <div className="bg-white dark:bg-slate-800 rounded-[2rem] p-8 lg:p-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-slate-100 dark:border-slate-700 relative overflow-visible">
               
               <div className="mb-6 text-center">
-                <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-2">Contact Us</h3>
-                <p className="text-slate-500 text-sm font-medium">Any question or remarks? Just write us a message!</p>
+                {/* FIXED: Added dark:text-white */}
+                <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white mb-2">Contact Us</h3>
+                {/* FIXED: Added dark:text-slate-400 */}
+                <p className="text-slate-500 dark:text-slate-400 text-sm font-medium">Any question or remarks? Just write us a message!</p>
               </div>
 
               <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
@@ -355,15 +373,17 @@ export const ContactGrid = () => {
                 />
 
                 <div className="space-y-1 relative">
-                  {/* FIXED: Swapped for theme color text-brand-600 */}
-                  <label className="text-[11px] font-bold text-brand-600 uppercase tracking-wide">Message</label>
-                  <div className="relative border-b border-slate-300 focus-within:border-brand-500 transition-colors bg-transparent">
+                  {/* FIXED: Added dark:text-brand-400 */}
+                  <label className="text-[11px] font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wide">Message</label>
+                  {/* FIXED: Added dark:border-slate-700 */}
+                  <div className="relative border-b border-slate-300 dark:border-slate-700 focus-within:border-brand-500 transition-colors bg-transparent">
+                    {/* FIXED: Added dark:text-slate-100 and dark:placeholder:text-slate-500 */}
                     <textarea 
                       rows={2}
                       placeholder="Tell us how we can help..." 
                       value={formData.message}
                       onChange={(e) => handleChange('message', e.target.value)}
-                      className="w-full bg-transparent px-0 py-2 pr-8 text-slate-900 text-sm placeholder:text-slate-400 focus:outline-none font-medium resize-y min-h-[60px]"
+                      className="w-full bg-transparent px-0 py-2 pr-8 text-slate-900 dark:text-slate-100 text-sm placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none font-medium resize-y min-h-[60px]"
                     />
                     <AnimatePresence>
                       {formData.message && (
@@ -385,7 +405,8 @@ export const ContactGrid = () => {
                 </div>
 
                 <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <div className="flex items-center gap-2 text-slate-500 text-sm font-medium">
+                  {/* FIXED: Added dark:text-slate-400 */}
+                  <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm font-medium">
                     <ShieldCheck className="w-4 h-4 text-emerald-500" />
                     <span>Your data is secure.</span>
                   </div>

@@ -10,7 +10,8 @@ const fadeUp: Variants = {
 
 export const AboutStory = () => {
   return (
-    <section className="py-24 lg:py-32 bg-white relative">
+    // FIXED: Added dark:bg-slate-900
+    <section className="py-24 lg:py-32 bg-white dark:bg-slate-900 relative">
       <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12">
         
         {/* --- ADDED SECTION HEADER & BADGE --- */}
@@ -25,9 +26,11 @@ export const AboutStory = () => {
           <SectionHeader 
             align="left"
             title="Revolutionizing Business Interactions."
-            titleClassName="!text-4xl md:!text-5xl !font-bold !text-slate-900 !mb-8"
+            // FIXED: Added dark:text-white
+            titleClassName="!text-4xl md:!text-5xl !font-bold !text-slate-900 dark:!text-white !mb-8"
             subtitle="Beginning with our flagship voice services, we embarked on a journey to revolutionize business interactions. Today, we proudly offer an extensive suite of solutions, including cutting-edge voice and SMS services, alongside innovative software offerings. With a commitment to excellence, Squad Telekom continues to shape the landscape of modern communication, catering to diverse client needs across global markets."
-            subtitleClassName="!text-lg !text-slate-600 !leading-relaxed !font-medium"
+            // FIXED: Added dark:text-slate-400
+            subtitleClassName="!text-lg !text-slate-600 dark:!text-slate-400 !leading-relaxed !font-medium"
           />
         </motion.div>
 
@@ -58,13 +61,17 @@ export const AboutStory = () => {
               viewport={{ once: true }} 
               transition={{ delay: i * 0.1 }}
               whileHover={{ y: -8 }}
-              className="bg-slate-50 rounded-[2rem] p-8 border border-slate-100 shadow-sm transition-all duration-500 flex flex-col"
+              // FIXED: Added dark:bg-slate-800 and dark:border-slate-700
+              className="bg-slate-50 dark:bg-slate-800 rounded-[2rem] p-8 border border-slate-100 dark:border-slate-700 shadow-sm transition-all duration-500 flex flex-col"
             >
-              <div className="w-14 h-14 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center mb-8">
+              {/* FIXED: Added dark:bg-slate-700 and dark:border-slate-600 */}
+              <div className="w-14 h-14 bg-white dark:bg-slate-700 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-600 flex items-center justify-center mb-8">
                 <item.icon className="w-7 h-7 text-brand-500" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">{item.title}</h3>
-              <p className="text-slate-600 font-medium leading-relaxed">{item.desc}</p>
+              {/* FIXED: Added dark:text-white */}
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">{item.title}</h3>
+              {/* FIXED: Added dark:text-slate-400 */}
+              <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed">{item.desc}</p>
             </motion.div>
           ))}
         </div>

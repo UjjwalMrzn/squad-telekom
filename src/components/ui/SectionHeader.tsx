@@ -21,8 +21,9 @@ export const SectionHeader = ({
 }: SectionHeaderProps) => {
   
   const alignClass = align === "center" ? "text-center items-center" : "text-left items-start";
-  const titleColor = lightMode ? "text-white drop-shadow-sm" : "text-slate-900";
-  const subtitleColor = lightMode ? "text-brand-50/90" : "text-slate-500";
+  // FIXED: Added dark:text-white and dark:text-slate-400 conditionally
+  const titleColor = lightMode ? "text-white drop-shadow-sm" : "text-slate-900 dark:text-white";
+  const subtitleColor = lightMode ? "text-brand-50/90" : "text-slate-500 dark:text-slate-400";
 
   return (
     <div className={`flex flex-col ${alignClass} ${className}`}>

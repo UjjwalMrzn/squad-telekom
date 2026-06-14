@@ -7,7 +7,8 @@ export const PageLoader = () => {
       initial={{ opacity: 1 }}
       exit={{ opacity: 0, filter: "blur(10px)" }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed inset-0 z-[9999] bg-white flex flex-col items-center justify-center overflow-hidden"
+      // FIXED: Added dark:bg-[#020617]
+      className="fixed inset-0 z-[9999] bg-white dark:bg-[#020617] flex flex-col items-center justify-center overflow-hidden"
     >
       {/* Soft, premium ambient glow (Light Theme) */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[800px] h-[600px] md:h-[800px] bg-[radial-gradient(ellipse,rgba(59,186,177,0.08)_0%,transparent_60%)] pointer-events-none" />
@@ -27,7 +28,8 @@ export const PageLoader = () => {
         />
 
         {/* Ultra-minimalist 2px sweeping line loader */}
-        <div className="mt-8 w-40 md:w-48 h-[2px] bg-slate-100 rounded-full overflow-hidden relative">
+        {/* FIXED: Added dark:bg-slate-800 to the track */}
+        <div className="mt-8 w-40 md:w-48 h-[2px] bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden relative">
           <motion.div
             initial={{ x: "-100%" }}
             animate={{ x: "200%" }}

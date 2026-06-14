@@ -62,10 +62,11 @@ export const REFeatures = () => {
   };
 
   return (
+    // FIXED: Added dark:bg-slate-900 to alternate with Difference
     <section 
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="py-24 lg:py-32 bg-[#020617] relative overflow-hidden group/section cursor-default"
+      className="py-24 lg:py-32 bg-[#020617] dark:bg-slate-900 relative overflow-hidden group/section cursor-default"
     >
       
       {/* ========================================= */}
@@ -76,7 +77,8 @@ export const REFeatures = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(59,186,177,0.08)_0%,transparent_50%),radial-gradient(circle_at_100%_100%,rgba(59,186,177,0.05)_0%,transparent_50%)]" />
         
         {/* Subtle Tech Grid */}
-        <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#3bbab1_1px,transparent_1px),linear-gradient(to_bottom,#3bbab1_1px,transparent_1px)] [background-size:40px_40px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_20%,transparent_100%)]" />
+        {/* FIXED: Reduced grid opacity in dark mode to blend with slate-900 */}
+        <div className="absolute inset-0 opacity-10 dark:opacity-5 bg-[linear-gradient(to_right,#3bbab1_1px,transparent_1px),linear-gradient(to_bottom,#3bbab1_1px,transparent_1px)] [background-size:40px_40px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_20%,transparent_100%)]" />
 
         {/* --- INTERACTIVE SONAR LAYERS --- */}
         <motion.div 
@@ -96,7 +98,7 @@ export const REFeatures = () => {
             style={{ left: hoverX, top: hoverY, x: "-50%", y: "-50%" }}
             animate={{ scale: [0.5, 1.5], opacity: [0, 0.4, 0] }}
             transition={{ duration: 3, repeat: Infinity, delay: i * 1.5, ease: "linear" }}
-            className="absolute w-[400px] h-[400px] border border-brand-500/30 rounded-full"
+            className="absolute w-[400px] h-[400px] border border-brand-500/30 rounded-full opacity-0 group-hover/section:opacity-100 transition-opacity duration-500"
           />
         ))}
       </div>
@@ -111,7 +113,7 @@ export const REFeatures = () => {
           variants={fadeUp}
           className="text-center max-w-3xl mx-auto mb-20 lg:mb-24"
         >
-          <SectionBadge text="Platform Capabilities" className="!bg-slate-800/50 !border-slate-700 !text-brand-400 !mb-8 backdrop-blur-md" />
+          <SectionBadge text="Platform Capabilities" className="!bg-slate-800/50 dark:!bg-slate-800 !border-slate-700 !text-brand-400 !mb-8 backdrop-blur-md" />
           <SectionHeader 
             align="center"
             lightMode={true} 
@@ -122,7 +124,7 @@ export const REFeatures = () => {
           />
         </motion.div>
 
-        {/* --- FEATURES GRID (FIXED: Dark boxes to match Banking) --- */}
+        {/* --- FEATURES GRID --- */}
         <motion.div 
           variants={staggerContainer}
           initial="hidden"
@@ -135,7 +137,8 @@ export const REFeatures = () => {
               key={index}
               variants={fadeUp}
               whileHover={{ y: -8 }}
-              className="group relative bg-[#0B1120] rounded-[2rem] p-8 lg:p-10 shadow-2xl overflow-hidden transition-all duration-500 flex flex-col border border-slate-800 hover:border-brand-500/30 hover:shadow-brand-500/10"
+              // FIXED: Added dark:bg-slate-800 and dark:border-slate-700 to separate the card from the slate-900 background
+              className="group relative bg-[#0B1120] dark:bg-slate-800 rounded-[2rem] p-8 lg:p-10 shadow-2xl overflow-hidden transition-all duration-500 flex flex-col border border-slate-800 dark:border-slate-700 hover:border-brand-500/30 hover:shadow-brand-500/10"
             >
               {/* Top Gradient Border Line */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-600 via-brand-400 to-emerald-400 opacity-50 group-hover:opacity-100 transition-opacity duration-500" />

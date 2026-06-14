@@ -18,18 +18,10 @@ const staggerContainer: Variants = {
 
 export const REWhySquad = () => {
   return (
-    <section className="py-24 lg:py-32 bg-white relative overflow-hidden border-b border-slate-100">
+    // FIXED: Added dark:bg-[#020617] and dark:border-slate-800
+    <section className="py-24 lg:py-32 bg-white dark:bg-[#020617] relative overflow-hidden border-b border-slate-100 dark:border-slate-800">
       
-      {/* Background Texture */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div 
-          className="absolute inset-0 opacity-[0.02]" 
-          style={{ 
-            backgroundImage: 'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)', 
-            backgroundSize: '40px 40px' 
-          }} 
-        />
-      </div>
+      {/* FIXED: Removed Background grid Texture completely as requested */}
 
       <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
@@ -45,9 +37,11 @@ export const REWhySquad = () => {
           <SectionHeader 
             align="left"
             title="Why Squad"
-            titleClassName="!text-4xl md:!text-5xl !font-bold !text-slate-900 !mb-4"
+            // FIXED: Added dark:text-white
+            titleClassName="!text-4xl md:!text-5xl !font-bold !text-slate-900 dark:!text-white !mb-4"
             subtitle="Seamless, scalable, and secure — Squad empowers real estate enterprises with trusted communication solutions that drive growth, efficiency, and stronger customer relationships."
-            subtitleClassName="!text-lg lg:!text-xl !text-slate-600 !max-w-3xl"
+            // FIXED: Added dark:text-slate-400
+            subtitleClassName="!text-lg lg:!text-xl !text-slate-600 dark:!text-slate-400 !max-w-3xl"
           />
         </motion.div>
 
@@ -60,9 +54,10 @@ export const REWhySquad = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6"
         >
           {/* 1. TOP LEFT: Wide Image Card */}
+          {/* FIXED: Added dark:bg-slate-800 and dark:border-slate-700 */}
           <motion.div 
             variants={fadeUp}
-            className="col-span-1 md:col-span-2 lg:col-span-2 bg-slate-50 rounded-[2rem] overflow-hidden flex flex-col sm:flex-row border border-slate-100 shadow-lg shadow-slate-200/40 group"
+            className="col-span-1 md:col-span-2 lg:col-span-2 bg-slate-50 dark:bg-slate-800 rounded-[2rem] overflow-hidden flex flex-col sm:flex-row border border-slate-100 dark:border-slate-700 shadow-lg shadow-slate-200/40 dark:shadow-none group"
           >
             <div className="w-full sm:w-2/5 h-64 sm:h-auto overflow-hidden">
               <img 
@@ -72,8 +67,9 @@ export const REWhySquad = () => {
               />
             </div>
             <div className="w-full sm:w-3/5 p-8 lg:p-12 flex items-center justify-center text-center">
-              <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 leading-tight">
-                <span className="text-brand-600">900+ operator</span><br/>
+              {/* FIXED: Added dark:text-white and dark:text-brand-400 */}
+              <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white leading-tight">
+                <span className="text-brand-600 dark:text-brand-400">900+ operator</span><br/>
                 connections across 30+<br/>
                 Countries
               </h3>
@@ -81,10 +77,11 @@ export const REWhySquad = () => {
           </motion.div>
 
           {/* 2. TOP MID: Dark Accent Card */}
+          {/* FIXED: Changed to dark:bg-slate-900 so it doesn't blend into the #020617 section bg */}
           <motion.div 
             variants={fadeUp}
             whileHover={{ y: -4 }}
-            className="col-span-1 bg-[#020617] rounded-[2rem] p-8 flex flex-col justify-between shadow-xl group transition-transform"
+            className="col-span-1 bg-[#020617] dark:bg-slate-900 rounded-[2rem] p-8 flex flex-col justify-between shadow-xl group transition-transform border border-transparent dark:border-slate-800"
           >
             <div>
               <ShieldCheck className="w-10 h-10 text-emerald-400 mb-6" />
@@ -97,7 +94,7 @@ export const REWhySquad = () => {
           <motion.div 
             variants={fadeUp}
             whileHover={{ y: -4 }}
-            className="col-span-1 bg-gradient-to-br from-brand-500 to-brand-600 rounded-[2rem] p-8 flex flex-col justify-between shadow-xl shadow-brand-500/20 group transition-transform relative overflow-hidden"
+            className="col-span-1 bg-gradient-to-br from-brand-500 to-brand-600 rounded-[2rem] p-8 flex flex-col justify-between shadow-xl shadow-brand-500/20 group transition-transform relative overflow-hidden border border-transparent dark:border-slate-800/50"
           >
             <div className="absolute top-6 right-6 opacity-50 group-hover:opacity-100 transition-opacity">
               <ArrowUpRight className="w-6 h-6 text-white" />
@@ -113,7 +110,7 @@ export const REWhySquad = () => {
           <motion.div 
             variants={fadeUp}
             whileHover={{ y: -4 }}
-            className="col-span-1 bg-gradient-to-br from-brand-500 to-brand-600 rounded-[2rem] p-8 flex flex-col justify-between shadow-xl shadow-brand-500/20 group transition-transform"
+            className="col-span-1 bg-gradient-to-br from-brand-500 to-brand-600 rounded-[2rem] p-8 flex flex-col justify-between shadow-xl shadow-brand-500/20 group transition-transform border border-transparent dark:border-slate-800/50"
           >
             <div>
               <Zap className="w-10 h-10 text-white mb-6" />
@@ -123,10 +120,11 @@ export const REWhySquad = () => {
           </motion.div>
 
           {/* 5. BOTTOM MID: Dark Accent Card */}
+          {/* FIXED: Changed to dark:bg-slate-900 so it doesn't blend into the #020617 section bg */}
           <motion.div 
             variants={fadeUp}
             whileHover={{ y: -4 }}
-            className="col-span-1 bg-[#020617] rounded-[2rem] p-8 flex flex-col justify-between shadow-xl group transition-transform relative overflow-hidden"
+            className="col-span-1 bg-[#020617] dark:bg-slate-900 rounded-[2rem] p-8 flex flex-col justify-between shadow-xl group transition-transform relative overflow-hidden border border-transparent dark:border-slate-800"
           >
             <div className="absolute top-6 right-6 opacity-50 group-hover:opacity-100 transition-opacity">
               <ArrowUpRight className="w-6 h-6 text-slate-400 group-hover:text-white" />
@@ -139,9 +137,10 @@ export const REWhySquad = () => {
           </motion.div>
 
           {/* 6. BOTTOM RIGHT: Wide Image Card */}
+          {/* FIXED: Added dark:bg-slate-800 and dark:border-slate-700 */}
           <motion.div 
             variants={fadeUp}
-            className="col-span-1 md:col-span-2 lg:col-span-2 bg-slate-50 rounded-[2rem] overflow-hidden flex flex-col sm:flex-row border border-slate-100 shadow-lg shadow-slate-200/40 group"
+            className="col-span-1 md:col-span-2 lg:col-span-2 bg-slate-50 dark:bg-slate-800 rounded-[2rem] overflow-hidden flex flex-col sm:flex-row border border-slate-100 dark:border-slate-700 shadow-lg shadow-slate-200/40 dark:shadow-none group"
           >
             <div className="w-full sm:w-2/5 h-64 sm:h-auto overflow-hidden">
               <img 
@@ -151,8 +150,9 @@ export const REWhySquad = () => {
               />
             </div>
             <div className="w-full sm:w-3/5 p-8 lg:p-12 flex items-center justify-center text-center">
-              <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 leading-tight">
-                Constantly evolving to meet <span className="text-brand-600">tomorrow's communication</span> needs.
+              {/* FIXED: Added dark:text-white and dark:text-brand-400 */}
+              <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white leading-tight">
+                Constantly evolving to meet <span className="text-brand-600 dark:text-brand-400">tomorrow's communication</span> needs.
               </h3>
             </div>
           </motion.div>

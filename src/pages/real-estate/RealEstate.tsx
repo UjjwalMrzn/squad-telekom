@@ -3,11 +3,12 @@ import { REBenefits } from './sections/REBenefits';
 import { REDifference } from './sections/REDifference';
 import { REFeatures } from './sections/REFeatures';
 import { REWhySquad } from './sections/REWhySquad';
-import { REFaq } from './sections/REFaq'; // <-- Import the new FAQ section
+import { REFaq } from './sections/REFaq';
 
 export const RealEstate = () => {
   return (
-    <main className="w-full bg-white flex flex-col overflow-hidden">
+    // FIXED: Added dark:bg-slate-900
+    <main className="w-full bg-white dark:bg-slate-900 flex flex-col overflow-hidden">
       {/* 1. Page Intro */}
       <REHero />
 
@@ -24,7 +25,7 @@ export const RealEstate = () => {
       <REWhySquad />
 
       {/* 6. Frequently Asked Questions */}
-      <REFaq /> {/* <-- Mount here */}
+      <REFaq />
       
     </main>
   );

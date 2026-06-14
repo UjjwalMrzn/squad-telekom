@@ -21,7 +21,8 @@ export const Overview = () => {
   };
 
   return (
-    <section className="py-24 lg:py-32 bg-slate-100 relative border-b border-slate-200 overflow-hidden">
+    // FIXED: Added dark:bg-slate-900 and dark:border-slate-800
+    <section className="py-24 lg:py-32 bg-slate-100 dark:bg-slate-900 relative border-b border-slate-200 dark:border-slate-800 overflow-hidden">
       <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           
@@ -37,19 +38,18 @@ export const Overview = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.5 }}
             >
-              <SectionBadge text="Company Overview" className="!bg-white !border-brand-100 !mb-8" />
+              <SectionBadge text="Company Overview" className="!bg-white dark:!bg-slate-800 !border-brand-100 dark:!border-slate-700 !mb-8" />
             </motion.div>
             
-            {/* FIXED: Changed !font-extrabold to !font-bold */}
             <SectionHeader 
               title={<>Empowering Enterprise <br /> Communication <br /> Since <motion.span initial={{ opacity: 0, color: '#0f172a' }} whileInView={{ opacity: 1, color: '#3bbab1' }} viewport={{ once: true }} transition={{ delay: 0.5, duration: 0.8 }} className="text-brand-500 inline-block">2008</motion.span></>}
               titleClassName="!text-4xl md:!text-5xl lg:!text-6xl !font-bold !leading-[1.1] !mb-8"
-              subtitle={<>Founded with a single system and a bold vision, Squad has evolved into a global leader in telecom and enterprise communication solutions. With over <span className="text-slate-900 font-bold">17 years</span> of consistent innovation, we've earned the trust of <span className="text-slate-900 font-bold">12,000+ global brands</span> across 30+ countries.</>}
-              subtitleClassName="!text-lg md:!text-xl !text-slate-600 !leading-relaxed !font-medium !max-w-xl"
+              // FIXED: Added dark:text-white inside the subtitle spans
+              subtitle={<>Founded with a single system and a bold vision, Squad has evolved into a global leader in telecom and enterprise communication solutions. With over <span className="text-slate-900 dark:text-white font-bold">17 years</span> of consistent innovation, we've earned the trust of <span className="text-slate-900 dark:text-white font-bold">12,000+ global brands</span> across 30+ countries.</>}
+              subtitleClassName="!text-lg md:!text-xl !text-slate-600 dark:!text-slate-400 !leading-relaxed !font-medium !max-w-xl"
             />
           </motion.div>
 
-          {/* FIXED: Added max-w-[540px] and ml-auto to prevent full-width stretching */}
           <div className="relative w-full max-w-[540px] mx-auto lg:ml-auto lg:mr-0">
             <motion.div 
               ref={containerRef}
@@ -66,7 +66,6 @@ export const Overview = () => {
               style={{ WebkitTransform: 'translateZ(0)', backfaceVisibility: 'hidden' }}
               className="bg-[#020617] rounded-[3rem] p-8 pb-20 md:p-12 md:pb-24 shadow-2xl hover:shadow-[0_40px_80px_-20px_rgba(59,186,177,0.2)] relative overflow-hidden transition-shadow duration-500 group cursor-default border border-slate-800/50 hover:border-brand-500/30"
             >
-              {/* FIXED: Added the Tech Grid Background */}
               <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#3bbab1_1px,transparent_1px),linear-gradient(to_bottom,#3bbab1_1px,transparent_1px)] [background-size:40px_40px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_20%,transparent_100%)] pointer-events-none z-0" />
 
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(59,186,177,0.05)_0%,transparent_60%)] pointer-events-none z-0" />
@@ -180,14 +179,16 @@ export const Overview = () => {
                 animate={{ y: [0, -15, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 style={{ WebkitTransform: "translateZ(0)" }}
-                className="bg-white p-6 rounded-3xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] border border-slate-100 flex items-center gap-4 group pointer-events-auto cursor-default"
+                // FIXED: Added dark:bg-slate-800 and dark:border-slate-700
+                className="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] border border-slate-100 dark:border-slate-700 flex items-center gap-4 group pointer-events-auto cursor-default"
               >
-                <div className="w-12 h-12 bg-brand-50 text-brand-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                {/* FIXED: Added dark mode icon bg/text */}
+                <div className="w-12 h-12 bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Globe className="w-6 h-6" />
                 </div>
                 <div>
-                  {/* FIXED: Changed to font-bold */}
-                  <div className="text-2xl font-bold text-slate-900">30+</div>
+                  {/* FIXED: Added dark:text-white */}
+                  <div className="text-2xl font-bold text-slate-900 dark:text-white">30+</div>
                   <div className="text-xs font-bold text-slate-500 uppercase tracking-tighter">Active Markets</div>
                 </div>
               </motion.div>

@@ -12,7 +12,8 @@ const stats = [
 
 export const AboutDetails = () => {
   return (
-    <section className="py-24 lg:py-32 bg-slate-50 relative border-t border-slate-200">
+    // FIXED: Added dark:bg-[#020617] (matching alternate background tone) and dark:border-slate-800
+    <section className="py-24 lg:py-32 bg-slate-50 dark:bg-[#020617] relative border-t border-slate-200 dark:border-slate-800">
       <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
         {/* --- ADDED SECTION HEADER & BADGE --- */}
@@ -37,12 +38,15 @@ export const AboutDetails = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
-                className="bg-white rounded-[2rem] p-8 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)] border border-slate-200 flex flex-col items-center text-center group transition-all duration-300"
+                // FIXED: Added dark:bg-slate-800 and dark:border-slate-700
+                className="bg-white dark:bg-slate-800 rounded-[2rem] p-8 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)] border border-slate-200 dark:border-slate-700 flex flex-col items-center text-center group transition-all duration-300"
               >
-                <div className="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-50 transition-colors duration-300">
-                  <Icon className="w-6 h-6 text-brand-600" />
+                {/* FIXED: Added dark:bg-slate-700 and dark:group-hover:bg-slate-600 */}
+                <div className="w-12 h-12 bg-slate-50 dark:bg-slate-700 rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-50 dark:group-hover:bg-slate-600 transition-colors duration-300">
+                  <Icon className="w-6 h-6 text-brand-600 dark:text-brand-400" />
                 </div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">{stat.value}</h4>
+                {/* FIXED: Added dark:text-white */}
+                <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{stat.value}</h4>
                 <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">{stat.label}</p>
               </motion.div>
             )
@@ -54,7 +58,8 @@ export const AboutDetails = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative bg-[#020617] rounded-[2.5rem] p-8 lg:p-12 overflow-hidden shadow-2xl"
+          // Note: This remains #020617 as it's already a dark element in both themes
+          className="relative bg-[#020617] rounded-[2.5rem] p-8 lg:p-12 overflow-hidden shadow-2xl border border-transparent dark:border-slate-800/50"
         >
           {/* Subtle Interior Glow */}
           <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-brand-500/10 rounded-full blur-[100px] pointer-events-none" />

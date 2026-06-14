@@ -8,7 +8,8 @@ import { FaqAndNewsletter } from './sections/FaqAndNewsletter';
 
 export const Home = () => {
   return (
-    <main className="flex-grow">
+    // FIXED: Added dark:bg-slate-900
+    <main className="flex-grow bg-white dark:bg-slate-900">
       <Hero />
       <Overview />
       <Products />

@@ -4,10 +4,11 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  // FIXED: This line is required to enable manual toggling of dark mode using the 'dark' class on the HTML element.
+  darkMode: 'class', 
   theme: {
     extend: {
       fontFamily: {
-        // SET MANROPE AS THE DEFAULT SANS FONT
         sans: ['"Manrope"', 'sans-serif'],
       },
       colors: {
@@ -17,11 +18,11 @@ export default {
           200: '#99e6e0',
           300: '#66d9d1',
           400: '#33ccc1',
-          500: '#3BBAB1', // Exact Squad Teal
+          500: '#3BBAB1', 
           600: '#2F958E', 
           700: '#23706a',
           800: '#174a47',
-          900: '#1d3539', // Dark slate
+          900: '#1d3539',
         },
         surface: '#ffffff',
       },

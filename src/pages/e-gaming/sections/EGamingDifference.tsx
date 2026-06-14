@@ -32,8 +32,8 @@ const staggerContainer: Variants = {
 
 export const EGamingDifference = () => {
   return (
-    // FIXED: Medium section padding (not too squished, not too huge)
-    <section className="py-16 lg:py-20 bg-white relative overflow-hidden border-b border-slate-100">
+    // FIXED: Changed dark:bg-slate-900 to dark:bg-[#020617] to alternate with Benefits
+    <section className="py-16 lg:py-20 bg-white dark:bg-[#020617] relative overflow-hidden border-b border-slate-100 dark:border-slate-800">
       
       <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
@@ -48,8 +48,8 @@ export const EGamingDifference = () => {
             variants={fadeUp}
             className="order-2 lg:order-1"
           >
-            {/* FIXED: Medium aspect ratio for the image */}
-            <div className="relative aspect-[4/3] lg:aspect-[16/10] rounded-[2rem] overflow-hidden bg-slate-200 group w-full">
+            {/* FIXED: Added dark:bg-slate-800 */}
+            <div className="relative aspect-[4/3] lg:aspect-[16/10] rounded-[2rem] overflow-hidden bg-slate-200 dark:bg-slate-800 group w-full">
               <img 
                 src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop" 
                 alt="E-Gaming Setup and Communication" 
@@ -71,7 +71,8 @@ export const EGamingDifference = () => {
             <SectionHeader 
               align="left"
               title="What Makes Squad Different for E-Gaming Platforms"
-              titleClassName="!text-3xl md:!text-4xl lg:!text-[2.75rem] !font-bold !text-slate-900 !leading-[1.15] !mb-6"
+              // FIXED: Added dark:text-white
+              titleClassName="!text-3xl md:!text-4xl lg:!text-[2.75rem] !font-bold !text-slate-900 dark:!text-white !leading-[1.15] !mb-6"
               subtitle={
                 <div className="flex flex-col gap-5">
                   <p>
@@ -82,7 +83,8 @@ export const EGamingDifference = () => {
                   </p>
                 </div>
               }
-              subtitleClassName="!text-base lg:!text-lg !text-slate-600 !font-medium !leading-relaxed"
+              // FIXED: Added dark:text-slate-400
+              subtitleClassName="!text-base lg:!text-lg !text-slate-600 dark:!text-slate-400 !font-medium !leading-relaxed"
             />
           </motion.div>
         </div>
@@ -93,7 +95,6 @@ export const EGamingDifference = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          // FIXED: Medium grid gaps
           className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
         >
           {features.map((feature, index) => (
@@ -101,14 +102,16 @@ export const EGamingDifference = () => {
               key={index}
               variants={fadeUp}
               whileHover={{ y: -6 }}
-              // FIXED: Restored to standard p-8 padding for a premium look
-              className="bg-white rounded-[2rem] p-8 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.06)] border border-slate-100 flex flex-col justify-start transition-transform duration-300"
+              // FIXED: Ensure cards are dark:bg-slate-900 to pop slightly off the #020617 background
+              className="bg-white dark:bg-slate-900 rounded-[2rem] p-8 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.06)] border border-slate-100 dark:border-slate-800 flex flex-col justify-start transition-transform duration-300"
             >
-              <h3 className="text-xl lg:text-2xl font-bold text-slate-900 tracking-tight mb-4">
+              {/* FIXED: Added dark:text-white */}
+              <h3 className="text-xl lg:text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-4">
                 {feature.title}
               </h3>
               <div className="w-12 h-1 bg-brand-500 rounded-full mb-5" /> 
-              <p className="text-sm lg:text-base text-slate-500 font-medium leading-relaxed">
+              {/* FIXED: Added dark:text-slate-400 */}
+              <p className="text-sm lg:text-base text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
                 {feature.description}
               </p>
             </motion.div>

@@ -11,7 +11,6 @@ import {
 import { SectionBadge } from '../../../components/ui/SectionBadge';
 import { SectionHeader } from '../../../components/ui/SectionHeader';
 
-// FIXED: Condensed descriptions and titles to match the exact word count (10-13 words) of the Banking benefits, locking the card heights.
 const benefits = [
   { 
     icon: UserPlus, 
@@ -64,11 +63,13 @@ export const EGamingBenefits = () => {
     <section 
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="py-12 lg:py-16 bg-[#020617] relative overflow-hidden group/section cursor-default"
+      // FIXED: Added dark:bg-slate-900 to alternate with Hero
+      className="py-12 lg:py-16 bg-[#020617] dark:bg-slate-900 relative overflow-hidden group/section cursor-default"
     >
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(59,186,177,0.08)_0%,transparent_50%),radial-gradient(circle_at_100%_100%,rgba(59,186,177,0.05)_0%,transparent_50%)]" />
-        <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#3bbab1_1px,transparent_1px),linear-gradient(to_bottom,#3bbab1_1px,transparent_1px)] [background-size:40px_40px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_20%,transparent_100%)]" />
+        {/* FIXED: Dropped grid opacity slightly in dark mode to blend better with slate-900 */}
+        <div className="absolute inset-0 opacity-10 dark:opacity-5 bg-[linear-gradient(to_right,#3bbab1_1px,transparent_1px),linear-gradient(to_bottom,#3bbab1_1px,transparent_1px)] [background-size:40px_40px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_20%,transparent_100%)]" />
         
         {/* --- INTERACTIVE SONAR LAYERS --- */}
         <motion.div style={{ left: hoverX, top: hoverY, x: "-50%", y: "-50%" }} className="absolute w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(59,186,177,0.15)_0%,transparent_70%)] opacity-0 group-hover/section:opacity-100 transition-opacity duration-500 mix-blend-screen" />
@@ -90,7 +91,8 @@ export const EGamingBenefits = () => {
       <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
         <div className="text-center max-w-3xl mx-auto mb-10 lg:mb-12">
-          <SectionBadge text="Player Engagement" className="!bg-slate-800/50 !border-slate-700 !text-brand-400 !mb-4 backdrop-blur-md" />
+          {/* FIXED: Ensure badge matches dark mode */}
+          <SectionBadge text="Player Engagement" className="!bg-slate-800/50 dark:!bg-slate-800 !border-slate-700 !text-brand-400 !mb-4 backdrop-blur-md" />
           <SectionHeader 
             align="center" 
             lightMode={true} 
@@ -110,11 +112,13 @@ export const EGamingBenefits = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ y: -6 }} 
-              className="group relative bg-slate-900/40 backdrop-blur-xl border border-slate-800 p-5 lg:p-6 rounded-[2rem] hover:border-brand-500/50 transition-all duration-500 flex flex-col shadow-2xl"
+              // FIXED: Added dark:bg-slate-800/50 to pop off the slate-900 background
+              className="group relative bg-slate-900/40 dark:bg-slate-800/50 backdrop-blur-xl border border-slate-800 dark:border-slate-700 p-5 lg:p-6 rounded-[2rem] hover:border-brand-500/50 transition-all duration-500 flex flex-col shadow-2xl"
             >
               <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-brand-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
-              <div className="w-10 h-10 bg-slate-800 rounded-xl flex items-center justify-center border border-slate-700 mb-4 group-hover:bg-brand-500 group-hover:border-brand-400 transition-all duration-500 relative z-10 shadow-md shadow-black/20">
+              {/* FIXED: Icon container background adjusted */}
+              <div className="w-10 h-10 bg-slate-800 dark:bg-slate-700 rounded-xl flex items-center justify-center border border-slate-700 dark:border-slate-600 mb-4 group-hover:bg-brand-500 group-hover:border-brand-400 transition-all duration-500 relative z-10 shadow-md shadow-black/20">
                 <b.icon className="w-5 h-5 text-brand-400 group-hover:text-white transition-colors duration-500" />
               </div>
               

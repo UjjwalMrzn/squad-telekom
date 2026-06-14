@@ -49,8 +49,8 @@ export const WhyChooseUs = () => {
   };
 
   return (
-    // FIXED: Reduced padding from py-16 lg:py-20 to py-12 lg:py-16
-    <section className="py-12 lg:py-16 bg-slate-50 relative overflow-hidden border-b border-slate-200">
+    // FIXED: Added dark:bg-slate-900 and dark:border-slate-800
+    <section className="py-12 lg:py-16 bg-slate-50 dark:bg-slate-900 relative overflow-hidden border-b border-slate-200 dark:border-slate-800">
       
       <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
@@ -59,21 +59,20 @@ export const WhyChooseUs = () => {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={fadeUp}
-          // FIXED: Reduced bottom margin from mb-12 md:mb-16 to mb-8 md:mb-10
           className="max-w-4xl mb-8 md:mb-10 text-center mx-auto"
         >
-          <SectionBadge text="The Squad Advantage" className="!bg-white !border-brand-100 !mb-4" />
+          <SectionBadge text="The Squad Advantage" className="!bg-white dark:!bg-slate-800 !border-brand-100 dark:!border-slate-700 !mb-4" />
           
           <SectionHeader 
             align="center"
             title="Why Choose Squad"
             titleClassName="!text-3xl md:!text-4xl lg:!text-5xl !font-bold !leading-[1.1.5] !mb-4"
-            subtitle={<>At Squad, we do more than deliver messages—we enable enterprise-grade communication with measurable business impact. Our platform is trusted by <strong className="text-slate-900">12,000+ brands</strong> for its unmatched speed, security, and reliability. With over <strong className="text-slate-900">17 years</strong> of telecom expertise and <strong className="text-slate-900">900+</strong> operator connections, Squad offers the infrastructure and intelligence needed to scale your communication globally.</>}
-            subtitleClassName="!text-sm md:!text-base !text-slate-600 !leading-relaxed !font-medium !max-w-none"
+            // FIXED: Wrapped highlight text inside dark theme helpers
+            subtitle={<>At Squad, we do more than deliver messages—we enable enterprise-grade communication with measurable business impact. Our platform is trusted by <strong className="text-slate-900 dark:text-white">12,000+ brands</strong> for its unmatched speed, security, and reliability. With over <strong className="text-slate-900 dark:text-white">17 years</strong> of telecom expertise and <strong className="text-slate-900 dark:text-white">900+</strong> operator connections, Squad offers the infrastructure and intelligence needed to scale your communication globally.</>}
+            subtitleClassName="!text-sm md:!text-base !text-slate-600 dark:!text-slate-400 !leading-relaxed !font-medium !max-w-none"
           />
         </motion.div>
 
-        {/* FIXED: Reduced layout block gaps from gap-12 lg:gap-16 to gap-8 lg:gap-12 */}
         <div className="flex flex-col gap-8 lg:gap-12 mb-8 lg:mb-12">
           
           {/* Tighter grid layout gaps */}
@@ -85,14 +84,16 @@ export const WhyChooseUs = () => {
               variants={fadeRight}
               className="order-2 lg:order-1"
             >
-              <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-slate-900 leading-tight tracking-tight mb-3">
+              {/* FIXED: Added dark:text-white */}
+              <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white leading-tight tracking-tight mb-3">
                 Powerful APIs. Global Reach. Unmatched Uptime.
               </h3>
-              <p className="text-sm md:text-base text-slate-600 font-medium leading-relaxed mb-4 max-w-lg">
+              {/* FIXED: Added dark:text-slate-400 */}
+              <p className="text-sm md:text-base text-slate-600 dark:text-slate-400 font-medium leading-relaxed mb-4 max-w-lg">
                 Ensuring always-on delivery with robust APIs and global-grade infrastructure.
               </p>
               
-              <div className="group inline-flex items-center text-xs font-bold tracking-widest uppercase transition-colors cursor-pointer w-fit text-brand-600 hover:text-brand-700">
+              <div className="group inline-flex items-center text-xs font-bold tracking-widest uppercase transition-colors cursor-pointer w-fit text-brand-600 hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300">
                 <span>Learn More</span>
                 <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:translate-x-2" />
               </div>
@@ -109,19 +110,23 @@ export const WhyChooseUs = () => {
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 style={{ WebkitTransform: "translateZ(0)" }}
-                className="absolute -bottom-4 -left-4 bg-white p-3 rounded-xl shadow-[0_15px_30px_-10px_rgba(0,0,0,0.1)] border border-slate-100 hidden sm:flex items-center gap-2 z-20 group cursor-default"
+                // FIXED: Added dark:bg-slate-800 and dark:border-slate-700
+                className="absolute -bottom-4 -left-4 bg-white dark:bg-slate-800 p-3 rounded-xl shadow-[0_15px_30px_-10px_rgba(0,0,0,0.1)] border border-slate-100 dark:border-slate-700 hidden sm:flex items-center gap-2 z-20 group cursor-default"
               >
-                <div className="w-8 h-8 bg-brand-50 text-brand-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                {/* FIXED: Added dark:bg-brand-900/40 */}
+                <div className="w-8 h-8 bg-brand-50 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Code2 className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-lg font-bold text-slate-900">100%</div>
-                  <div className="text-[9px] font-bold text-slate-500 uppercase tracking-tighter">API Delivery</div>
+                  {/* FIXED: Added dark:text-white and dark:text-slate-400 */}
+                  <div className="text-lg font-bold text-slate-900 dark:text-white">100%</div>
+                  <div className="text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-tighter">API Delivery</div>
                 </div>
               </motion.div>
 
+              {/* FIXED: Added dark:bg-slate-800 and dark:border-slate-700 */}
               <div 
-                className="relative rounded-[1.5rem] overflow-hidden shadow-xl aspect-[16/9] group bg-white border border-slate-200/50"
+                className="relative rounded-[1.5rem] overflow-hidden shadow-xl aspect-[16/9] group bg-white dark:bg-slate-800 border border-slate-200/50 dark:border-slate-700"
                 style={{ WebkitTransform: 'translateZ(0)', backfaceVisibility: 'hidden' }}
               >
                 <img 
@@ -130,7 +135,7 @@ export const WhyChooseUs = () => {
                   loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[0.22,1,0.36,1]"
                 />
-                <div className="absolute inset-0 ring-1 ring-inset ring-black/5 rounded-[1.5rem] pointer-events-none" />
+                <div className="absolute inset-0 ring-1 ring-inset ring-black/5 dark:ring-white/5 rounded-[1.5rem] pointer-events-none" />
               </div>
             </motion.div>
           </div>
@@ -147,14 +152,17 @@ export const WhyChooseUs = () => {
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                 style={{ WebkitTransform: "translateZ(0)" }}
-                className="absolute -top-4 -right-4 bg-white p-3 rounded-xl shadow-[0_15px_30px_-10px_rgba(0,0,0,0.1)] border border-slate-100 hidden sm:flex items-center gap-2 z-20 group cursor-default"
+                // FIXED: Added dark:bg-slate-800 and dark:border-slate-700
+                className="absolute -top-4 -right-4 bg-white dark:bg-slate-800 p-3 rounded-xl shadow-[0_15px_30px_-10px_rgba(0,0,0,0.1)] border border-slate-100 dark:border-slate-700 hidden sm:flex items-center gap-2 z-20 group cursor-default"
               >
-                <div className="w-8 h-8 bg-emerald-50 text-emerald-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                {/* FIXED: Added dark:bg-emerald-950/40 */}
+                <div className="w-8 h-8 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Server className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-lg font-bold text-slate-900">900+</div>
-                  <div className="text-[9px] font-bold text-slate-500 uppercase tracking-tighter">Global Operators</div>
+                  {/* FIXED: Added dark:text-white and dark:text-slate-400 */}
+                  <div className="text-lg font-bold text-slate-900 dark:text-white">900+</div>
+                  <div className="text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-tighter">Global Operators</div>
                 </div>
               </motion.div>
 
@@ -179,14 +187,16 @@ export const WhyChooseUs = () => {
               viewport={{ once: true, margin: "-50px" }}
               variants={fadeLeft}
             >
-              <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-slate-900 leading-tight tracking-tight mb-3">
+              {/* FIXED: Added dark:text-white */}
+              <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white leading-tight tracking-tight mb-3">
                 Carrier-Grade Platform Uptime & Redundancy
               </h3>
-              <p className="text-sm md:text-base text-slate-600 font-medium leading-relaxed mb-4 max-w-lg">
+              {/* FIXED: Added dark:text-slate-400 */}
+              <p className="text-sm md:text-base text-slate-600 dark:text-slate-400 font-medium leading-relaxed mb-4 max-w-lg">
                 Built for scale. Our geo-redundant server clusters ensure your communication streams never drop, even during massive traffic spikes.
               </p>
               
-              <div className="group inline-flex items-center text-xs font-bold tracking-widest uppercase transition-colors cursor-pointer w-fit text-brand-600 hover:text-brand-700">
+              <div className="group inline-flex items-center text-xs font-bold tracking-widest uppercase transition-colors cursor-pointer w-fit text-brand-600 hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300">
                 <span>Learn More</span>
                 <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:translate-x-2" />
               </div>
@@ -195,7 +205,7 @@ export const WhyChooseUs = () => {
 
         </div>
 
-        {/* FIXED: Reduced padding on the bottom metric wrapper */}
+        {/* BOTTOM METRIC WRAPPER BLOCK - Remains perfectly secure dark box layout */}
         <motion.div 
           ref={containerRef}
           onMouseMove={handleMouseMove}
