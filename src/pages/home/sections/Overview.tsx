@@ -42,10 +42,10 @@ export const Overview = () => {
             </motion.div>
             
             <SectionHeader 
-              title={<>Empowering Enterprise <br /> Communication <br /> Since <motion.span initial={{ opacity: 0, color: '#0f172a' }} whileInView={{ opacity: 1, color: '#3bbab1' }} viewport={{ once: true }} transition={{ delay: 0.5, duration: 0.8 }} className="text-brand-500 inline-block">2008</motion.span></>}
+              title={<>Empowering Enterprise <br /> Communication <br /> Since <motion.span initial={{ opacity: 0, color: '#0f172a' }} whileInView={{ opacity: 1, color: '#3bbab1' }} viewport={{ once: true }} transition={{ delay: 0.5, duration: 0.8 }} className="text-brand-500 inline-block">2021</motion.span></>}
               titleClassName="!text-4xl md:!text-5xl lg:!text-6xl !font-bold !leading-[1.1] !mb-8"
               // FIXED: Added dark:text-white inside the subtitle spans
-              subtitle={<>Founded with a single system and a bold vision, Squad has evolved into a global leader in telecom and enterprise communication solutions. With over <span className="text-slate-900 dark:text-white font-bold">17 years</span> of consistent innovation, we've earned the trust of <span className="text-slate-900 dark:text-white font-bold">12,000+ global brands</span> across 30+ countries.</>}
+              subtitle={<>Founded with a single system and a bold vision, Squad has evolved into a global leader in telecom and enterprise communication solutions. With over <span className="text-slate-900 dark:text-white font-bold">5 years</span> of consistent innovation, we've earned the trust of <span className="text-slate-900 dark:text-white font-bold">12,000+ global brands</span> across 30+ countries.</>}
               subtitleClassName="!text-lg md:!text-xl !text-slate-600 dark:!text-slate-400 !leading-relaxed !font-medium !max-w-xl"
             />
           </motion.div>

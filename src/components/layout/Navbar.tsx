@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { Menu, X, ChevronDown, Sun, Moon } from 'lucide-react';
 import { Button } from '../ui/Button';
@@ -7,33 +7,46 @@ import { useTheme } from '../../context/ThemeContext';
 import logo from '../../assets/squad-logo-new.png'; 
 
 // --- DATA STRUCTURE FOR MEGA MENU ---
-const solutionsMenu = {
+// const solutionsMenu = {
+//   verticals: [
+//     { name: 'Real Estate', path: '/solutions/real-estate' },
+//     { name: 'Banking', path: '/solutions/banking' },
+//     { name: 'E-Gaming', path: '/solutions/e-gaming' },
+//     { name: 'FMCG', path: '#' },
+//     { name: 'Logistics', path: '#' },
+//     { name: 'E-Commerce', path: '#' },
+//   ],
+//   performance: [
+//     { name: 'Affiliate Channels', path: '#' },
+//   ],
+//   ai: [
+//     { name: 'AI Voice Calls', path: '#' },
+//     { name: 'AI Chat Bots', path: '#' },
+//     { name: 'AI Video Messaging', path: '#' },
+//     { name: 'Conversational AI', path: '#' },
+//   ]
+// };
+
+const portfolioMenu = {
   verticals: [
-    { name: 'Real Estate', path: '/solutions/real-estate' },
-    { name: 'Banking', path: '/solutions/banking' },
-    { name: 'E-Gaming', path: '/solutions/e-gaming' },
-    { name: 'FMCG', path: '#' },
-    { name: 'Logistics', path: '#' },
-    { name: 'E-Commerce', path: '#' },
-  ],
-  performance: [
-    { name: 'Affiliate Channels', path: '#' },
-  ],
-  ai: [
-    { name: 'AI Voice Calls', path: '#' },
-    { name: 'AI Chat Bots', path: '#' },
-    { name: 'AI Video Messaging', path: '#' },
-    { name: 'Conversational AI', path: '#' },
+    { name: 'Bulk SMS', path: '#' },
+    { name: 'WhatsApp Messaging', path: '#' },
+    { name: 'RCS Messaging', path: '#' },
+    { name: 'E-SIM', path: '#' },
+    { name: 'Telegram', path: '#' },
   ]
-};
+}
+
+// "Why Squad" now scrolls to the WhyChooseUs section on the homepage instead of routing to a page
+const WHY_SQUAD_SECTION_ID = 'why-squad';
 
 const navLinks = [
   { name: 'About Us', hasDropdown: false, path: '/about' },
-  { name: 'Solutions', hasDropdown: true, menuData: solutionsMenu },
-  { name: 'Portfolio', hasDropdown: true },
-  { name: 'Why Squad', hasDropdown: true },
-  { name: 'Careers', hasDropdown: false, path: '#' },
-  { name: 'Resources', hasDropdown: true },
+  // { name: 'Solutions', hasDropdown: false },
+  { name: 'Portfolio', hasDropdown: true, menuData: portfolioMenu },
+  { name: 'Why Squad', hasDropdown: false, path: '/' },
+  // { name: 'Careers', hasDropdown: false, path: '#' },
+  { name: 'Our Presence', hasDropdown: false, path: '/our-presence' },
 ];
 
 export const Navbar = () => {
@@ -42,6 +55,7 @@ export const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const location = useLocation();
+  const navigate = useNavigate();
   
   // Destructure from ThemeContext
   const { isDark, toggleTheme } = useTheme();
@@ -82,6 +96,18 @@ export const Navbar = () => {
     if (location.pathname === '/') {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  // Scrolls to the WhyChooseUs section; navigates home first if we're on another page
+  const handleWhySquadClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsOpen(false);
+
+    if (location.pathname === '/') {
+      document.getElementById(WHY_SQUAD_SECTION_ID)?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      navigate('/', { state: { scrollTo: WHY_SQUAD_SECTION_ID } });
     }
   };
 
@@ -143,7 +169,12 @@ export const Navbar = () => {
                   {link.hasDropdown ? (
                     <span>{link.name}</span>
                   ) : (
-                    <Link to={link.path || '#'}>{link.name}</Link>
+                    <Link
+                      to={link.path || '#'}
+                      onClick={link.name === 'Why Squad' ? handleWhySquadClick : undefined}
+                    >
+                      {link.name}
+                    </Link>
                   )}
 
                   {link.hasDropdown && (
@@ -256,8 +287,8 @@ export const Navbar = () => {
         </div>
       </div>
 
-      {/* --- DESKTOP MEGA MENU DROPDOWN --- */}
-      <AnimatePresence>
+      {/* --- DESKTOP MEGA MENU DROPDOWN: SOLUTIONS --- */}
+      {/* <AnimatePresence>
         {activeDropdown === 'Solutions' && (
           <motion.div 
             initial={{ opacity: 0, y: -10 }}
@@ -268,10 +299,10 @@ export const Navbar = () => {
             className="absolute left-0 right-0 top-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden z-10"
           >
             <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 py-12">
-              <div className="grid grid-cols-3 gap-12 lg:gap-24">
+              <div className="grid grid-cols-3 gap-12 lg:gap-24"> */}
                 
                 {/* Column 1: Verticals */}
-                <div>
+                {/* <div>
                   <h4 className="text-slate-900 dark:text-white font-extrabold mb-6 text-[15px] tracking-tight">Verticals</h4>
                   <ul className="space-y-4">
                     {solutionsMenu.verticals.map((item, idx) => (
@@ -282,10 +313,10 @@ export const Navbar = () => {
                       </li>
                     ))}
                   </ul>
-                </div>
+                </div> */}
 
                 {/* Column 2: Performance Marketing */}
-                <div>
+                {/* <div>
                   <h4 className="text-slate-900 dark:text-white font-extrabold mb-6 text-[15px] tracking-tight">Performance Marketing</h4>
                   <ul className="space-y-4">
                     {solutionsMenu.performance.map((item, idx) => (
@@ -296,10 +327,10 @@ export const Navbar = () => {
                       </li>
                     ))}
                   </ul>
-                </div>
+                </div> */}
 
                 {/* Column 3: AI Driven Solutions */}
-                <div>
+                {/* <div>
                   <h4 className="text-slate-900 dark:text-white font-extrabold mb-6 text-[15px] tracking-tight">AI Driven Solutions</h4>
                   <ul className="space-y-4">
                     {solutionsMenu.ai.map((item, idx) => (
@@ -312,6 +343,35 @@ export const Navbar = () => {
                   </ul>
                 </div>
 
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence> */}
+
+      {/* --- DESKTOP MEGA MENU DROPDOWN: PORTFOLIO --- */}
+      <AnimatePresence>
+        {activeDropdown === 'Portfolio' && (
+          <motion.div 
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            onMouseEnter={() => setActiveDropdown('Portfolio')}
+            className="absolute left-0 right-0 top-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden z-10"
+          >
+            <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 py-12">
+              <div>
+                <h4 className="text-slate-900 dark:text-white font-extrabold mb-6 text-[15px] tracking-tight">Products and Services</h4>
+                <ul className="grid grid-cols-2 gap-x-12 gap-y-4">
+                  {portfolioMenu.verticals.map((item, idx) => (
+                    <li key={idx}>
+                      <Link to={item.path} className="text-slate-500 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 font-medium text-sm transition-colors duration-200 block w-fit">
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </motion.div>
@@ -339,7 +399,13 @@ export const Navbar = () => {
                     {link.hasDropdown ? (
                       <span>{link.name}</span>
                     ) : (
-                      <Link to={link.path || '#'} className="w-full" onClick={() => setIsOpen(false)}>{link.name}</Link>
+                      <Link
+                        to={link.path || '#'}
+                        className="w-full"
+                        onClick={link.name === 'Why Squad' ? handleWhySquadClick : () => setIsOpen(false)}
+                      >
+                        {link.name}
+                      </Link>
                     )}
                     {link.hasDropdown && (
                       <ChevronDown className={`w-5 h-5 opacity-50 transition-transform duration-300 ${mobileExpanded === link.name ? '-rotate-180 text-brand-600' : ''}`} />
@@ -347,7 +413,7 @@ export const Navbar = () => {
                   </motion.div>
                   
                   {/* Mobile Submenu for Solutions */}
-                  <AnimatePresence>
+                  {/* <AnimatePresence>
                     {link.hasDropdown && mobileExpanded === link.name && link.name === 'Solutions' && (
                       <motion.div
                         initial={{ height: 0, opacity: 0 }}
@@ -380,6 +446,31 @@ export const Navbar = () => {
                             <h5 className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2">AI Solutions</h5>
                             <ul className="space-y-2">
                               {solutionsMenu.ai.map((item, idx) => (
+                                <li key={idx}>
+                                  <Link to={item.path} onClick={() => setIsOpen(false)} className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 block py-1">{item.name}</Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence> */}
+
+                  {/* Mobile Submenu for Portfolio */}
+                  <AnimatePresence>
+                    {link.hasDropdown && mobileExpanded === link.name && link.name === 'Portfolio' && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden bg-slate-50/50 dark:bg-slate-800/50 rounded-xl mt-1 mx-2"
+                      >
+                        <div className="p-4 space-y-4">
+                          <div>
+                            <h5 className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2">Products and Services</h5>
+                            <ul className="space-y-2">
+                              {portfolioMenu.verticals.map((item, idx) => (
                                 <li key={idx}>
                                   <Link to={item.path} onClick={() => setIsOpen(false)} className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 block py-1">{item.name}</Link>
                                 </li>

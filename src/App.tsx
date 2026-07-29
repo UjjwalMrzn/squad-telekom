@@ -14,6 +14,7 @@ import { About } from './pages/about/About';
 import { Contact } from './pages/contact/Contact';
 import { Banking } from './pages/banking/Banking';
 import { EGaming } from './pages/e-gaming/EGaming';
+import { OurPresence } from './pages/our-presence/OurPresence';
 
 function App() {
   const [isInitializing, setIsInitializing] = useState(true);
@@ -51,6 +52,7 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/solutions/banking" element={<Banking />} />
               <Route path="/solutions/e-gaming" element={<EGaming />} />
+              <Route path="/our-presence" element={<OurPresence />} />
             </Routes>
 
             <Footer />

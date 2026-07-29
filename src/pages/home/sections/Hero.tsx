@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
-import { ArrowRight, Globe, Sparkles, Activity } from 'lucide-react';
+import { ArrowRight, Globe, Activity } from 'lucide-react';
+
+const ROTATING_WORDS = ["Communication", "Engagement", "Connections"];
 
 export const Hero = () => {
-  const rotatingWords = ["Communication", "Engagement", "Connections"];
   const [wordIndex, setWordIndex] = useState(0);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -24,7 +25,7 @@ export const Hero = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setWordIndex((prev) => (prev + 1) % rotatingWords.length);
+      setWordIndex((prev) => (prev + 1) % ROTATING_WORDS.length);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
@@ -87,7 +88,7 @@ export const Hero = () => {
             {/* FIXED: Added dark:text-white */}
             <h1 className="text-[2.75rem] leading-[1.1] sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold tracking-tight text-slate-900 dark:text-white mb-6">
               <span className="block mb-2">Simplifying</span>
-              <span className="text-brand-500 block h-[1.2em] relative mb-2 flex justify-center md:justify-start overflow-hidden">
+              <span className="text-brand-500 h-[1.2em] relative mb-2 flex justify-center md:justify-start overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={wordIndex}
@@ -98,7 +99,7 @@ export const Hero = () => {
                     style={{ willChange: "transform, opacity" }}
                     className="absolute top-0"
                   >
-                    {rotatingWords[wordIndex]}
+                    {ROTATING_WORDS[wordIndex]}
                   </motion.span>
                 </AnimatePresence>
               </span>
@@ -154,7 +155,7 @@ export const Hero = () => {
             </motion.div>
 
             {/* --- OVERLAPPING INFO BOX 1: Top Left --- */}
-            <motion.div
+            {/* <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               whileHover={{ scale: 1.05, y: -15, boxShadow: "0 30px 60px -15px rgba(59,186,177,0.4)" }}
@@ -167,7 +168,7 @@ export const Hero = () => {
               <h3 className="text-white font-bold text-lg lg:text-xl leading-tight">
                 AI Powered<br/>Engagement
               </h3>
-            </motion.div>
+            </motion.div> */}
 
             {/* --- OVERLAPPING INFO BOX 2: Bottom Right Corner --- */}
             <motion.div

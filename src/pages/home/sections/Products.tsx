@@ -4,12 +4,19 @@ import { ChevronLeft, ChevronRight, ArrowRight, Layers } from 'lucide-react';
 import { SectionHeader } from '../../../components/ui/SectionHeader';
 
 const services = [
-  {
-    title: "CPaaS",
-    description: "Scale complex communication workflows instantly with a single robust API integrating voice, text, and social channels.",
-    bgColor: "bg-[#eff6ff] dark:bg-slate-800/60",
-    iconColor: "text-blue-500 dark:text-blue-400",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop", 
+  // {
+  //   title: "CPaaS",
+  //   description: "Scale complex communication workflows instantly with a single robust API integrating voice, text, and social channels.",
+  //   bgColor: "bg-[#eff6ff] dark:bg-slate-800/60",
+  //   iconColor: "text-blue-500 dark:text-blue-400",
+  //   image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop", 
+  // },
+    {
+    title: "Bulk SMS",
+    description: "Execute high-volume promotional and transactional campaigns globally with ultra-low latency and multi-route redundancy.",
+    bgColor: "bg-[#fdf4ff] dark:bg-slate-800/60",
+    iconColor: "text-fuchsia-500 dark:text-fuchsia-400",
+    image: "https://images.unsplash.com/photo-1523206489230-c012c64b2b48?q=80&w=600&auto=format&fit=crop", 
   },
   {
     title: "WhatsApp Messaging",
@@ -19,13 +26,6 @@ const services = [
     image: "https://images.unsplash.com/photo-1614680376408-81e91ffe3db7?q=80&w=600&auto=format&fit=crop", 
   },
   {
-    title: "Bulk SMS",
-    description: "Execute high-volume promotional and transactional campaigns globally with ultra-low latency and multi-route redundancy.",
-    bgColor: "bg-[#fdf4ff] dark:bg-slate-800/60",
-    iconColor: "text-fuchsia-500 dark:text-fuchsia-400",
-    image: "https://images.unsplash.com/photo-1523206489230-c012c64b2b48?q=80&w=600&auto=format&fit=crop", 
-  },
-  {
     title: "RCS Messaging",
     description: "Deliver next-generation rich media campaigns with verified branding, interactive carousels, and quick-reply buttons.",
     bgColor: "bg-[#fffbeb] dark:bg-slate-800/60",
@@ -33,7 +33,7 @@ const services = [
     image: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=600&auto=format&fit=crop", 
   },
   {
-    title: "P2A Messaging",
+    title: "E-SIM",
     description: "Empower users to initiate seamless chats with your business through SMS and automated conversational bots.",
     bgColor: "bg-[#f5f3ff] dark:bg-slate-800/60",
     iconColor: "text-violet-500 dark:text-violet-400",
@@ -46,27 +46,27 @@ const services = [
     iconColor: "text-teal-500 dark:text-teal-400",
     image: "https://images.unsplash.com/photo-1636743085547-4dcf1f9157dc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 
   },
-  {
-    title: "Viber Messaging",
-    description: "Connect across borders with branded business profiles, secure file sharing, and engaging promotional content.",
-    bgColor: "bg-[#f8fafc] dark:bg-slate-800/60",
-    iconColor: "text-slate-500 dark:text-slate-400",
-    image: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c3/6d/83/c36d83ea-ad22-dd42-a4c1-34cf743a2965/AppIcon-0-0-1x_U007epad-0-1-0-sRGB-0-85-220.png/1200x630wa.png", 
-  },
-  {
-    title: "A2P Messaging",
-    description: "Securely and reliably route automated OTPs, critical alerts, and system notifications directly to your users.",
-    bgColor: "bg-[#fff1f2] dark:bg-slate-800/60",
-    iconColor: "text-rose-500 dark:text-rose-400",
-    image: "https://images.unsplash.com/photo-1555421689-491a97ff2040?q=80&w=600&auto=format&fit=crop", 
-  },
-  {
-    title: "Email Services",
-    description: "Optimize inbox placement for transactional alerts and marketing campaigns with advanced analytics and automation.",
-    bgColor: "bg-[#f0f9ff] dark:bg-slate-800/60",
-    iconColor: "text-sky-500 dark:text-sky-400",
-    image: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?q=80&w=600&auto=format&fit=crop", 
-  }
+  // {
+  //   title: "Viber Messaging",
+  //   description: "Connect across borders with branded business profiles, secure file sharing, and engaging promotional content.",
+  //   bgColor: "bg-[#f8fafc] dark:bg-slate-800/60",
+  //   iconColor: "text-slate-500 dark:text-slate-400",
+  //   image: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c3/6d/83/c36d83ea-ad22-dd42-a4c1-34cf743a2965/AppIcon-0-0-1x_U007epad-0-1-0-sRGB-0-85-220.png/1200x630wa.png", 
+  // },
+  // {
+  //   title: "A2P Messaging",
+  //   description: "Securely and reliably route automated OTPs, critical alerts, and system notifications directly to your users.",
+  //   bgColor: "bg-[#fff1f2] dark:bg-slate-800/60",
+  //   iconColor: "text-rose-500 dark:text-rose-400",
+  //   image: "https://images.unsplash.com/photo-1555421689-491a97ff2040?q=80&w=600&auto=format&fit=crop", 
+  // },
+  // {
+  //   title: "Email Services",
+  //   description: "Optimize inbox placement for transactional alerts and marketing campaigns with advanced analytics and automation.",
+  //   bgColor: "bg-[#f0f9ff] dark:bg-slate-800/60",
+  //   iconColor: "text-sky-500 dark:text-sky-400",
+  //   image: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?q=80&w=600&auto=format&fit=crop", 
+  // }
 ];
 
 export const Products = () => {
