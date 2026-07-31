@@ -1,7 +1,7 @@
 import { motion, type Variants } from 'framer-motion';
 import { SectionBadge } from '../../../components/ui/SectionBadge';
 import { SectionHeader } from '../../../components/ui/SectionHeader';
-import { Mic, MessageSquare, Code2 } from 'lucide-react';
+import { Building, Send, Sliders } from 'lucide-react';
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -10,47 +10,47 @@ const fadeUp: Variants = {
 
 export const AboutStory = () => {
   return (
-    // FIXED: Added dark:bg-slate-900
     <section className="py-24 lg:py-32 bg-white dark:bg-slate-900 relative">
       <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12">
         
-        {/* --- ADDED SECTION HEADER & BADGE --- */}
+        {/* --- HEADER --- */}
         <motion.div 
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={fadeUp}
-          className="max-w-4xl mb-20"
+          className="max-w-4xl mb-16 lg:mb-20"
         >
           <SectionBadge text="The Squad Story" className="!mb-8" />
           <SectionHeader 
             align="left"
             title="Revolutionizing Business Interactions."
-            // FIXED: Added dark:text-white
             titleClassName="!text-4xl md:!text-5xl !font-bold !text-slate-900 dark:!text-white !mb-8"
-            subtitle="Beginning with our flagship voice services, we embarked on a journey to revolutionize business interactions. Today, we proudly offer an extensive suite of solutions, including cutting-edge voice and SMS services, alongside innovative software offerings. With a commitment to excellence, Squad Telekom continues to shape the landscape of modern communication, catering to diverse client needs across global markets."
-            // FIXED: Added dark:text-slate-400
+            subtitle="Founded in 2021, Squad Telekom is a U.S. based telecommunications company operating from India, specializing in high quality, cost effective voice and SMS carrier services. We focus on emerging and underserved markets, with a strong reputation for reliability, transparent partnerships, and consistent financial integrity."
             subtitleClassName="!text-lg !text-slate-600 dark:!text-slate-400 !leading-relaxed !font-medium"
           />
         </motion.div>
 
-        {/* --- ORIGINAL 3-CARD UI RESTORED --- */}
+        {/* --- MILESTONE CARDS (REPLACED OLD 3-CARD SECTION) --- */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             { 
-              icon: Mic, 
-              title: "Voice Services", 
-              desc: "Comprehensive voice services encompassing NCLI, CLI, TDM, and direct routes. Our Call Center solutions span across Asia, Europe, and Latin America with competitive rates." 
+              year: "2021",
+              icon: Building, 
+              title: "Foundation & Voice/SMS", 
+              desc: "Established as a U.S. based telecommunications company operating from India, providing cost effective voice and SMS carrier services for emerging and underserved markets." 
             },
             { 
-              icon: MessageSquare, 
-              title: "SMS Solutions", 
-              desc: "We provide a spectrum of options, from wholesale SMS to SMS API integration, along with highly secure OTP and A2P messaging solutions for enterprise needs." 
+              year: "2023",
+              icon: Send, 
+              title: "Global A2P Expansion", 
+              desc: "Expanded into global A2P SMS services, supporting high volume OTP and promotional traffic with robust routing infrastructure and guaranteed deliverability." 
             },
             { 
-              icon: Code2, 
-              title: "Software Offerings", 
-              desc: "Delivering holistic solutions with cutting-edge software. Our Rates Management System, Ticketing System, and SMS Switch optimize your communication capabilities." 
+              year: "2025",
+              icon: Sliders, 
+              title: "ARSS Platform Launch", 
+              desc: "Launched Automated Retail SMS Service (ARSS) a flexible, self-managed platform giving businesses complete control over route testing, management, and payments." 
             }
           ].map((item, i) => (
             <motion.div 
@@ -61,16 +61,18 @@ export const AboutStory = () => {
               viewport={{ once: true }} 
               transition={{ delay: i * 0.1 }}
               whileHover={{ y: -8 }}
-              // FIXED: Added dark:bg-slate-800 and dark:border-slate-700
-              className="bg-slate-50 dark:bg-slate-800 rounded-[2rem] p-8 border border-slate-100 dark:border-slate-700 shadow-sm transition-all duration-500 flex flex-col"
+              className="bg-slate-50 dark:bg-slate-800 rounded-[2rem] p-8 border border-slate-100 dark:border-slate-700 shadow-sm transition-all duration-500 flex flex-col relative overflow-hidden group"
             >
-              {/* FIXED: Added dark:bg-slate-700 and dark:border-slate-600 */}
-              <div className="w-14 h-14 bg-white dark:bg-slate-700 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-600 flex items-center justify-center mb-8">
-                <item.icon className="w-7 h-7 text-brand-500" />
+              <div className="flex items-center justify-between mb-8">
+                <div className="w-14 h-14 bg-white dark:bg-slate-700 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-600 flex items-center justify-center">
+                  <item.icon className="w-7 h-7 text-brand-500" />
+                </div>
+                <span className="text-3xl font-extrabold text-brand-500/30 dark:text-brand-400/20 group-hover:text-brand-500 transition-colors duration-300">
+                  {item.year}
+                </span>
               </div>
-              {/* FIXED: Added dark:text-white */}
+
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">{item.title}</h3>
-              {/* FIXED: Added dark:text-slate-400 */}
               <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed">{item.desc}</p>
             </motion.div>
           ))}

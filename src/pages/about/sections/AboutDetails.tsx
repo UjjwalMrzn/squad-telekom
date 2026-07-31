@@ -6,27 +6,26 @@ import { SectionHeader } from '../../../components/ui/SectionHeader';
 const stats = [
   { icon: Calendar, label: "Founded", value: "2021" },
   { icon: Building2, label: "Industry", value: "Telecommunications" },
-  { icon: Users, label: "Company Size", value: "11-50 employees" },
-  { icon: MapPin, label: "Headquarters", value: "Wilmington, Delaware" }
+  { icon: Users, label: "Company Size", value: "45-50 employees" },
+  { icon: MapPin, label: "Headquarters", value: "United States" }
 ];
 
 export const AboutDetails = () => {
   return (
-    // FIXED: Added dark:bg-[#020617] (matching alternate background tone) and dark:border-slate-800
     <section className="py-24 lg:py-32 bg-slate-50 dark:bg-[#020617] relative border-t border-slate-200 dark:border-slate-800">
       <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
-        {/* --- ADDED SECTION HEADER & BADGE --- */}
+        {/* --- HEADER --- */}
         <div className="max-w-3xl mb-16 lg:mb-20">
           <SectionBadge text="Corporate Profile" className="!mb-6" />
           <SectionHeader 
             align="left"
             title="Global Infrastructure & Operations."
-            subtitle="A focused look at our organizational scale and the strategic locations that power our worldwide wholesale network."
+            subtitle="A focused look at our organizational scale and strategic hubs that power our worldwide wholesale network."
           />
         </div>
 
-        {/* --- STATS GRID: Improved Spacing and Cohesion --- */}
+        {/* --- STATS GRID --- */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
@@ -38,30 +37,25 @@ export const AboutDetails = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
-                // FIXED: Added dark:bg-slate-800 and dark:border-slate-700
                 className="bg-white dark:bg-slate-800 rounded-[2rem] p-8 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)] border border-slate-200 dark:border-slate-700 flex flex-col items-center text-center group transition-all duration-300"
               >
-                {/* FIXED: Added dark:bg-slate-700 and dark:group-hover:bg-slate-600 */}
                 <div className="w-12 h-12 bg-slate-50 dark:bg-slate-700 rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-50 dark:group-hover:bg-slate-600 transition-colors duration-300">
                   <Icon className="w-6 h-6 text-brand-600 dark:text-brand-400" />
                 </div>
-                {/* FIXED: Added dark:text-white */}
                 <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{stat.value}</h4>
                 <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">{stat.label}</p>
               </motion.div>
-            )
+            );
           })}
         </div>
 
-        {/* --- GLOBAL PRESENCE BANNER: Refined Dark UI --- */}
+        {/* --- GLOBAL PRESENCE BANNER (COUNTRY NAMES ONLY) --- */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          // Note: This remains #020617 as it's already a dark element in both themes
           className="relative bg-[#020617] rounded-[2.5rem] p-8 lg:p-12 overflow-hidden shadow-2xl border border-transparent dark:border-slate-800/50"
         >
-          {/* Subtle Interior Glow */}
           <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-brand-500/10 rounded-full blur-[100px] pointer-events-none" />
           
           <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10">
@@ -71,7 +65,7 @@ export const AboutDetails = () => {
               </div>
               <div className="text-center lg:text-left">
                 <h3 className="text-2xl lg:text-3xl font-bold text-white mb-2">Global Presence</h3>
-                <p className="text-slate-400 font-medium">Operating seamlessly across continents with dedicated regional hubs.</p>
+                <p className="text-slate-400 font-medium">U.S. headquartered with core operations and regional hubs worldwide.</p>
               </div>
             </div>
 
@@ -80,14 +74,21 @@ export const AboutDetails = () => {
                 <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-brand-400 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300">
                   <MapPin className="w-5 h-5" />
                 </div>
-                <span className="text-white font-bold tracking-tight">Wilmington, Delaware, US</span>
+                <span className="text-white font-bold tracking-tight">United States</span>
               </div>
 
               <div className="flex items-center gap-4 group">
                 <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-brand-400 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300">
                   <MapPin className="w-5 h-5" />
                 </div>
-                <span className="text-white font-bold tracking-tight">Media City, Sharjah, AE</span>
+                <span className="text-white font-bold tracking-tight">United Arab Emirates</span>
+              </div>
+
+              <div className="flex items-center gap-4 group">
+                <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-brand-400 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300">
+                  <MapPin className="w-5 h-5" />
+                </div>
+                <span className="text-white font-bold tracking-tight">Singapore</span>
               </div>
             </div>
           </div>

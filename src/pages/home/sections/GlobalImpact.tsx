@@ -19,12 +19,12 @@ const staggerContainer: Variants = {
 };
 
 const allStats = [
-  { value: "17+", label: "Years of Telecom Innovation" },
-  { value: "900+", label: "Operator Integration" },
-  { value: "30+", label: "Countries Presence" },
-  { value: "70%+", label: "Campaign Conversion Rates" },
-  { value: "<10 Sec", label: "Average Message Latency" },
-  { value: "300+", label: "Enterprise Clients" },
+  { value: "2021", label: "Trusted Since" },
+  { value: "2M+", label: "Messages Delivered Daily" },
+  { value: "3", label: "Countries, One Global Network" },
+  { value: "95%+", label: "Conversions That Convert" },
+  { value: "50-100ms", label: "Blazing-Fast Delivery" },
+  { value: "50+", label: "Experts Behind Every Message" },
 ];
 
 export const GlobalImpact = () => {
@@ -60,6 +60,7 @@ export const GlobalImpact = () => {
       className="py-24 lg:py-32 relative overflow-hidden bg-brand-500 cursor-default"
     >
       
+      {/* BACKGROUND GRID */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div 
           className="absolute inset-0 opacity-15"
@@ -72,6 +73,7 @@ export const GlobalImpact = () => {
         />
       </div>
 
+      {/* RADAR / SONAR HOVER EFFECTS */}
       <motion.div 
         variants={{
           hidden: { opacity: 0 },
@@ -126,12 +128,11 @@ export const GlobalImpact = () => {
           variants={fadeUp}
           className="text-center mb-16 md:mb-20"
         >
-          {/* FIXED: Changed to font-bold */}
-          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4 drop-shadow-sm">
-            Global Scale. Local Impact.
+         <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4 drop-shadow-sm">
+            Seamless Scale, Real Impact.
           </h2>
           <p className="text-brand-50/90 font-medium text-lg max-w-2xl mx-auto">
-            Powering enterprise communications across the globe with unmatched speed, reliability, and precision.
+            The numbers behind every message we deliver — built on infrastructure, people, and partnerships that scale with you.
           </p>
         </motion.div>
 
@@ -151,7 +152,6 @@ export const GlobalImpact = () => {
               style={{ WebkitTransform: 'translateZ(0)' }}
               className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-[2.5rem] p-8 lg:p-10 flex flex-col justify-center items-start shadow-lg shadow-brand-700/10 group"
             >
-              {/* FIXED: Changed to font-bold */}
               <h3 className="text-5xl lg:text-6xl font-bold text-white tracking-tighter mb-3 drop-shadow-sm group-hover:scale-105 transition-transform duration-500 origin-left">
                 {stat.value}
               </h3>

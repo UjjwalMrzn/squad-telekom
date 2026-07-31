@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useMotionValue, useSpring, type Variants } from 'framer-motion';
-import { Headphones, Handshake, Rocket, MapPin, ShieldCheck, BarChart3, type LucideIcon } from 'lucide-react';
+import { Headphones, Handshake, Rocket, MapPin, Users, Server, type LucideIcon } from 'lucide-react';
 import { SectionBadge } from '../../../components/ui/SectionBadge';
 import { SectionHeader } from '../../../components/ui/SectionHeader';
 
@@ -45,13 +45,13 @@ const reasons: Reason[] = [
   {
     icon: Handshake,
     title: '300+ Partners Worldwide',
-    description: 'A growing network of carriers and resellers trusted to deliver at scale.',
+    description: 'A growing network of operators, carriers and resellers trusted to deliver at scale.',
     accent: 'emerald',
   },
   {
     icon: Rocket,
     title: 'Serving Businesses Since 2021',
-    description: 'Years of hands-on telecom experience behind every route we manage.',
+    description: 'Years of hands on telecom experience behind every route we manage.',
     accent: 'sky',
   },
   {
@@ -61,15 +61,15 @@ const reasons: Reason[] = [
     accent: 'brand',
   },
   {
-    icon: ShieldCheck,
-    title: 'Enterprise-Grade Security',
-    description: 'Encrypted delivery and compliant infrastructure built for regulated industries.',
+    icon: Users,
+    title: 'Experienced Team',
+    description: 'A 50+ strong team of telecom and engineering experts behind every deployment.',
     accent: 'emerald',
   },
   {
-    icon: BarChart3,
-    title: 'Transparent, Real-Time Reporting',
-    description: 'Live delivery and performance data, so you always know where a message stands.',
+    icon: Server,
+    title: 'Own Built-In Infrastructure',
+    description: 'Proprietary infrastructure, owned end-to-end, with no dependency on third-party middleware.',
     accent: 'sky',
   },
 ];
@@ -107,8 +107,7 @@ export const WhyChooseUs = () => {
             align="center"
             title="Why Choose Squad"
             titleClassName="!text-3xl md:!text-4xl lg:!text-5xl !font-bold !leading-tight !mb-4"
-            subtitle="At Squad, we do more than deliver messages — we enable enterprise-grade communication with measurable business impact."
-            subtitleClassName="!text-sm md:!text-base !text-slate-600 dark:!text-slate-400 !leading-relaxed !font-medium !max-w-none"
+            subtitle="Built on our own infrastructure and run by people who've done this for years, Squad brings the depth of an established global operator to every partnership."            subtitleClassName="!text-sm md:!text-base !text-slate-600 dark:!text-slate-400 !leading-relaxed !font-medium !max-w-none"
           />
         </motion.div>
 

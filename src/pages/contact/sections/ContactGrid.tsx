@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
-import { Mail, MapPin, Clock, ShieldCheck, ChevronDown, X } from 'lucide-react';
+import { Mail, MapPin, Clock, ChevronDown, X } from 'lucide-react';
 import { Button } from '../../../components/ui/Button';
 
 // Complete list of world countries
@@ -406,10 +406,10 @@ export const ContactGrid = () => {
 
                 <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
                   {/* FIXED: Added dark:text-slate-400 */}
-                  <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm font-medium">
+                  {/* <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm font-medium">
                     <ShieldCheck className="w-4 h-4 text-emerald-500" />
                     <span>Your data is secure.</span>
-                  </div>
+                  </div> */}
                   <Button variant="primary" className="w-full sm:w-auto py-2.5 px-8 shadow-lg shadow-brand-500/20 text-sm">
                     Send Message
                   </Button>

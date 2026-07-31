@@ -1,6 +1,7 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
-import { Network, Globe } from 'lucide-react';
+import { Network, Activity, ArrowRight } from 'lucide-react';
 import { SectionBadge } from '../../../components/ui/SectionBadge';
 import { SectionHeader } from '../../../components/ui/SectionHeader';
 
@@ -21,11 +22,11 @@ export const Overview = () => {
   };
 
   return (
-    // FIXED: Added dark:bg-slate-900 and dark:border-slate-800
     <section className="py-24 lg:py-32 bg-slate-100 dark:bg-slate-900 relative border-b border-slate-200 dark:border-slate-800 overflow-hidden">
       <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           
+          {/* LEFT COLUMN: SUMMARIZED OVERVIEW & CTA */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -44,12 +45,32 @@ export const Overview = () => {
             <SectionHeader 
               title={<>Empowering Enterprise <br /> Communication <br /> Since <motion.span initial={{ opacity: 0, color: '#0f172a' }} whileInView={{ opacity: 1, color: '#3bbab1' }} viewport={{ once: true }} transition={{ delay: 0.5, duration: 0.8 }} className="text-brand-500 inline-block">2021</motion.span></>}
               titleClassName="!text-4xl md:!text-5xl lg:!text-6xl !font-bold !leading-[1.1] !mb-8"
-              // FIXED: Added dark:text-white inside the subtitle spans
-              subtitle={<>Founded with a single system and a bold vision, Squad has evolved into a global leader in telecom and enterprise communication solutions. With over <span className="text-slate-900 dark:text-white font-bold">5 years</span> of consistent innovation, we've earned the trust of <span className="text-slate-900 dark:text-white font-bold">12,000+ global brands</span> across 30+ countries.</>}
-              subtitleClassName="!text-lg md:!text-xl !text-slate-600 dark:!text-slate-400 !leading-relaxed !font-medium !max-w-xl"
+              subtitle={
+                <>
+                  Founded in <span className="text-slate-900 dark:text-white font-bold">2021</span>, Squad Telekom is a U.S.-based telecommunications provider specializing in high-quality voice, global A2P SMS, and automated retail solutions (<span className="text-slate-900 dark:text-white font-bold">ARSS</span>). Built on transparent partnerships and robust routing infrastructure, we empower businesses across emerging and global markets.
+                </>
+              }
+              subtitleClassName="!text-lg md:!text-xl !text-slate-600 dark:!text-slate-400 !leading-relaxed !font-medium !max-w-xl !mb-8"
             />
+
+            {/* CTA LINK TO ABOUT US PAGE */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+            >
+              <Link 
+                to="/about"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-brand-500 hover:bg-brand-600 text-white font-bold rounded-full text-base shadow-lg shadow-brand-500/25 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] group"
+              >
+                <span>Explore Our Full Story</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </motion.div>
           </motion.div>
 
+          {/* RIGHT COLUMN: INTERACTIVE BENTO CARD */}
           <div className="relative w-full max-w-[540px] mx-auto lg:ml-auto lg:mr-0">
             <motion.div 
               ref={containerRef}
@@ -136,24 +157,26 @@ export const Overview = () => {
                     className="flex -space-x-3"
                   >
                     {[
-                      "https://flagcdn.com/in.svg",
                       "https://flagcdn.com/us.svg",
-                      "https://flagcdn.com/gb.svg"
+                      "https://flagcdn.com/ae.svg",
+                      "https://flagcdn.com/sg.svg"
                     ].map((flag, i) => (
                       <motion.img 
                         key={i} 
                         whileHover={{ y: -4, zIndex: 20 }}
                         src={flag} 
                         className="w-10 h-10 rounded-full border-2 border-[#020617] object-cover relative z-10 transition-shadow hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]" 
-                        alt="market" 
+                        alt="Regional Hub" 
                       />
                     ))}
-                    <div className="w-10 h-10 rounded-full bg-slate-800 border-2 border-[#020617] flex items-center justify-center text-[10px] font-bold text-brand-100 relative z-0">
-                      +30
+                    {/* CHANGED +30 TO 3 HUBS */}
+                    <div className="w-auto px-2.5 h-10 rounded-full bg-slate-800 border-2 border-[#020617] flex items-center justify-center text-[10px] font-bold text-brand-100 relative z-0 uppercase tracking-tight">
+                      3 Hubs
                     </div>
                   </motion.div>
                 </div>
 
+                {/* CHANGED HEADING TEXT */}
                 <motion.h3 
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -161,13 +184,14 @@ export const Overview = () => {
                   transition={{ delay: 0.3, duration: 0.6 }}
                   className="text-3xl md:text-4xl font-bold text-white leading-tight drop-shadow-md pointer-events-none"
                 >
-                  Transforming Global <br /> 
-                  Communication Logic
+                  Carrier Grade Global <br /> 
+                  Infrastructure
                 </motion.h3>
                 
               </div>
             </motion.div>
 
+            {/* FLOATING CARD: CHANGED FROM 30+ ACTIVE MARKETS TO 99.99% NETWORK UPTIME */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -179,17 +203,14 @@ export const Overview = () => {
                 animate={{ y: [0, -15, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 style={{ WebkitTransform: "translateZ(0)" }}
-                // FIXED: Added dark:bg-slate-800 and dark:border-slate-700
                 className="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] border border-slate-100 dark:border-slate-700 flex items-center gap-4 group pointer-events-auto cursor-default"
               >
-                {/* FIXED: Added dark mode icon bg/text */}
                 <div className="w-12 h-12 bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Globe className="w-6 h-6" />
+                  <Activity className="w-6 h-6" />
                 </div>
                 <div>
-                  {/* FIXED: Added dark:text-white */}
-                  <div className="text-2xl font-bold text-slate-900 dark:text-white">30+</div>
-                  <div className="text-xs font-bold text-slate-500 uppercase tracking-tighter">Active Markets</div>
+                  <div className="text-2xl font-bold text-slate-900 dark:text-white">99.99%</div>
+                  <div className="text-xs font-bold text-slate-500 uppercase tracking-tighter">Network Uptime</div>
                 </div>
               </motion.div>
             </motion.div>

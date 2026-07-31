@@ -4,7 +4,7 @@ import { Hero } from './sections/Hero';
 import { Overview } from './sections/Overview';
 import { Products } from './sections/Products';
 import { WhyChooseUs } from './sections/WhyChooseUs';
-import { SuccessStories } from './sections/SuccessStories';
+// import { SuccessStories } from './sections/SuccessStories';
 import { GlobalImpact } from './sections/GlobalImpact';
 import { FaqAndNewsletter } from './sections/FaqAndNewsletter';
 
@@ -26,7 +26,7 @@ export const Home = () => {
       <Overview />
       <Products />
       <WhyChooseUs />
-      <SuccessStories />
+      {/* <SuccessStories /> */}
       <GlobalImpact />
       <FaqAndNewsletter />
     </main>

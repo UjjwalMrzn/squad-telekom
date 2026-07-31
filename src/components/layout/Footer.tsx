@@ -8,6 +8,16 @@ const LinkedInIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const portfolioLinks = [
+  { name: 'A2P Messaging', path: '/portfolio/a2p-messaging' },
+  { name: 'RCS Messaging', path: '/portfolio/rcs-messaging' },
+  { name: 'WhatsApp Business Messaging', path: '/portfolio/whatsapp-business-messaging' },
+  { name: 'Telegram Business Messaging', path: '/portfolio/telegram' },
+  { name: 'E-SIM', path: '/portfolio/esim' },
+  { name: 'Voice OTP', path: '/portfolio/voice-otp' },
+  { name: 'Software', path: '/portfolio/software' },
+];
+
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
   const location = useLocation();
@@ -26,6 +36,7 @@ export const Footer = () => {
       <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
           
+          {/* COLUMN 1: BRAND LOGO & INFO */}
           <div className="lg:col-span-4 flex flex-col items-start">
             <Link to="/" onClick={handleLogoClick} className="mb-6 block">
               <img 
@@ -51,18 +62,18 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className="lg:col-span-2 lg:ml-8">
+          {/* COLUMN 2: QUICK LINKS */}
+          <div className="lg:col-span-2 lg:ml-4">
             <h4 className="text-white font-bold tracking-wide mb-6 uppercase text-sm">Quick Links</h4>
-            <ul className="flex flex-col gap-5">
-              {/* FIXED: Mapped Quick Links to active React Router paths */}
+            <ul className="flex flex-col gap-4">
               {[
                 { name: 'Home', path: '/' },
                 { name: 'About Us', path: '/about' },
-                { name: 'Service', path: '#' },
+                { name: 'Our Presence', path: '/our-presence' },
                 { name: 'Contact Us', path: '/contact' }
               ].map((link) => (
                 <li key={link.name}>
-                  <Link to={link.path} className="text-slate-400 font-medium transition-colors duration-300 hover:text-[#3bbab1]">
+                  <Link to={link.path} className="text-slate-400 text-sm font-medium transition-colors duration-300 hover:text-[#3bbab1]">
                     {link.name}
                   </Link>
                 </li>
@@ -70,24 +81,24 @@ export const Footer = () => {
             </ul>
           </div>
 
+          {/* COLUMN 3: PORTFOLIO */}
           <div className="lg:col-span-3">
-            <h4 className="text-white font-bold tracking-wide mb-6 uppercase text-sm">Solutions</h4>
-            <ul className="flex flex-col gap-5">
-              {[
-                'Voice Services (NCLI, CLI, TDM)', 
-                'Wholesale SMS & API Integration', 
-                'Rates Management System', 
-                'Ticketing System'
-              ].map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-slate-400 font-medium transition-colors duration-300 hover:text-[#3bbab1]">
-                    {link}
-                  </a>
+            <h4 className="text-white font-bold tracking-wide mb-6 uppercase text-sm">Portfolio</h4>
+            <ul className="flex flex-col gap-3.5">
+              {portfolioLinks.map((item) => (
+                <li key={item.name}>
+                  <Link 
+                    to={item.path} 
+                    className="text-slate-400 text-sm font-medium transition-colors duration-300 hover:text-[#3bbab1]"
+                  >
+                    {item.name}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
+          {/* COLUMN 4: CUSTOMER SUPPORT */}
           <div className="lg:col-span-3">
             <h4 className="text-white font-bold tracking-wide mb-6 uppercase text-sm">Customer Support</h4>
             <ul className="flex flex-col gap-6">
@@ -96,7 +107,7 @@ export const Footer = () => {
                   <div className="w-8 h-8 rounded-full bg-slate-800/50 flex items-center justify-center flex-shrink-0 group-hover:bg-brand-500/20 group-hover:text-[#3bbab1] transition-colors">
                     <Mail className="w-4 h-4" />
                   </div>
-                  <span className="font-medium mt-1">info@squadtelekom.com</span>
+                  <span className="font-medium mt-1 text-sm">info@squadtelekom.com</span>
                 </a>
               </li>
               <li>
@@ -104,9 +115,9 @@ export const Footer = () => {
                   <div className="w-8 h-8 rounded-full bg-slate-800/50 flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-4 h-4" />
                   </div>
-                  <span className="font-medium mt-1 leading-relaxed">
+                  <span className="font-medium mt-1 leading-relaxed text-sm">
                     Squad Telekom LLC<br />
-                    Wilmington, Delaware
+                    United States
                   </span>
                 </div>
               </li>
@@ -115,6 +126,7 @@ export const Footer = () => {
 
         </div>
 
+        {/* COPYRIGHT BOTTOM BAR */}
         <div className="pt-8 border-t border-slate-800/80 flex justify-center md:justify-start items-center">
           <p className="text-slate-500 text-sm font-medium">
             Copyright © 2021-{currentYear} by Squad Telekom LLC. All rights reserved.

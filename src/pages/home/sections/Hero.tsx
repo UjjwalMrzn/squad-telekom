@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowRight, Globe, Activity } from 'lucide-react';
+import heromap2 from '../../../assets/hero4.png'; // <-- Updated image path
 
 const ROTATING_WORDS = ["Communication", "Engagement", "Connections"];
 
@@ -87,7 +88,7 @@ export const Hero = () => {
           >
             {/* FIXED: Added dark:text-white */}
             <h1 className="text-[2.75rem] leading-[1.1] sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold tracking-tight text-slate-900 dark:text-white mb-6">
-              <span className="block mb-2">Simplifying</span>
+              <span className="block mb-2">Seamless</span>
               <span className="text-brand-500 h-[1.2em] relative mb-2 flex justify-center md:justify-start overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -103,12 +104,11 @@ export const Hero = () => {
                   </motion.span>
                 </AnimatePresence>
               </span>
-              <span className="block">Empowering Growth</span>
             </h1>
             
             {/* FIXED: Added dark:text-slate-400 */}
             <p className="text-base sm:text-lg lg:text-xl text-slate-600 dark:text-slate-400 mb-8 sm:mb-10 leading-relaxed font-medium max-w-lg mx-auto md:mx-0">
-              Carrier-grade messaging, voice, and verification APIs for businesses across the globe.
+              Empowering enterprises by providing comprehensive wholesale SMS and voice solutions, ensuring effective and streamlined communication.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
@@ -123,13 +123,14 @@ export const Hero = () => {
                 </motion.button>
               </Link>
               
-              <motion.button 
+             <motion.button 
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
+                onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })}
                 // FIXED: Added dark mode variants for the outline button
                 className="w-full sm:w-auto bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white hover:border-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 px-8 py-3.5 rounded-full font-bold text-base transition-colors flex items-center justify-center shadow-sm"
               >
-                Discover Platform
+                Explore Our Services
               </motion.button>
             </div>
           </motion.div>
@@ -144,10 +145,10 @@ export const Hero = () => {
             {/* --- THE BIG IMAGE BENTO --- */}
             <motion.div 
               whileHover={{ scale: 1.01 }}
-              className="relative w-full h-[85%] rounded-[2rem] rounded-br-[8rem] lg:rounded-br-[12rem] overflow-hidden shadow-2xl border border-slate-200/50 bg-slate-100 group"
+              className="relative w-full h-[85%] rounded-[3rem] rounded-br-[8rem] lg:rounded-br-[12rem] overflow-hidden shadow-2xl border border-slate-200/50 bg-slate-100 group"
             >
               <img 
-                src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200&auto=format&fit=crop" 
+                src={heromap2} 
                 alt="Squad Telekom Solutions" 
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
               />
@@ -175,7 +176,7 @@ export const Hero = () => {
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
               whileHover={{ scale: 1.05, y: 5, boxShadow: "0 40px 80px -20px rgba(0,0,0,0.6)" }}
-              className="absolute bottom-8 -right-4 md:-right-8 bg-[#020617]/95 backdrop-blur-xl rounded-[2.5rem] p-6 lg:p-8 shadow-2xl border border-slate-800 z-30 max-w-[220px] lg:max-w-[280px] group cursor-default transition-all duration-300"
+              className="absolute bottom-0 -left-4 md:-left-8 bg-[#020617]/95 backdrop-blur-xl rounded-[2.5rem] p-6 lg:p-8 shadow-2xl border border-slate-800 z-30 max-w-[220px] lg:max-w-[280px] group cursor-default transition-all duration-300"
             >
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-10 h-10 bg-brand-500/10 rounded-xl flex items-center justify-center border border-brand-500/20 group-hover:bg-brand-500 group-hover:text-white transition-colors duration-300">
@@ -184,10 +185,10 @@ export const Hero = () => {
                 <div className="h-[1px] flex-grow bg-slate-800" />
               </div>
               <h3 className="text-white font-bold text-base lg:text-lg leading-snug mb-2 group-hover:text-brand-400 transition-colors duration-300">
-                900+ Global Operator Routes
+                300+ Global Partners
               </h3>
               <p className="text-slate-400 text-xs font-medium leading-relaxed">
-                Seamless connectivity across 30+ international markets.
+                                Trusted operator partnerships across international markets.
               </p>
             </motion.div>
 

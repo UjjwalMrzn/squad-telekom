@@ -6,6 +6,12 @@ import { Button } from '../ui/Button';
 import { useTheme } from '../../context/ThemeContext';
 import logo from '../../assets/squad-logo-new.png'; 
 
+const LinkedInIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+  </svg>
+);
+
 // --- DATA STRUCTURE FOR MEGA MENU ---
 // const solutionsMenu = {
 //   verticals: [
@@ -15,7 +21,7 @@ import logo from '../../assets/squad-logo-new.png';
 //     { name: 'FMCG', path: '#' },
 //     { name: 'Logistics', path: '#' },
 //     { name: 'E-Commerce', path: '#' },
-//   ],
+  // ],
 //   performance: [
 //     { name: 'Affiliate Channels', path: '#' },
 //   ],
@@ -28,14 +34,18 @@ import logo from '../../assets/squad-logo-new.png';
 // };
 
 const portfolioMenu = {
-  verticals: [
-    { name: 'Bulk SMS', path: '#' },
-    { name: 'WhatsApp Messaging', path: '#' },
-    { name: 'RCS Messaging', path: '#' },
-    { name: 'E-SIM', path: '#' },
-    { name: 'Telegram', path: '#' },
+  productsAndServices: [
+    { name: 'A2P Messaging', path: '/portfolio/a2p-messaging' },
+    { name: 'RCS Messaging', path: '/portfolio/rcs-messaging' },
+    { name: 'WhatsApp Business Messaging', path: '/portfolio/whatsapp-business-messaging' },
+    { name: 'Telegram Business Messaging', path: '/portfolio/telegram' },
+  ],
+  otherServices: [
+    { name: 'E-SIM', path: '/portfolio/esim' },
+    { name: 'Voice OTP', path: '/portfolio/voice-otp' },
+    { name: 'Software', path: '/portfolio/software' },
   ]
-}
+};
 
 // "Why Squad" now scrolls to the WhyChooseUs section on the homepage instead of routing to a page
 const WHY_SQUAD_SECTION_ID = 'why-squad';
@@ -186,8 +196,19 @@ export const Navbar = () => {
           </div>
 
           {/* DESKTOP CTA */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-3">
             
+            {/* LINKEDIN BUTTON - Desktop */}
+            <a
+              href="https://www.linkedin.com/company/squadtelekomllc/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Visit Squad Telekom LinkedIn"
+              className="relative w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:border-brand-300 dark:hover:border-brand-600 hover:bg-brand-50 dark:hover:bg-slate-800 transition-all duration-300 cursor-pointer"
+            >
+              <LinkedInIcon className="w-4 h-4" />
+            </a>
+
             {/* THEME TOGGLE BUTTON - Desktop */}
             <button
               onClick={handleThemeToggle}
@@ -223,15 +244,26 @@ export const Navbar = () => {
             </button>
 
             <Link to="/contact">
-              <Button variant="primary" size="sm" className="shadow-md hover:shadow-lg transition-shadow">
+              <Button variant="primary" size="sm" className="shadow-md hover:shadow-lg transition-shadow ml-1">
                 Contact Us
               </Button>
             </Link>
           </div>
 
           {/* MOBILE MENU BUTTON & THEME TOGGLE */}
-          <div className="md:hidden flex items-center gap-3">
+          <div className="md:hidden flex items-center gap-2.5">
             
+            {/* LINKEDIN BUTTON - Mobile */}
+            <a
+              href="https://www.linkedin.com/company/squadtelekomllc/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Visit Squad Telekom LinkedIn"
+              className="relative w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-slate-800 transition-all duration-300 cursor-pointer"
+            >
+              <LinkedInIcon className="w-4 h-4" />
+            </a>
+
             {/* THEME TOGGLE BUTTON - Mobile */}
             <button
               onClick={handleThemeToggle}
@@ -361,17 +393,42 @@ export const Navbar = () => {
             className="absolute left-0 right-0 top-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden z-10"
           >
             <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 py-12">
-              <div>
-                <h4 className="text-slate-900 dark:text-white font-extrabold mb-6 text-[15px] tracking-tight">Products and Services</h4>
-                <ul className="grid grid-cols-2 gap-x-12 gap-y-4">
-                  {portfolioMenu.verticals.map((item, idx) => (
-                    <li key={idx}>
-                      <Link to={item.path} className="text-slate-500 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 font-medium text-sm transition-colors duration-200 block w-fit">
-                        {item.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl">
+                
+                {/* Column 1: Products and Services */}
+                <div>
+                  <h4 className="text-slate-900 dark:text-white font-extrabold mb-6 text-[15px] tracking-tight">Products and Services</h4>
+                  <ul className="space-y-4">
+                    {portfolioMenu.productsAndServices.map((item, idx) => (
+                      <li key={idx}>
+                        <Link 
+                          to={item.path} 
+                          className="text-slate-500 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 font-medium text-sm transition-colors duration-200 block w-fit"
+                        >
+                          {item.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Column 2: Other Services */}
+                <div>
+                  <h4 className="text-slate-900 dark:text-white font-extrabold mb-6 text-[15px] tracking-tight">Other Services</h4>
+                  <ul className="space-y-4">
+                    {portfolioMenu.otherServices.map((item, idx) => (
+                      <li key={idx}>
+                        <Link 
+                          to={item.path} 
+                          className="text-slate-500 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 font-medium text-sm transition-colors duration-200 block w-fit"
+                        >
+                          {item.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
               </div>
             </div>
           </motion.div>
@@ -466,13 +523,36 @@ export const Navbar = () => {
                         exit={{ height: 0, opacity: 0 }}
                         className="overflow-hidden bg-slate-50/50 dark:bg-slate-800/50 rounded-xl mt-1 mx-2"
                       >
-                        <div className="p-4 space-y-4">
+                        <div className="p-4 space-y-6">
                           <div>
-                            <h5 className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2">Products and Services</h5>
+                            <h5 className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-3">Products and Services</h5>
                             <ul className="space-y-2">
-                              {portfolioMenu.verticals.map((item, idx) => (
+                              {portfolioMenu.productsAndServices.map((item, idx) => (
                                 <li key={idx}>
-                                  <Link to={item.path} onClick={() => setIsOpen(false)} className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 block py-1">{item.name}</Link>
+                                  <Link 
+                                    to={item.path} 
+                                    onClick={() => setIsOpen(false)} 
+                                    className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 block py-1"
+                                  >
+                                    {item.name}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          <div>
+                            <h5 className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-3">Other Services</h5>
+                            <ul className="space-y-2">
+                              {portfolioMenu.otherServices.map((item, idx) => (
+                                <li key={idx}>
+                                  <Link 
+                                    to={item.path} 
+                                    onClick={() => setIsOpen(false)} 
+                                    className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 block py-1"
+                                  >
+                                    {item.name}
+                                  </Link>
                                 </li>
                               ))}
                             </ul>

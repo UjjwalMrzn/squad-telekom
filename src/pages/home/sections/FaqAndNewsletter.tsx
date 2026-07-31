@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
-import { Plus, Minus, ArrowRight } from 'lucide-react';
+import { Plus, Minus } from 'lucide-react';
 import { SectionBadge } from '../../../components/ui/SectionBadge';
 import { SectionHeader } from '../../../components/ui/SectionHeader';
 
@@ -156,27 +156,6 @@ export const FaqAndNewsletter = () => {
               </AnimatePresence>
             </motion.div>
           </div>
-        </motion.div>
-
-        {/* NEWSLETTER CTA BLOCK - Requires NO changes because it is a solid brand color section */}
-        <motion.div 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={fadeUp}
-          style={{ WebkitTransform: 'translateZ(0)', backfaceVisibility: 'hidden' }}
-          className="w-full bg-brand-500 rounded-[2rem] p-8 lg:p-12 relative overflow-hidden shadow-xl shadow-brand-500/20 flex flex-col md:flex-row items-center justify-between gap-8"
-        >
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[500px] bg-[radial-gradient(ellipse,rgba(255,255,255,0.15)_0%,transparent_70%)] pointer-events-none mix-blend-screen" />
-
-          <h2 className="text-3xl md:text-4xl font-medium text-white tracking-tight relative z-10 text-center md:text-left drop-shadow-sm">
-            Subscribe to our newsletter
-          </h2>
-
-          <button className="relative z-10 flex-shrink-0 inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-white text-slate-900 font-bold text-sm tracking-wide hover:bg-slate-50 hover:scale-105 transition-all duration-300 shadow-lg group">
-            Sign Up Now
-            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-          </button>
         </motion.div>
 
       </div>
